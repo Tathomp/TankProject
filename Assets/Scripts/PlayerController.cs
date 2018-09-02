@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         playerRigidbody = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
-        playerGun = GetComponent<GunController>();
+
+        // There isn't a gun controller component on the player the inspector so this line was 
+        // nulling out the reference that was set in the editor
+        //
+        //  playerGun = GetComponent<GunController>();
     }
 
 
