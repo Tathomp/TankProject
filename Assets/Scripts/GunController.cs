@@ -10,9 +10,7 @@ public class GunController : MonoBehaviour {
     public float timeBetweenShots;
     private float shotCounter;
     public Transform firePoint;
-    public GunController playerGun; // we could just use the "this" 
-                                    // keyword instead of having an 
-                                    // object hold a reference to itself
+    public GunController playerGun;
 
 
     // Use this for initialization
