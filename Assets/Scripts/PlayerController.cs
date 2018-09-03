@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float moveSpeed;
+
     private Rigidbody playerRigidbody;
 
     private Vector3 moveInput;
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     private Camera playerCamera;
 
-
+    [Tooltip("Attach the Barrel GameObject here")]
     public GunController playerGun;
 
 
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour {
     void Start () {
         playerRigidbody = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
-        playerGun = GetComponent<GunController>();
     }
 
 
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
                                                // with high values for buffs and maybe
                                                // lower values to drop speed as a penalty for something
 
-
+        /*
         Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
         Plane levelPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 
             playerRigidbody.transform.LookAt(new Vector3(playerView.x, transform.position.y, playerView.z));
         }
+        */
 
         if (Input.GetMouseButtonDown(0))
         {

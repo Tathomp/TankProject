@@ -19,19 +19,9 @@ public class GunController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            playerGun.isFiring = true;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            playerGun.isFiring = false;
-        }
-
-
+	void Update ()
+    {
+               
         if (isFiring)
         {
             shotCounter -= Time.deltaTime;
