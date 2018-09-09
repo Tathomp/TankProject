@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
+
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
+    public float maxFiringRange;
+    public EnemyGunController enemyGun;
 
     private Transform player;
+    private Vector3 playerTarget;
 
 
 	// Use this for initialization
 	void Start () {
         player =  GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        playerTarget = player.position;
+       
+       
     }
 	
 	// Update is called once per frame
@@ -29,5 +36,19 @@ public class EnemyScript : MonoBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
         }
-	}
+
+
+        enemyGun.isFiring = true;
+
+        //if (Vector3.Distance(transform.position, player.position) < maxFiringRange)
+        //{
+        //    enemyGun.isFiring = true; 
+        //}
+        //else
+        //{
+        //    enemyGun.isFiring = false;
+        //}
+
+
+    }
 }

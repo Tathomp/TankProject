@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54871657101489700, guid: 9aaade9290a68b94289bb22c8a0d456b,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aaade9290a68b94289bb22c8a0d456b, type: 2}
   m_IsPrefabAsset: 0
@@ -221,6 +226,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &412303483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372202686207712, guid: dca829b38f23bc148a0fd7da8afc01ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1673799416}
+--- !u!114 &412303488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 412303483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df93a000a3a28984bafd16255897492d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +407,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &737715163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1041664195842022, guid: dca829b38f23bc148a0fd7da8afc01ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1673799416}
+--- !u!114 &737715168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737715163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa949721c2ff9ae47885983726acf00d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFiring: 0
+  projectile: {fileID: 114211877870572022, guid: 60aeda1f30eeb4d438b6be8c21e4cd11,
+    type: 2}
+  muzzleVelocity: 8
+  timeBetweenShots: 0.5
+  firePoint: {fileID: 794788245}
+  enemyGunController: {fileID: 0}
+--- !u!4 &794788245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4233334904575196, guid: dca829b38f23bc148a0fd7da8afc01ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1673799416}
 --- !u!1001 &1673799416
 Prefab:
   m_ObjectHideFlags: 0
@@ -423,6 +473,16 @@ Prefab:
     - target: {fileID: 4824415935021376, guid: dca829b38f23bc148a0fd7da8afc01ab, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736641732124898, guid: dca829b38f23bc148a0fd7da8afc01ab,
+        type: 2}
+      propertyPath: enemyGun
+      value: 
+      objectReference: {fileID: 737715168}
+    - target: {fileID: 54590087763344198, guid: dca829b38f23bc148a0fd7da8afc01ab,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dca829b38f23bc148a0fd7da8afc01ab, type: 2}
