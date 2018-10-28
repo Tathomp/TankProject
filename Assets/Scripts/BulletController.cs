@@ -15,16 +15,27 @@ public class BulletController : MonoBehaviour {
     void Start () {
         lifeLeft = lifespan;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag.Equals("Player"))
+        {
+           // Destroy(this.collider);
+            Destroy(this.gameObject);
+            Destroy(this.transform);
+            Destroy(this);
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
 
         lifeLeft -= Time.deltaTime;
 
         if(lifeLeft <= 0)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 	}
 }

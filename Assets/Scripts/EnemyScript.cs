@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
 
-
+    public int enemyHealth;
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
@@ -50,5 +50,20 @@ public class EnemyScript : MonoBehaviour {
         //}
 
 
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag.Equals("EnemyProjectile"))
+        {
+            enemyHealth -= 1;
+
+            if (enemyHealth <= 0)
+            {
+                Destroy(this.gameObject);
+                Destroy(this.transform);
+                Destroy(this);
+            }
+        }
     }
 }
