@@ -28,6 +28,8 @@ public class PlayerController : Tank {
                                                                 //  cherrypick what we need from the package.
         playerRigidbody = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
+
+        Upgrades[0].Test();
     }
 
 

@@ -9,5 +9,12 @@ using UnityEngine;
 
 abstract public class Tank : MonoBehaviour {
 
-	
+    public List<Upgrade> Upgrades;
+
+    public Upgrade GunUpgrade;
+
+    public void CollectAllUpgrads()
+    {
+
+    }
 }
