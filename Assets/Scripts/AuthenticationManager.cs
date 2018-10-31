@@ -116,6 +116,10 @@ public class AuthenticationManager : MonoBehaviour
             {
                 txtFeedback.text = "Invalid Email or Password";
             }
+            else if (logInReq.text.Contains("inactive"))
+            {
+                txtFeedback.text = "Account is not active. Verify your Email address.";
+            }
             // No Error:
             else
             {
