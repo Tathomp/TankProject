@@ -28,6 +28,9 @@ public class PlayerController : Tank {
                                                                 //  cherrypick what we need from the package.
         playerRigidbody = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
+
+        //Quick test call to make sure the effects work
+        Upgrades[0].AddEffect();
     }
 
 
