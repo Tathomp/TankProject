@@ -196,7 +196,7 @@ Prefab:
         type: 2}
       propertyPath: Upgrades.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 1ea137dc9461246478aa9474eb2d4c78,
+      objectReference: {fileID: 11400000, guid: fae3f679daa16ab419e1ceee56764b5d,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aaade9290a68b94289bb22c8a0d456b, type: 2}
@@ -903,7 +903,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 1c1001fe9c944ad42b9b651d96239619, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

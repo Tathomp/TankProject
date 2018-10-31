@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3c7b3a2bda379498dc78c8d684e63d, type: 3}
-  m_Name: TestUpgrade
+  m_Script: {fileID: 11500000, guid: 0e90c0870b3c84b49a258ac546ac633b, type: 3}
+  m_Name: BonusArmorEffect
   m_EditorClassIdentifier: 
-  UpgradeEffects:
-  - {fileID: 11400000, guid: c4f7cc01b263e42458fb543aff25c045, type: 2}
+  HealthIncrease: 5
