@@ -80,11 +80,11 @@
 		Thanks for signing up, '.$user.'!
 		 
 		Please click this link to activate your account:
-		https://www.tanks.claytonmichaelphoto.com/verify.php?id='.$ID.'&code='.$code.'
+		https://www.ninjalive.com/tanks/verify.php?id='.$ID.'&code='.$code.'
 		 
 		';
 							 
-		$headers = 'From: noreply@tankware' . "\r\n"; // Set from headers
+		$headers = 'From: noreply@ninjalive.com' . "\r\n"; // Set from headers
 		// mail(to,subject,message,headers,parameters);
 		mail($mail, $subject, $message, $headers); // Send our email
 	}

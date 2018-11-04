@@ -105,7 +105,7 @@ public class AuthenticationManager : MonoBehaviour
         form.AddField("mail", email);
         form.AddField("pass", password);
 
-        WWW logInReq = new WWW("http://www.tanks.claytonmichaelphoto.com/action_login.php", form);
+        WWW logInReq = new WWW("http://www.ninjalive.com/tanks/action_login.php", form);
         yield return logInReq;
 
         //Check for a returned json string
@@ -157,7 +157,7 @@ public class AuthenticationManager : MonoBehaviour
         form.AddField("user", username);
         
 
-        WWW register = new WWW("http://www.tanks.claytonmichaelphoto.com/action_register.php", form);
+        WWW register = new WWW("http://www.ninjalive.com/tanks/action_register.php", form);
         yield return register;
 
         //Check for a returned json string

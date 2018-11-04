@@ -26,7 +26,7 @@
 			$row = $result->fetch_object();
 		} else {
 			// Failure: UserID does not match, redirect to error page
-			redirect('https://www.tanks.claytonmichaelphoto.com/registration.php?failed=1');
+			redirect('https://www.ninjalive.com/tanks/registration.php?failed=1');
 		}
 		// Match userStatus code
 		if($row->userStatus == $code) {
@@ -41,14 +41,14 @@
 			// Check if a record was updated
 			if(mysqli_affected_rows($db) > 0) {
 				// Update Success: redirect to confirmation page
-				redirect('https://www.tanks.claytonmichaelphoto.com/registration.php');
+				redirect('https://www.ninjalive.com/tanks/registration.php');
 			} else {
 				// Update Failed: redirect to error page
-				redirect('https://www.tanks.claytonmichaelphoto.com/registration.php?failed=2');
+				redirect('https://www.ninjalive.com/tanks/registration.php?failed=2');
 			}
 		} else {
 			// Failure: Code does not match, redirect to error pageS
-			redirect('https://www.tanks.claytonmichaelphoto.com/registration.php?failed=1');
+			redirect('https://www.ninjalive.com/tanks/registration.php?failed=1');
 		}
 	}
 	
