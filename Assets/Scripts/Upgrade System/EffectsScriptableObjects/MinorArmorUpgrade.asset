@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e90c0870b3c84b49a258ac546ac633b, type: 3}
-  m_Name: BonusArmorEffect
+  m_Name: MinorArmorUpgrade
   m_EditorClassIdentifier: 
   HealthIncrease: 5
