@@ -22,7 +22,7 @@
 		
 		
 		// Check for result from query
-		if($result) {
+		if($result && mysqli_num_rows($result) > 0) {
 			// Success: User & Password Match
 			$row = $result->fetch_object();
 			

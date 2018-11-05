@@ -32,9 +32,9 @@
 		$result = $stmt->get_result();
 
 		// Check for result from query		
-		if($row = $result->fetch_object()) {
+		if($result && mysqli_num_rows($result) > 0) {
 			// Email exists, set error msg for unity
-			$dataArray = array('success' => true, 'error' => 'exists');
+			$dataArray = array('success' => false, 'error' => 'exists');
 		} 
 		// No result from query
 		else {
