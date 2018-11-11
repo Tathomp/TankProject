@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3c7b3a2bda379498dc78c8d684e63d, type: 3}
-  m_Name: ArmorUpgrade
-  m_EditorClassIdentifier: 
-  UpgradeEffects:
-  - {fileID: 11400000, guid: 49a139554480d2b4b9e17c7bc298950f, type: 2}
+  m_Script: {fileID: 0}
+  m_Name: UpgradeDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeDatabase
+  UpgradeList:
+  - {fileID: 11400000, guid: fae3f679daa16ab419e1ceee56764b5d, type: 2}

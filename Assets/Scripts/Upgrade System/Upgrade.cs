@@ -6,6 +6,7 @@ using UnityEngine;
 public class Upgrade : ScriptableObject
 {
     public List<UpgradeEffect> UpgradeEffects;
+    public UpgradeType upgradeType;
 
     public void AddEffect()
     {
@@ -23,3 +24,13 @@ public class Upgrade : ScriptableObject
         }
     }
 }
+
+public enum UpgradeType
+{
+    Gun,
+    Armor
+}
+
+
+
+
