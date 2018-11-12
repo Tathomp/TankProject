@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -662,7 +662,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thank You!
+  m_Text: Thank You for Registering!
 --- !u!222 &45291051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1232,7 +1232,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A message has been sent to the address you supplied. Please check your e-mail
+  m_Text: An e-mail has been sent to the address you provided. Please check your e-mail
     and follow the link to verify your account.
 --- !u!222 &164571895
 CanvasRenderer:
@@ -2431,7 +2431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A message has been sent to the address on file. Please check your e-mail
+  m_Text: A message has been sent to the address provided. Please check your e-mail
     and follow the link to reset your password.
 --- !u!222 &468644127
 CanvasRenderer:
@@ -3557,8 +3557,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
-        m_MethodName: SubmitButtonTapped
+      - m_Target: {fileID: 980606131}
+        m_MethodName: SubmitRegistrationButtonTapped
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3774,9 +3774,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546607}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 980606131}
+        m_MethodName: OkayButtonTapped
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3784,18 +3784,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2023549695}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &676378794
@@ -5148,7 +5137,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
+      - m_Target: {fileID: 980606131}
         m_MethodName: LoginButtonTapped
         m_Mode: 1
         m_Arguments:
@@ -5556,13 +5545,14 @@ GameObject:
   - component: {fileID: 980606129}
   - component: {fileID: 980606128}
   - component: {fileID: 980606127}
+  - component: {fileID: 980606131}
   m_Layer: 5
   m_Name: CanvasAuthentication
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &980606127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5643,6 +5633,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &980606131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 980606126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88509d079bfc8345b259dfc8c812d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuForgotPass: {fileID: 2045744272}
+  menuLogIn: {fileID: 1496546607}
+  menuPassConf: {fileID: 596750417}
+  menuSignUpConf: {fileID: 2023549695}
+  fieldConfirmPass: {fileID: 54113045}
+  fieldUser: {fileID: 28126806}
+  btnCancel: {fileID: 1033423557}
+  btnForgotPass: {fileID: 1613972457}
+  btnFPCancel: {fileID: 1746590844}
+  btnFPSubmit: {fileID: 1000352260}
+  btnLogIn: {fileID: 886864826}
+  btnSignUp: {fileID: 1697422273}
+  btnSubmit: {fileID: 660478787}
+  btnPassConfOK: {fileID: 676378791}
+  btnSignUpOK: {fileID: 1535691001}
+  txtConfirmPass: {fileID: 54113046}
+  txtFPEmail: {fileID: 1174305660}
+  txtEmail: {fileID: 855256438}
+  txtPass: {fileID: 564376908}
+  txtUser: {fileID: 28126807}
+  msgDivider: {fileID: 1677907995}
+  txtFeedback: {fileID: 1352459051}
+  txtFPFeedback: {fileID: 1963057503}
 --- !u!1 &994630499
 GameObject:
   m_ObjectHideFlags: 0
@@ -5748,7 +5772,7 @@ RectTransform:
   m_Children:
   - {fileID: 1768674003}
   m_Father: {fileID: 2045744275}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5794,8 +5818,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
-        m_MethodName: SubmitButtonTapped
+      - m_Target: {fileID: 980606131}
+        m_MethodName: SubmitForgotPassButtonTapped
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6048,7 +6072,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
+      - m_Target: {fileID: 980606131}
         m_MethodName: CancelButtonTapped
         m_Mode: 1
         m_Arguments:
@@ -6505,7 +6529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1121549919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6728,7 +6752,7 @@ GameObject:
   - component: {fileID: 1174305661}
   - component: {fileID: 1174305660}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputFieldEmail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6747,7 +6771,7 @@ RectTransform:
   - {fileID: 1409362292}
   - {fileID: 2089600621}
   m_Father: {fileID: 2045744275}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8512,7 +8536,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Username
+  m_Text: E-mail
 --- !u!222 &1409362294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8964,7 +8988,6 @@ GameObject:
   - component: {fileID: 1496546611}
   - component: {fileID: 1496546610}
   - component: {fileID: 1496546609}
-  - component: {fileID: 1496546608}
   m_Layer: 5
   m_Name: PanelLogIn
   m_TagString: Untagged
@@ -8972,33 +8995,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1496546608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1496546607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88509d079bfc8345b259dfc8c812d01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuLogIn: {fileID: 1496546607}
-  menuSignUpConf: {fileID: 2023549695}
-  menuForgotPass: {fileID: 2045744272}
-  fieldConfirmPass: {fileID: 54113045}
-  fieldUser: {fileID: 28126806}
-  btnSignUp: {fileID: 1697422273}
-  btnForgotPass: {fileID: 1613972457}
-  btnLogIn: {fileID: 886864826}
-  btnSubmit: {fileID: 660478787}
-  btnCancel: {fileID: 1033423557}
-  txtUser: {fileID: 28126807}
-  txtPass: {fileID: 564376908}
-  txtConfirmPass: {fileID: 54113046}
-  txtEmail: {fileID: 855256438}
-  msgDivider: {fileID: 1677907995}
-  txtFeedback: {fileID: 1352459051}
 --- !u!114 &1496546609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9350,20 +9346,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546607}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 596750417}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 980606131}
+        m_MethodName: OkayButtonTapped
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9877,7 +9862,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
+      - m_Target: {fileID: 980606131}
         m_MethodName: ForgotPasswordButtonTapped
         m_Mode: 1
         m_Arguments:
@@ -10648,7 +10633,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
+      - m_Target: {fileID: 980606131}
         m_MethodName: SignUpButtonTapped
         m_Mode: 1
         m_Arguments:
@@ -11155,7 +11140,7 @@ RectTransform:
   m_Children:
   - {fileID: 1432078244}
   m_Father: {fileID: 2045744275}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11201,7 +11186,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1496546608}
+      - m_Target: {fileID: 980606131}
         m_MethodName: CancelButtonTapped
         m_Mode: 1
         m_Arguments:
@@ -11781,7 +11766,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2045744275}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11820,9 +11805,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: If you cannot remember your password you will have to reset it. Please enter
-    your username below and instructions will be sent to the e-mail address we have
-    on file.
+  m_Text: If you cannot remember your password please enter the e-mail address you
+    registered with and we will send you a link to reset your password.
 --- !u!222 &1807960239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12257,7 +12241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1900940383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12362,7 +12346,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2045744275}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12401,7 +12385,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Password
+  m_Text: Forgotten Password
 --- !u!222 &1910918177
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12635,6 +12619,81 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1944554001}
+  m_CullTransparentMesh: 0
+--- !u!1 &1963057501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963057502}
+  - component: {fileID: 1963057504}
+  - component: {fileID: 1963057503}
+  m_Layer: 5
+  m_Name: TextFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1963057502
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1963057501}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2045744275}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -11.380005}
+  m_SizeDelta: {x: 350, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1963057503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1963057501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1963057504
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1963057501}
   m_CullTransparentMesh: 0
 --- !u!1 &1981853319
 GameObject:
@@ -13406,6 +13465,7 @@ RectTransform:
   m_Children:
   - {fileID: 451031728}
   - {fileID: 754039265}
+  - {fileID: 1963057502}
   - {fileID: 1910918175}
   - {fileID: 1807960237}
   - {fileID: 1174305659}

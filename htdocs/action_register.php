@@ -32,7 +32,7 @@
 		$result = $stmt->get_result();
 
 		// Check for result from query		
-		if($result && mysqli_num_rows($result) > 0) {
+		if($result && $result->num_rows > 0) {
 			// Email exists, set error msg for unity
 			$dataArray = array('success' => false, 'error' => 'exists');
 		} 
@@ -68,7 +68,6 @@
 	echo json_encode($dataArray);
 	
 	
-		
 	// Sends an email for account verification
 	function send_email($user, $mail, $code, $ID){
 		// Set email subject line
@@ -83,9 +82,9 @@
 		https://www.ninjalive.com/tanks/verify.php?id='.$ID.'&code='.$code.'
 		 
 		';
-							 
-		$headers = 'From: noreply@ninjalive.com' . "\r\n"; // Set from headers
-		// mail(to,subject,message,headers,parameters);
+		// Set message headers
+		$headers = 'From: noreply@ninjalive.com' . "\r\n";
+		// Send the email
 		mail($mail, $subject, $message, $headers); // Send our email
 	}
 	

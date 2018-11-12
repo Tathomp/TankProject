@@ -39,7 +39,7 @@
 			$result2 = $stmt2->get_result();
 			
 			// Check if a record was updated
-			if(mysqli_affected_rows($db) > 0) {
+			if($result2->affected_rows > 0) {
 				// Update Success: redirect to confirmation page
 				redirect('https://www.ninjalive.com/tanks/registration.php');
 			} else {
