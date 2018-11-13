@@ -9,6 +9,8 @@ using UnityEngine;
 
 abstract public class Tank : MonoBehaviour {
 
+    public int MaxHealth;
+    public int CurrentHealth;
 
     public Upgrade GunUpgrade;
     public Upgrade ArmorUpgrade;

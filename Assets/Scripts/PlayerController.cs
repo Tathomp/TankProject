@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : Tank {
 
     public float moveSpeed;
-    public int playerHealth;
 
     private Rigidbody playerRigidbody;
 
@@ -28,6 +27,9 @@ public class PlayerController : Tank {
                                                                 //  cherrypick what we need from the package.
         playerRigidbody = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
+
+
+        CurrentHealth = MaxHealth;
 
     }
 
@@ -88,7 +90,7 @@ public class PlayerController : Tank {
             playerGun.isFiring = false;
         }
 
-        if(playerHealth <= 0)
+        if(CurrentHealth <= 0)
         {
             playerRigidbody.AddExplosionForce(10000.0f, playerRigidbody.position, 10.0f);
         }
@@ -100,9 +102,9 @@ public class PlayerController : Tank {
     {
         if (col.gameObject.tag.Equals("EnemyProjectile"))
         {
-            playerHealth -= 1;
+            CurrentHealth -= 1;
 
-            if(playerHealth <= 0)
+            if(CurrentHealth <= 0)
             {
                 Destroy(playerRigidbody);
                 Destroy(this);

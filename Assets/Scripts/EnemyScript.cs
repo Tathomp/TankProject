@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyScript : Tank {
 
-    public int enemyHealth;
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
@@ -19,8 +18,8 @@ public class EnemyScript : Tank {
 	void Start () {
         player =  GameObject.FindGameObjectsWithTag("Player")[0].transform;
         playerTarget = player.position;
-       
-       
+
+        CurrentHealth = MaxHealth;
     }
 	
 	// Update is called once per frame
@@ -56,9 +55,9 @@ public class EnemyScript : Tank {
     {
         if (col.gameObject.tag.Equals("EnemyProjectile"))
         {
-            enemyHealth -= 1;
+            CurrentHealth -= 1;
 
-            if (enemyHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Destroy(this.gameObject);
                 Destroy(this.transform);
