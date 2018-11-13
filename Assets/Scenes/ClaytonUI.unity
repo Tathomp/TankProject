@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2571,9 +2571,9 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 855256438}
-    m_SelectOnDown: {fileID: 1697422274}
+    m_SelectOnDown: {fileID: 54113046}
     m_SelectOnLeft: {fileID: 855256438}
-    m_SelectOnRight: {fileID: 1697422274}
+    m_SelectOnRight: {fileID: 54113046}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -4218,6 +4218,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1916896644}
+    - target: {fileID: 1423591573656750, guid: a962e9677bc3ea447b1ce6b72dca980f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a962e9677bc3ea447b1ce6b72dca980f, type: 2}
   m_IsPrefabAsset: 0
@@ -4805,10 +4809,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 4
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1033423558}
+    m_SelectOnDown: {fileID: 855256438}
+    m_SelectOnLeft: {fileID: 1033423558}
+    m_SelectOnRight: {fileID: 855256438}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -5128,13 +5132,14 @@ GameObject:
   - component: {fileID: 980606128}
   - component: {fileID: 980606127}
   - component: {fileID: 980606131}
+  - component: {fileID: 980606132}
   m_Layer: 5
   m_Name: CanvasAuthentication
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &980606127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5249,6 +5254,17 @@ MonoBehaviour:
   msgDivider: {fileID: 1677907995}
   txtFeedback: {fileID: 1352459051}
   txtFPFeedback: {fileID: 1963057503}
+--- !u!114 &980606132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 980606126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122f7b31be81c37468992079dc716c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &994630499
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,9 +5645,9 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_SelectOnUp: {fileID: 660478788}
-    m_SelectOnDown: {fileID: 855256438}
+    m_SelectOnDown: {fileID: 886864827}
     m_SelectOnLeft: {fileID: 660478788}
-    m_SelectOnRight: {fileID: 855256438}
+    m_SelectOnRight: {fileID: 886864827}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}

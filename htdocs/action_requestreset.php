@@ -5,7 +5,7 @@
 	// -Add reset flag to userStatus
 	// -Generate validation code and add to userStatus
 	// -Send reset E-mail
-
+	header("Access-Control-Allow-Origin: *");
 	
 	// Database connection
 	require_once('dbconnect.php');

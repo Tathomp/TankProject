@@ -133,13 +133,9 @@ public class AuthenticationManager : MonoBehaviour
     public void LoginButtonTapped()
     {
         // Check for empty or blank fields
-        /////////////
-        /// I commented this out because the txtuser field was always blank because it's not active
-        /// in the scene at any point and i don't think we're using it for anything?
-        // if (IsEmpty(txtUser.text))
-        //    txtFeedback.text = "Username cannot be blank";
-        ////////////
-        if (IsEmpty(txtPass.text))
+        if (IsEmpty(txtEmail.text))
+            txtFeedback.text = "E-mail cannot be blank";
+        else if (IsEmpty(txtPass.text))
             txtFeedback.text = "Password cannot be blank";
         else
         {

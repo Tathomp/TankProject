@@ -1,4 +1,7 @@
 <?php
+
+	header("Access-Control-Allow-Origin: *");
+
 	include('header.inc');	
 	
 	if($_GET['failed'] == 1) {

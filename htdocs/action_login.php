@@ -1,6 +1,8 @@
 <?php
 	// Sign In Validation of email and password
 
+	header("Access-Control-Allow-Origin: *");
+	
 	// Database connection
 	require_once('dbconnect.php');
 	

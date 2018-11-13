@@ -1,4 +1,7 @@
 <?php
+
+	header("Access-Control-Allow-Origin: *");
+
 	// Takes in a url and redirects browser to that url
 	function redirect($url)
 	{

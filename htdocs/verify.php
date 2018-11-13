@@ -4,6 +4,8 @@
 	// -Checks the hash code provided against the code in user table
 	// -Updates user status to active if codes match
 
+	header("Access-Control-Allow-Origin: *");
+	
 	// Include external scripts
 	require_once('dbconnect.php');
 	require_once('redirect.php');

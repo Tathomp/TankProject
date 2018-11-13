@@ -6,6 +6,7 @@
 	// -Set "UNVERIFIED ACCOUNT" status
 	// -Send verification E-mail
 
+	header("Access-Control-Allow-Origin: *");
 	
 	// Database connection
 	require_once('dbconnect.php');
