@@ -13,3 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpgradeList:
   - {fileID: 11400000, guid: fae3f679daa16ab419e1ceee56764b5d, type: 2}
+  - {fileID: 11400000, guid: 38f35e4054c4c5144829010d9d79cab3, type: 2}
+  - {fileID: 11400000, guid: e4fd381224245fc419a2275a7defd0d7, type: 2}
+  - {fileID: 11400000, guid: e475c855ee5dd254bbd881dc42b0544e, type: 2}
+  - {fileID: 11400000, guid: e5742c28c36501a46b0274a0a0d64cd1, type: 2}
+  - {fileID: 11400000, guid: edb22cd6346e12542b4c98ab0cccf9da, type: 2}

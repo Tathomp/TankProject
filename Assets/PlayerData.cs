@@ -9,5 +9,6 @@ public class PlayerData
 
     public Upgrade GunUpgrade;
     public Upgrade ArmorUpgrade;
+    public Upgrade TrackUpgrade;
 
 }

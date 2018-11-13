@@ -13,7 +13,7 @@ public class UpgradeButton : MonoBehaviour {
     {
         this.upgrade = upgrade;
 
-        this.transform.GetChild(0).GetComponent<Text>().text = upgrade.name;
+        this.transform.GetChild(0).GetComponent<Text>().text = upgrade.Upgradename;
     }
 
 
@@ -29,6 +29,10 @@ public class UpgradeButton : MonoBehaviour {
         else if(upgrade.upgradeType == UpgradeType.Gun)
         {
             PlayerData.CurrentPlayerInstance.GunUpgrade = upgrade;
+        }
+        else if (upgrade.upgradeType == UpgradeType.Track)
+        {
+            PlayerData.CurrentPlayerInstance.TrackUpgrade = upgrade;
         }
     }
 }

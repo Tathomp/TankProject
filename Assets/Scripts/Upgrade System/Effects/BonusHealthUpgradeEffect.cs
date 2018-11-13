@@ -7,12 +7,12 @@ public class BonusHealthUpgradeEffect : UpgradeEffect
 {
     public int HealthIncrease;
 
-    public override void AddEffect()
+    public override void AddEffect(Tank tank)
     {
         Debug.Log("Health Added: " + HealthIncrease);
     }
 
-    public override void RemoveEffect()
+    public override void RemoveEffect(Tank tank)
     {
         Debug.Log("Health Removed: " + HealthIncrease);
     }

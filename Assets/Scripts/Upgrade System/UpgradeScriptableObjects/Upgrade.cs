@@ -5,22 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Upgrade", menuName = "Upgrade/NewUpgrade")]
 public class Upgrade : ScriptableObject
 {
+    public string Upgradename;
     public List<UpgradeEffect> UpgradeEffects;
     public UpgradeType upgradeType;
 
-    public void AddEffect()
+    public void AddEffect(Tank tank)
     {
         foreach (UpgradeEffect upgradeEffect in UpgradeEffects)
         {
-            upgradeEffect.AddEffect();
+            upgradeEffect.AddEffect(tank);
         }
     }
 
-    public void RemoveEffect()
+    public void RemoveEffect(Tank tank)
     {
         foreach (UpgradeEffect upgradeEffect in UpgradeEffects)
         {
-            upgradeEffect.RemoveEffect();
+            upgradeEffect.RemoveEffect(tank);
         }
     }
 }
@@ -28,7 +29,9 @@ public class Upgrade : ScriptableObject
 public enum UpgradeType
 {
     Gun,
-    Armor
+    Armor,
+    Track
+   
 }
 
 
