@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AuthenticationManager : MonoBehaviour
@@ -132,9 +133,13 @@ public class AuthenticationManager : MonoBehaviour
     public void LoginButtonTapped()
     {
         // Check for empty or blank fields
-        if (IsEmpty(txtUser.text))
-            txtFeedback.text = "Username cannot be blank";
-        else if (IsEmpty(txtPass.text))
+        /////////////
+        /// I commented this out because the txtuser field was always blank because it's not active
+        /// in the scene at any point and i don't think we're using it for anything?
+        // if (IsEmpty(txtUser.text))
+        //    txtFeedback.text = "Username cannot be blank";
+        ////////////
+        if (IsEmpty(txtPass.text))
             txtFeedback.text = "Password cannot be blank";
         else
         {
@@ -267,6 +272,13 @@ public class AuthenticationManager : MonoBehaviour
             else
             {
                 txtFeedback.text = "Loggin successful...";
+
+                /// Login in was successful so we'll switch to the main menu
+                /// This is probably where we should pull player info from the database
+                /// I'm just going to lunch the game for now
+                /// 
+
+                SceneManager.LoadScene("SelectUpgrades");
             }
             // TODO: launch the game
         }
