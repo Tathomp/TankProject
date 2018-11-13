@@ -275,10 +275,12 @@ public class AuthenticationManager : MonoBehaviour
 
                 /// Login in was successful so we'll switch to the main menu
                 /// This is probably where we should pull player info from the database
-                /// I'm just going to lunch the game for now
-                /// 
+                /// I'm just going to lunch the game for now, I'm doing a lot of cheating here its fine
+                /// I'll print a debug message so that we don't forget
 
                 SceneManager.LoadScene("SelectUpgrades");
+                PlayerData.CurrentPlayerInstance = new PlayerData();
+                Debug.LogWarning("We're still not pulling the info completely. Double click this to go the section of the code to fix");
             }
             // TODO: launch the game
         }

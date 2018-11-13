@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectUpgradeManager : MonoBehaviour
@@ -41,6 +42,12 @@ public class SelectUpgradeManager : MonoBehaviour
         btn.InitButton(upgrade);
         buttons.Add(btn);
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
 
     /// <summary>
     /// We do this because listeners can presist between seens causing a memory leak if this 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class UpgradeButton : MonoBehaviour {
 	public void InitButton(Upgrade upgrade)
     {
         this.upgrade = upgrade;
+
+        this.transform.GetChild(0).GetComponent<Text>().text = upgrade.name;
     }
 
 
