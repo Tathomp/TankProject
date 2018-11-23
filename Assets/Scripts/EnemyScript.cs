@@ -18,7 +18,6 @@ public class EnemyScript : Tank {
 	void Start () {
         player =  GameObject.FindGameObjectsWithTag("Player")[0].transform;
         playerTarget = player.position;
-
         CurrentHealth = MaxHealth;
     }
 	

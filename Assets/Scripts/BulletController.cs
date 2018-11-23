@@ -11,19 +11,26 @@ public class BulletController : MonoBehaviour {
     public float lifespan = 5;
 
     public float lifeLeft;
+
+    public ParticleSystem explosion;
     // Use this for initialization
     void Start () {
         lifeLeft = lifespan;
+        explosion = GetComponent<ParticleSystem>();
 	}
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag.Equals("Player"))
+        explosion.Play();
+
+        if (col.gameObject.tag.Equals("Player") || col.gameObject.tag.Equals("Enemy"))
         {
-           // Destroy(this.collider);
+            
+           
+            Destroy(this);
             Destroy(this.gameObject);
             Destroy(this.transform);
-            Destroy(this);
+          
         }
     }
 
@@ -36,6 +43,8 @@ public class BulletController : MonoBehaviour {
         if(lifeLeft <= 0)
         {
             Destroy(this.gameObject);
+            Destroy(this);
+
         }
 	}
 }

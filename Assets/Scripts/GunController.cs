@@ -11,11 +11,12 @@ public class GunController : MonoBehaviour {
     private float shotCounter;
     public Transform firePoint;
     public GunController playerGun;
-
+    public ParticleSystem muzzleFlash;
 
     // Use this for initialization
     void Start () {
         playerGun = GetComponent<GunController>();
+        
     }
 	
 	// Update is called once per frame
@@ -24,17 +25,23 @@ public class GunController : MonoBehaviour {
                
         if (isFiring)
         {
+           // muzzleFlash. = playerGun.transform;
             shotCounter -= Time.deltaTime;
             if(shotCounter <= 0)
             {
+                muzzleFlash.Play();
                 shotCounter = timeBetweenShots;
                 BulletController newProjectile = Instantiate(projectile, firePoint.position, firePoint.rotation) as BulletController;
                 newProjectile.velocity = muzzleVelocity;
+                
+
             }
+
            
         }
         else
         {
+            
             shotCounter = 0;
         }
 	}
