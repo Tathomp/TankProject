@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour {
 
-    Upgrade upgrade;
+    public Upgrade upgrade;
     
 
     // Will pass the upgrade that is associated with this button
@@ -17,11 +17,15 @@ public class UpgradeButton : MonoBehaviour {
         this.transform.GetChild(0).GetComponent<Text>().text = upgrade.Upgradename;
     }
 
+    private void Start()
+    {
+        transform.GetChild(0).GetComponent<Text>().text = upgrade.name;
+    }
 
     // This method should be hooked up to the OnClick method through the editor
     public void ButtonClicked()
     {
-        PlayerState ps = GameObject.Find("Manager").GetComponent<PlayerState>();
+        PlayerState ps = PlayerState.GetCurrentPlayerState();
         Debug.Log(upgrade.name + " butotn clicked");
 
         if(upgrade.upgradeType == UpgradeType.Armor)

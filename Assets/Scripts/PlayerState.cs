@@ -179,4 +179,8 @@ public class PlayerState : MonoBehaviour
         return userName;
     }
 
+    public static PlayerState GetCurrentPlayerState()
+    {
+        return GameObject.Find("Manager").GetComponent<PlayerState>();
+    }
 }

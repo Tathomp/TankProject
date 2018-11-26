@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
                 Game Objects
      **************************************/
     // Panels
-    public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, levelHUD;
+    public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, levelHUD, upgradeUI;
     // Buttons
     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
     // Text
@@ -67,14 +67,24 @@ public class MenuManager : MonoBehaviour
     public void DisplayUpgradesPanel()
     {
         /// Todo - Link to upgrades
+        DisableMenu();
+        upgradeUI.SetActive(true);
     }
 
-    /*************************
-     Disable Display Actions
-    ************************/
+
+    /***************************************
+                Button Actions
+     **************************************/
     void DisableMenu()
     {
         mainUI.SetActive(false);
+    }
+
+    public void CloseUpgradeList()
+    {
+        PlayerState.GetCurrentPlayerState().SaveState();
+        DisplayMainMenuPanel();
+        upgradeUI.SetActive(false);
     }
 
     /***************************************
