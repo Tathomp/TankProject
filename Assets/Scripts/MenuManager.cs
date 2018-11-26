@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
                 Game Objects
      **************************************/
     // Panels
-    public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI;
+    public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, levelHUD;
     // Buttons
     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
     // Text
@@ -28,6 +28,10 @@ public class MenuManager : MonoBehaviour
     public void DisplayLevelSelectPanel()
     {
         /// Todo - Link to level selector
+        /// Currently, just disables the menu and hud and displays the level hud
+        DisableMenu();
+        levelHUD.SetActive(true);
+
     }
 
     // Display the Login Screen
@@ -65,6 +69,13 @@ public class MenuManager : MonoBehaviour
         /// Todo - Link to upgrades
     }
 
+    /*************************
+     Disable Display Actions
+    ************************/
+    void DisableMenu()
+    {
+        mainUI.SetActive(false);
+    }
 
     /***************************************
                 Button Actions
