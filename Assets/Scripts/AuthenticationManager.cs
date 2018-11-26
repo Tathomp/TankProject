@@ -1,18 +1,49 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// User class to hold JSON results
+[Serializable]
+public class User
+{
+    // Query response logic
+    public bool query;
+    public bool success;
+    public string msg;
+
+    // Player attributes
+    public string userName;
+    public string userEmail;
+    public int userID;
+    public string userImage;
+    public int maxLevel;
+    public string activeUpgrades;
+    public string purchasedUpgrades;
+}
+
+
 public class AuthenticationManager : MonoBehaviour
 {
+    // Player state reference, initialized in Start()
+    PlayerState ps;
+
+    // Web form used in coroutines for db queries
     WWWForm form;
+
+    // Serverside script names referenced by WWWForms
+    private readonly string URLLOGIN = "action_login.php";
+    private readonly string URLREGISTER = "action_register.php";
+    private readonly string URLREQUESTRESET = "action_requestreset.php";
+
 
     /***************************************
                 Game Objects
      **************************************/
     // Panels
-    public GameObject menuForgotPass, menuLogIn, menuPassConf, menuSignUpConf;
+    public GameObject forgotPassUI, logInUI, passConfUI, signUpConfUI;
     // Fields
     public GameObject fieldConfirmPass, fieldUser;
     // Buttons
@@ -27,23 +58,24 @@ public class AuthenticationManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Initialize player state reference
+        ps = GameObject.Find("Manager").GetComponent<PlayerState>();
+
+        // Set default player state 
+        ps.StartState();
+
+        // Activate the login panel
         DisplayLoginPanel();
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     // Check for empty or blank string
     bool IsEmpty(string s)
     {
         if (Equals(s.Trim(), ""))
-            return true;
+            return true;    // String is empty
         else
-            return false;
+            return false;   // String is not empty
     }
 
 
@@ -54,8 +86,8 @@ public class AuthenticationManager : MonoBehaviour
     public void DisplayPassConfPanel()
     {
         // Disable ForgotPassword panel and enable PassConf panel
-        menuForgotPass.SetActive(false);
-        menuPassConf.SetActive(true);
+        forgotPassUI.SetActive(false);
+        passConfUI.SetActive(true);
     }
 
     // Activate the Forgot Password Panel
@@ -63,8 +95,8 @@ public class AuthenticationManager : MonoBehaviour
     public void DisplayForgotPasswordPanel()
     {
         // Disable LogIn panel and enable ForgotPass panel
-        menuLogIn.SetActive(false);
-        menuForgotPass.SetActive(true);
+        logInUI.SetActive(false);
+        forgotPassUI.SetActive(true);
     }
 
     // Activate the LogIn panel, restrict Game Access
@@ -72,10 +104,10 @@ public class AuthenticationManager : MonoBehaviour
     public void DisplayLoginPanel()
     {
         // Disable other panels in this canvas and activate LogIn panel
-        menuPassConf.SetActive(false);
-        menuForgotPass.SetActive(false);
-        menuSignUpConf.SetActive(false);
-        menuLogIn.SetActive(true);
+        passConfUI.SetActive(false);
+        forgotPassUI.SetActive(false);
+        signUpConfUI.SetActive(false);
+        logInUI.SetActive(true);
 
         // Disable SignUp specific fields
         fieldConfirmPass.SetActive(false);
@@ -100,16 +132,24 @@ public class AuthenticationManager : MonoBehaviour
         // Reset the Feedback text string
         txtFeedback.text = "";
 
-        // TODO - check for active user session & end it
+        // Reset player instance just incase
+        ps.StartState();
     }
+
 
     // Activate the SignUp Confirmation Panel
     public void DisplaySignUpConfPanel()
     {
-        menuLogIn.SetActive(false);
-        menuSignUpConf.SetActive(true);
+        logInUI.SetActive(false);
+        signUpConfUI.SetActive(true); 
     }
 
+    // Load user state and enter the game
+    public void ProcessPlay(User u)
+    {
+        ps.RestoreState(u);
+        ps.DisplayMenuCanvas();
+    }
 
     /***************************************
                 Button Actions
@@ -173,7 +213,7 @@ public class AuthenticationManager : MonoBehaviour
     // Add reset to status, send reset-verification Email, redirect to confirmation
     public void SubmitForgotPassButtonTapped()
     {
-        txtFPFeedback.text = "";
+        txtFPFeedback.text = "Processing...";
         // Check for empty or blank Email field
         if(!IsEmpty(txtFPEmail.text))
             StartCoroutine("ForgottenPassword");
@@ -208,132 +248,107 @@ public class AuthenticationManager : MonoBehaviour
     /***************************************
                 Coroutines
      **************************************/
-    public IEnumerator ForgottenPassword()
+    private IEnumerator ForgottenPassword()
     {
-        string email = txtFPEmail.text;
-
+        // Build the form for submission
         form = new WWWForm();
-        form.AddField("mail", email);
+        form.AddField("mail", txtFPEmail.text);
 
-        WWW passResetReq = new WWW("http://www.ninjalive.com/tanks/action_requestreset.php", form);
+        WWW passResetReq = new WWW(ps.URL(URLREQUESTRESET), form);
         yield return passResetReq;
 
-        // Check for a returned json string
+        // Check for successful web request
         if (string.IsNullOrEmpty(passResetReq.error))
         {
-            // Successful db connection
-            // Match error messages: (replace with switch?)
-            if (passResetReq.text.Contains("outstanding"))
+            // Convert response to JSON
+            User user = JsonUtility.FromJson<User>(passResetReq.text);
+
+            // Print the response message (error or success)
+            txtFeedback.text = user.msg;
+
+            // Only proceed if email exists and account is active
+            if (user.query == true && user.success == true)
             {
-                txtFPFeedback.text = "Account must be activate";
-            }
-            // No Error: Successful reset request
-            else
-            {
+                // Successful reset request, display the confirmation panel
                 DisplayPassConfPanel();
             }
         }
         else
         {
-            // DB connection failed
-            txtFPFeedback.text = "An error occured talking to the server";
-        }
-    }
-
-    public IEnumerator RequestLogin()
-    {
-        string email = txtEmail.text;
-        string password = txtPass.text;
-
-        form = new WWWForm();
-        form.AddField("mail", email);
-        form.AddField("pass", password);
-
-        WWW logInReq = new WWW("http://www.ninjalive.com/tanks/action_login.php", form);
-        yield return logInReq;
-
-        // Check for a returned json string
-        if (string.IsNullOrEmpty(logInReq.error)) {
-            // Successful db connection
-            // Match error messages: (replace with switch?)
-            if (logInReq.text.Contains("invalid"))
-            {
-                txtFeedback.text = "Invalid Email or Password";
-            }
-            else if (logInReq.text.Contains("inactive"))
-            {
-                txtFeedback.text = "Account is not active. Verify your Email address";
-            }
-            // No Error:
-            else
-            {
-                txtFeedback.text = "Loggin successful...";
-
-                /// Login in was successful so we'll switch to the main menu
-                /// This is probably where we should pull player info from the database
-                /// I'm just going to lunch the game for now, I'm doing a lot of cheating here its fine
-                /// I'll print a debug message so that we don't forget
-
-                SceneManager.LoadScene("SelectUpgrades");
-                PlayerData.CurrentPlayerInstance = new PlayerData();
-                Debug.LogWarning("We're still not pulling the info completely. Double click this to go the section of the code to fix");
-            }
-            // TODO: launch the game
-        }
-        else {
-            // DB connection failed
+            // Connection failed
             txtFeedback.text = "An error occured talking to the server";
         }
     }
 
-    public IEnumerator RequestUserRegistration()
+    private IEnumerator RequestLogin()
     {
-        string username = txtUser.text;
-        string password = txtPass.text;
-        string confirmPassword = txtConfirmPass.text;
-        string email = txtEmail.text;
+        // Build the form for submission
+        form = new WWWForm();
+        form.AddField("mail", txtEmail.text);
+        form.AddField("pass", txtPass.text);
 
-        if (password.Length < 8)
+        WWW logInReq = new WWW(ps.URL(URLLOGIN), form);
+        yield return logInReq;
+
+        // Check for successful web request
+        if (string.IsNullOrEmpty(logInReq.error))
+        {
+            // Convert response to JSON
+            User user = JsonUtility.FromJson<User>(logInReq.text);
+            
+            // Print the response message (error or success)
+            txtFeedback.text = user.msg;
+
+            // Only proceed if credentials are valid and account is active
+            if (user.query == true && user.success == true)
+            {
+                // Switch from authorization to gameplay
+                ProcessPlay(user);
+            }
+        }
+        else
+        {
+            // Connection failed
+            txtFeedback.text = "An error occured talking to the server";
+        }
+
+    }
+
+    private IEnumerator RequestUserRegistration()
+    {
+        // Verify password lenght and matching
+        if (txtPass.text.Length < 8)
         {
             txtFeedback.text = "Password neeeds to be at least 8 characters long";
             yield break;
         }
-        if(password != confirmPassword)
+        if(txtPass.text != txtConfirmPass.text)
         {
             txtFeedback.text = "Passwords do not match";
             yield break;
         }
 
+        // Build the form for submission
         form = new WWWForm();
-        form.AddField("mail", email);
-        form.AddField("pass", password);
-        form.AddField("user", username);
+        form.AddField("mail", txtEmail.text);
+        form.AddField("pass", txtPass.text);
+        form.AddField("user", txtUser.text);
         
-
-        WWW register = new WWW("http://www.ninjalive.com/tanks/action_register.php", form);
+        WWW register = new WWW(ps.URL(URLREGISTER), form);
         yield return register;
 
-        // Check for a returned json string
+        // Check for successful web request
         if (string.IsNullOrEmpty(register.error))
         {
-            // Successful DB connection
-            // Match error messages: (replace with switch?)
-            if (register.text.Contains("exists"))
+            // Convert response to JSON
+            User user = JsonUtility.FromJson<User>(register.text);
+
+            // Print the response message (error or success)
+            txtFeedback.text = user.msg;
+
+            // Only proceed if credentials are valid and account is active
+            if (user.query == true && user.success == true)
             {
-                txtFeedback.text = "E-mail is already registered";
-            }
-            else if (register.text.Contains("taken"))
-            {
-                txtFeedback.text = "Username is already taken";
-            }
-            else if (register.text.Contains("try again"))
-            {
-                txtFeedback.text = "Could not create account, please try again later";
-            }
-            // No Error:
-            else
-            {
-                txtFeedback.text = "Registration successful...";
                 // Clear registration input values
                 txtUser.text = "";
                 txtPass.text = "";
@@ -341,13 +356,11 @@ public class AuthenticationManager : MonoBehaviour
                 txtEmail.text = "";
                 // Send to confirmation panel
                 DisplaySignUpConfPanel();
-
             }
-
         }
         else
         {
-            // DB connection failed
+            // Connection failed
             txtFeedback.text = "An error occured talking to the server";
         }
     }

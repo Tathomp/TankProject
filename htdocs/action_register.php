@@ -35,13 +35,13 @@
 		// Check for result from query		
 		if($result && $result->num_rows > 0) {
 			// Email exists, set error msg for unity
-			$dataArray = array('success' => false, 'error' => 'exists');
+			$dataArray = array('query' => false, 'success' => false, 'msg' => 'E-mail is already registered');
 		} 
 		// No result from query
 		else {
 			// Build Query: insert new user info
-			$stmt2 = $db->prepare("INSERT INTO users (userName, userPass, userEmail, userStatus) VALUES (?, ?, ?, ?)");
-			$stmt2->bind_param('ssss', $user, $pass, $mail, $code);
+			$stmt2 = $db->prepare("INSERT INTO users (userName, userPass, userEmail, userStatus, activeUpgrades, purchasedUpgrades) VALUES (?, ?, ?, ?, ?, ?)");
+			$stmt2->bind_param('ssssss', $user, $pass, $mail, $code, "", "");
 			$stmt2->execute();
 			
 			// Re-Query for user by email
@@ -52,11 +52,11 @@
 			// Check for successful insert by comparing status codes
 			if($row->userStatus == $code) {
 				// Success: set msg for unity and send activation email
-				$dataArray = array('success' => true, 'error' => '', 'email' => "$mail");
+				$dataArray = array('query' => true, 'success' => true, 'msg' => 'Registration successful...', 'email' => "$mail");
 				send_email($user, $mail, $code, $row->userID);
 			} else {
 				// Failure: set error msg for unity
-				$dataArray = array('success' => false, 'error' => 'try again');
+				$dataArray = array('query' => true, 'success' => false, 'msg' => 'Could not create account, please try again later');
 			}
 		}
 	}

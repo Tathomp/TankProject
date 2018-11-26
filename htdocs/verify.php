@@ -38,10 +38,9 @@
 			$stmt2 = $db->prepare("UPDATE users SET userStatus='Active' WHERE userID=?");
 			$stmt2->bind_param('i', $id);
 			$stmt2->execute();
-			$result2 = $stmt2->get_result();
 			
 			// Check if a record was updated
-			if($result2->affected_rows > 0) {
+			if($stmt2->affected_rows > 0) {
 				// Update Success: redirect to confirmation page
 				redirect('https://www.ninjalive.com/tanks/registration.php');
 			} else {

@@ -17,7 +17,7 @@
 		$pass = hash('sha256', $pass);
 		
 		// Build Query: match email and password hash, return userID
-		$stmt = $db->prepare("SELECT userStatus FROM users WHERE userEmail=? AND userPass=?");
+		$stmt = $db->prepare("SELECT userID, userStatus, userName, userEmail, userImage, maxLevel, activeUpgrades, purchasedUpgrades FROM users WHERE userEmail=? AND userPass=?");
 		$stmt->bind_param('ss', $mail, $pass);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -31,14 +31,23 @@
 			// Check registration status
 			if($row->userStatus == "Active") {
 				// Success: Active account
-				$dataArray = array('success' => true, 'error' => '');
+				$dataArray = array( 'query' => true,
+									'success' => true,
+									'msg' => 'Login successful...',
+									'userName' => $row->userName,
+									'userEmail' => $row->userEmail,
+									'userID' => $row->userID,
+									'userImage' => $row->userImage,
+									'maxLevel' => $row->maxLevel,
+									'activeUpgrades' => $row->activeUpgrades,
+									'purchasedUpgrades' => $row->purchasedUpgrades);
 			} else {
 				// Failure: Inactive account
-				$dataArray = array('success' => false, 'error' => 'inactive');
+				$dataArray = array('query' => true, 'success' => false, 'msg' => 'Account is not active. Verify your Email address');
 			}
 		} else {
 			// Failure: set error msg for unity
-			$dataArray = array('success' => false, 'error' => 'invalid');
+			$dataArray = array('query' => false, 'success' => false, 'msg' => 'Invalid Email or Password');
 		}
 		
 		

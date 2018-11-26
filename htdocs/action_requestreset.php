@@ -11,7 +11,7 @@
 	require_once('dbconnect.php');
 	
 	// Set default failure error msg for unity
-	$dataArray = array('success' => false, 'error' => 'try again');
+	$dataArray = array('query' => false, 'success' => false, 'msg' => 'Please try again later');
 
 	// Only proceed if data was actually POSTed
 	if(!empty($_POST['mail'])) {
@@ -43,13 +43,13 @@
 				if($stmt2->affected_rows > 0) {
 					
 					// Success: set msg for unity and send reset email
-					$dataArray = array('success' => true, 'error' => '', 'email' => "$mail");
+					$dataArray = array('query' => true, 'success' => true, 'msg' => '', 'email' => "$mail");
 					send_email($mail, $code);
 				}
 			}				
 			else {
 				// Outstanding email, set error msg for unity
-				$dataArray = array('success' => false, 'error' => 'outstanding');
+				$dataArray = array('query' => true, 'success' => false, 'msg' => 'Account must be active');
 			}			
 		}	
 	}
