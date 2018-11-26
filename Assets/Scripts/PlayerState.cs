@@ -22,6 +22,7 @@ public class PlayerState : MonoBehaviour
     private static string userName;
     private static string userEmail;
     private static string userImage;
+
     // Suggestions...
     private static int maxHP;           // This variable and the following are only examples,
     private static int maxArmor;        // team members woring on various game mechanics

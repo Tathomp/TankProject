@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BulletController : MonoBehaviour {
+    
 
     [Tooltip("Set the speed of the bullet.")]
     public float velocity = 1;
@@ -13,6 +15,8 @@ public class BulletController : MonoBehaviour {
     public float lifeLeft;
 
     public ParticleSystem explosion;
+
+    
     // Use this for initialization
     void Start () {
         lifeLeft = lifespan;
@@ -21,16 +25,21 @@ public class BulletController : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        explosion.Play();
+        Logger hitLogger;
+        hitLogger = new Logger(Debug.unityLogger.logHandler);
 
-        if (col.gameObject.tag.Equals("Player") || col.gameObject.tag.Equals("Enemy"))
+        if (col.gameObject.tag.Equals("Player") || col.gameObject.tag.Equals("Enemy") || col.gameObject.tag.Equals("Level") )
         {
-            
+            explosion.Play();
+
            
-            Destroy(this);
-            Destroy(this.gameObject);
-            Destroy(this.transform);
-          
+            hitLogger.Log(" hit object type : " + col.gameObject.tag);
+
+            Destroy(gameObject);
+            //Destroy(this);
+            //Destroy(this.gameObject);
+            //Destroy(this.transform);
+       
         }
     }
 

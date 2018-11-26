@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScript : Tank {
-
+    
     public float speed;
     public float stoppingDistance;
     public float retreatDistance;
@@ -54,13 +54,18 @@ public class EnemyScript : Tank {
     {
         if (col.gameObject.tag.Equals("EnemyProjectile"))
         {
+            Logger hitLogger;
+            hitLogger = new Logger(Debug.unityLogger.logHandler);
+            hitLogger.Log(" enemy hit, score : " + ScoreManager.score);
             CurrentHealth -= 1;
-
+            ScoreManager.score += 1;
             if (CurrentHealth <= 0)
             {
+                Destroy(gameObject);
                 Destroy(this.gameObject);
                 Destroy(this.transform);
                 Destroy(this);
+                
             }
         }
     }

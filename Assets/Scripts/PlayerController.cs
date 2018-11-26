@@ -9,9 +9,10 @@ public class PlayerController : Tank
     //                  MOVEMENT EXPERIMENT
     //--------------------------------------------------------------------------------
 
+
     public int m_PlayerNumber = 1;              // Used to identify which tank belongs to which player.  This is set by this tank's manager.
-    public float m_Speed = 12f;                 // How fast the tank moves forward and back.
-    public float m_TurnSpeed = 180f;            // How fast the tank turns in degrees per second.
+    public float m_Speed;                 // How fast the tank moves forward and back.
+    public float m_TurnSpeed;            // How fast the tank turns in degrees per second.
     //public AudioSource m_MovementAudio;         // Reference to the audio source used to play engine sounds. NB: different to the shooting audio source.
     //public AudioClip m_EngineIdling;            // Audio to play when the tank isn't moving.
     //public AudioClip m_EngineDriving;           // Audio to play when the tank is moving.
@@ -162,23 +163,6 @@ public class PlayerController : Tank
         if (Input.GetMouseButtonDown(0))
         {
             playerGun.isFiring = true;
-
-            // trying to get an effect to fire
-
-
-            //Ray cameraRay = playerCamera.ScreenPointToRay(Input.mousePosition);
-            //Plane levelPlane = new Plane(Vector3.up, Vector3.zero);
-            //float rayLength;
-            //if (levelPlane.Raycast(cameraRay, out rayLength))
-            //{
-            //    Vector3 playerView = cameraRay.GetPoint(rayLength);
-            //    Quaternion fireDirection = new Quaternion();
-            //    fireDirection.SetLookRotation(playerView);
-            //    Instantiate(tm, playerRigidbody.position, fireDirection);
-            //}
-
-
-
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -189,6 +173,8 @@ public class PlayerController : Tank
         if (CurrentHealth <= 0)
         {
             playerRigidbody.AddExplosionForce(10000.0f, playerRigidbody.position, 10.0f);
+
+            Destroy(gameObject);
         }
 
 
@@ -202,8 +188,14 @@ public class PlayerController : Tank
 
             if (CurrentHealth <= 0)
             {
+                Destroy(gameObject);
                 Destroy(playerRigidbody);
                 Destroy(this);
+
+                // trigger game over : 
+                //      - submit score to db
+                //      - bring up high score canvas
+                //      - have options for user to restart or try another level
             }
         }
     }
