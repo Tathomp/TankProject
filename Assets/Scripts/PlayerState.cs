@@ -185,4 +185,19 @@ public class PlayerState : MonoBehaviour
     {
         return GameObject.Find("Manager").GetComponent<PlayerState>();
     }
+
+    public Upgrade GetGunUpgrade()
+    {
+        return GunUpgrade;
+    }
+
+    public Upgrade GetTreadUpgrade()
+    {
+        return TrackUpgrade;
+    }
+
+    public Upgrade GetArmorUpgrade()
+    {
+        return ArmorUpgrade;
+    }
 }

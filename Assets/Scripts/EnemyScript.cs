@@ -19,10 +19,12 @@ public class EnemyScript : Tank {
         player =  GameObject.FindGameObjectsWithTag("Player")[0].transform;
         playerTarget = player.position;
         CurrentHealth = MaxHealth;
+
+        GameState.LevelStarted += InitializeEnemy;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
         if(Vector3.Distance(transform.position, player.position) > stoppingDistance)
         {
@@ -68,5 +70,22 @@ public class EnemyScript : Tank {
                 
             }
         }
+    }
+
+    public void InitializeEnemy()
+    {
+        UpgradeDatabase db = Resources.Load<UpgradeDatabase>("UpgradeDatabase");
+
+        switch (GameState.CurrentDifficulty)
+        {
+            case Difficulty.Easy:
+                {
+                    ArmorUpgrade = db.UpgradeList[0];
+                    TrackUpgrade = db.UpgradeList[3];
+                    break;
+                }
+        }
+
+        ApplyUpgrades();
     }
 }

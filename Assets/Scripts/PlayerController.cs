@@ -94,6 +94,8 @@ public class PlayerController : Tank
 
         CurrentHealth = MaxHealth;
 
+        GameState.LevelStarted += InitializePlayer;
+
     }
 
 
@@ -237,6 +239,17 @@ public class PlayerController : Tank
 
         // Apply this rotation to the rigidbody's rotation.
         m_Rigidbody.MoveRotation(m_Rigidbody.rotation * turnRotation);
+    }
+
+    public void InitializePlayer()
+    {
+        PlayerState ps = PlayerState.GetCurrentPlayerState();
+
+        //GunUpgrade = ps.GetGunUpgrade();
+        TrackUpgrade = ps.GetTreadUpgrade();
+        ArmorUpgrade = ps.GetArmorUpgrade();
+
+        ApplyUpgrades();
     }
 
 }

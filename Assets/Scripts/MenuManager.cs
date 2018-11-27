@@ -32,6 +32,7 @@ public class MenuManager : MonoBehaviour
         DisableMenu();
         levelHUD.SetActive(true);
         GameState.GameIsPaused = false;
+        GameState.StartLevel();
     }
 
     // Display the Login Screen
