@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: SpeedUpgradeLevel3
   m_EditorClassIdentifier: 
   Upgradename: Track Upgrade 3
+  Description: Increase tank speed by 75%.
+  Cost: 30
   UpgradeEffects:
   - {fileID: 11400000, guid: 7583f085317068844833dd9d1a29b596, type: 2}
   upgradeType: 2

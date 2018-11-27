@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: ArmorUpgradeLevel1
   m_EditorClassIdentifier: 
   Upgradename: Armor Upgrade Level 1
+  Description: Increase tank health by 5.
+  Cost: 10
   UpgradeEffects:
   - {fileID: 11400000, guid: 7c270c36ed7bb2843b4bd32e101070f5, type: 2}
   upgradeType: 1

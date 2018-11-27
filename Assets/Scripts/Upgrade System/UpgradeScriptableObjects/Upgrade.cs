@@ -6,6 +6,9 @@ using UnityEngine;
 public class Upgrade : ScriptableObject
 {
     public string Upgradename;
+    public string Description;
+    public int Cost;
+
     public List<UpgradeEffect> UpgradeEffects;
     public UpgradeType upgradeType;
 
