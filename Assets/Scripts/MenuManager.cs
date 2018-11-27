@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
         /// Currently, just disables the menu and hud and displays the level hud
         DisableMenu();
         levelHUD.SetActive(true);
-
+        GameState.GameIsPaused = false;
     }
 
     // Display the Login Screen
