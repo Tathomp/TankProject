@@ -30,8 +30,8 @@ public class PlayerState : MonoBehaviour
     private static int armor;           // development logic.
     private static int speed;
     private static int damage;
-    private static string purchasedUpgrades;
-    private static string activeUpgrades;
+    private static int purchasedUpgrades;    // 3 digit addative code: 1-Gun, 2-Track, 3-Armor (ex: 526)
+    private static int activeUpgrades;       // 3 digit code: 1-Gun, 2-Track, 3-Armor     (ex: 213)
 
 
     [SerializeField] private Upgrade GunUpgrade;
@@ -83,8 +83,8 @@ public class PlayerState : MonoBehaviour
         armor = maxArmor;
         speed = 10;
         damage = 10;
-        purchasedUpgrades = ""; 
-        activeUpgrades = "";
+        purchasedUpgrades = 000; 
+        activeUpgrades = 000;
         GunUpgrade = null;
         ArmorUpgrade = null;
         TrackUpgrade = null;

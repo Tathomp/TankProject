@@ -20,8 +20,8 @@ public class User
     public int userID;
     public string userImage;
     public int maxLevel;
-    public string activeUpgrades;
-    public string purchasedUpgrades;
+    public int activeUpgrades;
+    public int purchasedUpgrades;
 }
 
 
@@ -59,7 +59,7 @@ public class AuthenticationManager : MonoBehaviour
     void Start()
     {
         // Initialize player state reference
-        ps = GameObject.Find("Manager").GetComponent<PlayerState>();
+        ps = PlayerState.GetCurrentPlayerState();
 
         // Set default player state 
         ps.StartState();

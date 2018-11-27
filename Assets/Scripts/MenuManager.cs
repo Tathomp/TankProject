@@ -3,29 +3,28 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    PlayerState ps;
-
-    /***************************************
-                Game Objects
+     /***************************************
+                    Game Objects
      **************************************/
-    // Panels
-    public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, levelHUD, upgradeUI;
-    // Buttons
-    public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
-    // Text
-    public Text msgSubtitle;
+     // Panels
+     public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, levelHUD, upgradeUI;
+     // Buttons
+     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
+     // Text
+     public Text msgSubtitle;
 
-    // Use this for initialization
-    void Awake()
-    {
-        GameState.GameIsPaused = true;
-    }
+     // Use this for initialization
+     void Awake()
+     {
+          GameState.GameIsPaused = true;
+     }
 
-    /***************************************
-               Display Functions
-    **************************************/    
-    // Display the level select panel
-    public void DisplayLevelSelectPanel()
+
+     /***************************************
+                Display Functions
+     **************************************/
+     // Display the level select panel
+     public void DisplayLevelSelectPanel()
     {
         /// Todo - Link to level selector
         /// Currently, just disables the menu and hud and displays the level hud
@@ -39,7 +38,7 @@ public class MenuManager : MonoBehaviour
     // Saves and Ends user session
     public void DisplayLoginPanel()
     {
-        PlayerState ps = GameObject.Find("Manager").GetComponent<PlayerState>();
+        PlayerState ps = PlayerState.GetCurrentPlayerState();
         // Save the current player state to the database
         ps.SaveState();
         // Clear the current player state
@@ -54,7 +53,7 @@ public class MenuManager : MonoBehaviour
         // Enable main menu panel
         mainUI.SetActive(true);
         // Set the subtitle message with player's name
-        PlayerState ps = GameObject.Find("Manager").GetComponent<PlayerState>();
+        PlayerState ps = PlayerState.GetCurrentPlayerState();
         msgSubtitle.text = "Greetings, " + ps.GetUserName() + "!";
     }
 
