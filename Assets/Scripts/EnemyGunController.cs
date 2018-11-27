@@ -23,6 +23,11 @@ public class EnemyGunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // don't process ai if the game is paused
+        if(GameState.GameIsPaused == true)
+        {
+            return;
+        }
 
         if (isFiring)
         {

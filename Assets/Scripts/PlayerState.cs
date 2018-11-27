@@ -33,9 +33,11 @@ public class PlayerState : MonoBehaviour
     private static string purchasedUpgrades;
     private static string activeUpgrades;
 
-    private static Upgrade GunUpgrade;
-    private static Upgrade ArmorUpgrade;
-    private static Upgrade TrackUpgrade;
+
+    [SerializeField] private Upgrade GunUpgrade;
+    [SerializeField] private Upgrade ArmorUpgrade;
+    [SerializeField] private Upgrade TrackUpgrade;
+
 
     /***************************************
                 General Functions

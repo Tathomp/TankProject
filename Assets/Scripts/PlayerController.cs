@@ -128,7 +128,12 @@ public class PlayerController : Tank
         //                  MOVEMENT EXPERIMENT
         //--------------------------------------------------------------------------------
 
-
+        // check to make sure it's appropriate to check for input
+        if (GameState.GameIsPaused == true)
+        {
+            return;
+        }
+        
         m_MovementInputValue = Input.GetAxisRaw("Vertical");
         m_TurnInputValue = Input.GetAxisRaw("Horizontal");
 
@@ -176,6 +181,7 @@ public class PlayerController : Tank
 
             Destroy(gameObject);
         }
+        
 
 
     }

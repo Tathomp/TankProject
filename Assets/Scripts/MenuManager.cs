@@ -16,9 +16,9 @@ public class MenuManager : MonoBehaviour
     public Text msgSubtitle;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
-        
+        GameState.GameIsPaused = true;
     }
 
     /***************************************
