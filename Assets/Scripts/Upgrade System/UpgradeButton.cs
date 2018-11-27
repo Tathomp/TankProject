@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UpgradeButton : MonoBehaviour {
 
     public Upgrade upgrade;
-    
+
+    public Text uiTextDescript;
 
     // Will pass the upgrade that is associated with this button
     // through this method
@@ -27,6 +28,10 @@ public class UpgradeButton : MonoBehaviour {
     {
         PlayerState ps = PlayerState.GetCurrentPlayerState();
         Debug.Log(upgrade.name + " butotn clicked");
+
+        uiTextDescript.text = "";
+        uiTextDescript.text += "Cost: " + upgrade.Cost +"\n";
+        uiTextDescript.text += upgrade.Description;
 
         if(upgrade.upgradeType == UpgradeType.Armor)
         {
