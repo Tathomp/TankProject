@@ -104,6 +104,9 @@ public class AuthenticationManager : MonoBehaviour
     // Cancel any active user session, dump variables
     public void DisplayLoginPanel()
     {
+        // Reset player instance just incase
+        ps.StartState();
+
         // Disable other panels in this canvas and activate LogIn panel
         passConfUI.SetActive(false);
         forgotPassUI.SetActive(false);
@@ -132,9 +135,6 @@ public class AuthenticationManager : MonoBehaviour
 
         // Reset the Feedback text string
         txtFeedback.text = "";
-
-        // Reset player instance just incase
-        ps.StartState();
     }
 
 

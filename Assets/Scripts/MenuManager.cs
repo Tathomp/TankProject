@@ -3,28 +3,29 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-     /***************************************
-                    Game Objects
-     **************************************/
-     // Panels
-     public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, levelHUD, upgradeUI;
-     // Buttons
-     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
-     // Text
-     public Text msgSubtitle;
+    /***************************************
+                   Game Objects
+    **************************************/
+    // Panels
+    public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI;
+    public GameObject HUDUI, levelHUD;
+    // Buttons
+    public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
+    // Text
+    public Text msgSubtitle;
 
-     // Use this for initialization
-     void Awake()
-     {
-          GameState.GameIsPaused = true;
-     }
+    // Use this for initialization
+    void Awake()
+    {
+        GameState.GameIsPaused = true;
+    }
 
 
-     /***************************************
+    /***************************************
                 Display Functions
-     **************************************/
-     // Display the level select panel
-     public void DisplayLevelSelectPanel()
+    **************************************/
+    // Display the level select panel
+    public void DisplayLevelSelectPanel()
     {
         /// Todo - Link to level selector
         /// Currently, just disables the menu and hud and displays the level hud
@@ -43,6 +44,10 @@ public class MenuManager : MonoBehaviour
         ps.SaveState();
         // Clear the current player state
         ps.StartState();
+        // Disable possible origin panels 
+        profileUI.SetActive(false);
+        pauseUI.SetActive(false);
+        mainUI.SetActive(false);
         // Switch back to the Authentication Manager
         ps.DisplayLoginCanvas();
     }
@@ -102,10 +107,73 @@ public class MenuManager : MonoBehaviour
         DisplayLevelSelectPanel();
     }
 
+    // Redirect to LogIn panel
+    public void LogoutButtonTapped()
+    {
+        // Hide the pause menu and HUD
+        pauseUI.SetActive(false);
+        DisplayLoginPanel();
+    }
+
+    // Pause Game & redirect to pause menu panel
+    public void PauseButtonTapped()
+    {
+        // Pause gameplay
+        Awake();
+        // Diplay the pause menu panel
+        pauseUI.SetActive(true);
+    }
+
     // Redirect to player profile panel
     public void ProfileButtonTapped()
     {
         DisplayProfilePanel();
+    }
+
+    // Redirect to LogIn panel
+    public void QuitButtonTapped()
+    {
+        // Hide the pause menu and HUD
+        pauseUI.SetActive(false);
+        HUDUI.SetActive(false);
+
+        // todo - reset gameplay??
+
+        // Display main menu
+        DisplayMainMenuPanel();
+    }
+
+    // Redirect to LogIn panel
+    public void RestartLevelButtonTapped()
+    {
+        // Hide the pause menu and HUD
+        pauseUI.SetActive(false);
+        
+        // todo - reset gameplay??
+    }
+
+    // Redirect to LogIn panel
+    public void ResumeButtonTapped()
+    {
+        // Hide the pause menu and HUD
+        pauseUI.SetActive(false);
+
+        // Unpause the game
+        // todo - unpause game
+
+    }
+
+    // Redirect to level select panel
+    public void SelectNewLevelButtonTapped()
+    {
+        // Hide the pause menu and HUD
+        pauseUI.SetActive(false);
+        HUDUI.SetActive(false);
+
+        // todo - reset gameplay??
+
+        // Display level select
+        LevelSelectButtonTapped();
     }
 
     // Redirect to upgrades panel
@@ -114,10 +182,6 @@ public class MenuManager : MonoBehaviour
         DisplayUpgradesPanel();
     }
 
-    // Redirect to LogIn panel
-    public void LogoutButtonTapped()
-    {
-        DisplayLoginPanel();
-    }
+    
 
 }

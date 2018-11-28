@@ -61,6 +61,7 @@ public class PlayerState : MonoBehaviour
     }
 
     // Deactivate the main menu and activate the login panel
+    // Logs Out current player, resets state 
     public void DisplayLoginCanvas()
     {
         /// todo - deactivate canvases too
