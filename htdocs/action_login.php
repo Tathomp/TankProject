@@ -17,7 +17,7 @@
 		$pass = hash('sha256', $pass);
 		
 		// Build Query: match email and password hash, return userID
-		$stmt = $db->prepare("SELECT userID, userStatus, userName, userEmail, userImage, maxLevel, activeUpgrades, purchasedUpgrades FROM users WHERE userEmail=? AND userPass=?");
+		$stmt = $db->prepare("SELECT userID, userStatus, userName, userEmail, userImage, maxLevel, activeUpgrades, purchasedUpgrades, userCredits FROM users WHERE userEmail=? AND userPass=?");
 		$stmt->bind_param('ss', $mail, $pass);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -40,7 +40,8 @@
 									'userImage' => $row->userImage,
 									'maxLevel' => $row->maxLevel,
 									'activeUpgrades' => $row->activeUpgrades,
-									'purchasedUpgrades' => $row->purchasedUpgrades);
+									'purchasedUpgrades' => $row->purchasedUpgrades,
+									'userCredits' => $row->userCredits);
 			} else {
 				// Failure: Inactive account
 				$dataArray = array('query' => true, 'success' => false, 'msg' => 'Account is not active. Verify your Email address');

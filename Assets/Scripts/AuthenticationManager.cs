@@ -22,6 +22,7 @@ public class User
     public int maxLevel;
     public int activeUpgrades;
     public int purchasedUpgrades;
+    public int userCredits;
 }
 
 

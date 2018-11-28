@@ -40,8 +40,9 @@
 		// No result from query
 		else {
 			// Build Query: insert new user info
-			$stmt2 = $db->prepare("INSERT INTO users (userName, userPass, userEmail, userStatus, activeUpgrades, purchasedUpgrades) VALUES (?, ?, ?, ?, ?, ?)");
-			$stmt2->bind_param('ssssss', $user, $pass, $mail, $code, "", "");
+			// Upgrades, credits, & image are all populated with defaults automatically 
+			$stmt2 = $db->prepare("INSERT INTO users (userName, userPass, userEmail, userStatus) VALUES (?, ?, ?, ?, ?, ?, ?)");
+			$stmt2->bind_param('ssss', $user, $pass, $mail, $code);
 			$stmt2->execute();
 			
 			// Re-Query for user by email

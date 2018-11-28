@@ -12,7 +12,7 @@
 	$dataArray = array('query' => false, 'success' => false, 'msg' => 'No query');
 	
 	// Build Query: match email and password hash, return userID
-	$stmt = $db->prepare("SELECT userName, userImage, maxLevel, activeUpgrades, purchasedUpgrades FROM users WHERE userID=? AND userEmail=?");
+	$stmt = $db->prepare("SELECT userName, userImage, maxLevel, activeUpgrades, purchasedUpgrades, userCredits FROM users WHERE userID=? AND userEmail=?");
 	$stmt->bind_param('is', $id, $email);
 	$stmt->execute();
 	$result = $stmt->get_result();
@@ -28,7 +28,8 @@
 							'userImage' => $row->userImage,
 							'maxLevel' => $row->maxLevel,
 							'activeUpgrades' => $row->activeUpgrades,
-							'purchasedUpgrades' => $row->purchasedUpgrades);
+							'purchasedUpgrades' => $row->purchasedUpgrades,
+							'userCredits' => $row->userCredits);
 							
 	else {
 		// Failure: set msg for debugging
