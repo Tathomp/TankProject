@@ -38,6 +38,7 @@ public class PlayerController : Tank
     //public float moveSpeed; **
 
     private Rigidbody playerRigidbody;
+    public Logger hitLogger;
 
     //private Vector3 moveInput;    **
     //private Vector3 moveVelocity; **
@@ -83,7 +84,8 @@ public class PlayerController : Tank
     // Use this for initialization
     void Start()
     {
-       
+        hitLogger = new Logger(Debug.unityLogger.logHandler);
+
 
         m_MovementAxisName = "Vertical" + m_PlayerNumber;
         m_TurnAxisName = "Horizontal" + m_PlayerNumber;
@@ -196,6 +198,7 @@ public class PlayerController : Tank
 
             if (CurrentHealth <= 0)
             {
+                hitLogger.Log("player hit");
                 Destroy(gameObject);
                 Destroy(playerRigidbody);
                 Destroy(this);

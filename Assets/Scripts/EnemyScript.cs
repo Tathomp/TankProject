@@ -54,8 +54,8 @@ public class EnemyScript : Tank {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag.Equals("EnemyProjectile"))
-        {
+        //if (col.gameObject.tag.Equals("EnemyProjectile"))
+        //{
             Logger hitLogger;
             hitLogger = new Logger(Debug.unityLogger.logHandler);
             hitLogger.Log(" enemy hit, score : " + ScoreManager.score);
@@ -69,7 +69,7 @@ public class EnemyScript : Tank {
                 Destroy(this);
                 
             }
-        }
+        //}
     }
 
     public void InitializeEnemy()
