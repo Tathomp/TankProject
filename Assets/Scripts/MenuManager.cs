@@ -70,17 +70,9 @@ public class MenuManager : MonoBehaviour
         msgSubtitle.text = "Greetings, " + ps.GetUserName() + "!";
     }
 
-    // Display the player's profile
-    public void DisplayProfilePanel()
-    {
-        /// Todo - Link to profile
-    }
-
     // Display the upgrades screen
     public void DisplayUpgradesPanel()
     {
-        /// Todo - Link to upgrades
-        DisableMenu();
         upgradeUI.SetActive(true);
     }
 
@@ -88,21 +80,12 @@ public class MenuManager : MonoBehaviour
     /***************************************
                 Button Actions
      **************************************/
-    void DisableMenu()
-    {
-        mainUI.SetActive(false);
-    }
-
     public void CloseUpgradeList()
     {
         PlayerState.GetCurrentPlayerState().SaveState();
-        DisplayMainMenuPanel();
         upgradeUI.SetActive(false);
     }
 
-    /***************************************
-                Button Actions
-     **************************************/
     // Display difficulty menu as an overlay
     public void DifficultyBackButtonTapped()
     {
@@ -161,7 +144,7 @@ public class MenuManager : MonoBehaviour
     // Redirect to player profile panel
     public void ProfileButtonTapped()
     {
-        DisplayProfilePanel();
+        GameObject.Find("Manager").GetComponent<Profile>().DisplayProfilePanel();
     }
 
     // Redirect to LogIn panel
@@ -171,7 +154,7 @@ public class MenuManager : MonoBehaviour
         pauseUI.SetActive(false);
         levelHUD.SetActive(false);
 
-        // todo - reset gameplay??
+        /// todo - reset gameplay??
 
         // Display main menu
         DisplayMainMenuPanel();
@@ -183,7 +166,7 @@ public class MenuManager : MonoBehaviour
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
         
-        // todo - reset gameplay??
+        /// todo - reset gameplay??
     }
 
     // Redirect to LogIn panel
@@ -193,7 +176,7 @@ public class MenuManager : MonoBehaviour
         pauseUI.SetActive(false);
 
         // Unpause the game
-        // todo - unpause game
+        /// todo - unpause game
 
     }
 
@@ -204,10 +187,11 @@ public class MenuManager : MonoBehaviour
         pauseUI.SetActive(false);
         levelHUD.SetActive(false);
 
-        // todo - reset gameplay??
+        /// todo - reset gameplay??
 
-        // Display level select
-        LevelSelectButtonTapped();
+        // Display main menu & level select over top
+        DisplayMainMenuPanel();
+        LS().DisplayLevelSelectPanel();
     }
 
     // Redirect to upgrades panel

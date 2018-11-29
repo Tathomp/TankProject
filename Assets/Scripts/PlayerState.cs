@@ -89,6 +89,9 @@ public class PlayerState : MonoBehaviour
         ArmorUpgrade = null;
         TrackUpgrade = null;
 
+        // Set the profile picture
+        GameObject.Find("Manager").GetComponent<Profile>().SetAvatar();
+
         maxHP = 100;
         maxArmor = 100;
         hp = maxHP;
@@ -100,6 +103,7 @@ public class PlayerState : MonoBehaviour
     // Restore player state upon login
     public void RestoreState(User u)
     {
+        //Set all the player attributes
         userName = u.userName;
         userEmail = u.userEmail;
         userID = u.userID;
@@ -108,6 +112,9 @@ public class PlayerState : MonoBehaviour
         purchasedUpgrades = u.purchasedUpgrades;
         activeUpgrades = u.activeUpgrades;
         userCredits = u.userCredits;
+
+        // Set the profile picture
+        GameObject.Find("Manager").GetComponent<Profile>().SetAvatar();
     }
 
     // Save persistant game state data to DB 
@@ -183,6 +190,21 @@ public class PlayerState : MonoBehaviour
     public string GetAvatar()
     {
         return URL("avatars/" + userImage);
+    }
+
+    public int GetCredits()
+    {
+        return userCredits;
+    }
+
+    public string GetEmail()
+    {
+        return userEmail;
+    }
+
+    public int GetID()
+    {
+        return userID;
     }
 
     public string GetUserName()
