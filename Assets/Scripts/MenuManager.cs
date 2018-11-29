@@ -108,7 +108,7 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
 
         // Start Level
-        GameState.StartLevel();
+        GameState.GameIsPaused = false;
         levelHUD.SetActive(true); // this should be part of a function call to start the gameplay
     }
 
@@ -136,7 +136,8 @@ public class MenuManager : MonoBehaviour
     public void PauseButtonTapped()
     {
         // Pause gameplay
-        Awake();
+        GameState.GameIsPaused = true;
+
         // Diplay the pause menu panel
         pauseUI.SetActive(true);
     }
@@ -175,10 +176,10 @@ public class MenuManager : MonoBehaviour
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
 
-        // Unpause the game
-        /// todo - unpause game
+          // Unpause the game
+          GameState.GameIsPaused = false;
 
-    }
+     }
 
     // Redirect to level select panel
     public void SelectNewLevelButtonTapped()
