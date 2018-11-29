@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     **************************************/
     // Panels
     public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI;
-    public GameObject HUDUI, levelHUD;
+    public GameObject levelHUD, levelSelectUI;
     // Buttons
     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
     // Text
@@ -20,19 +20,27 @@ public class MenuManager : MonoBehaviour
         GameState.GameIsPaused = true;
     }
 
+    // Leaderboard accessor
+    public Leaderboard LB()
+    {
+        return GameObject.Find("CanvasMenus").GetComponent<Leaderboard>();
+    }
+
+    // LevelSelect accessor
+    public LevelSelect LS()
+    {
+        return GameObject.Find("CanvasMenus").GetComponent<LevelSelect>();
+    }
 
     /***************************************
                 Display Functions
     **************************************/
-    // Display the level select panel
-    public void DisplayLevelSelectPanel()
+    // Disable all UI menus 
+    public void CloseAllMenus()
     {
-        /// Todo - Link to level selector
-        /// Currently, just disables the menu and hud and displays the level hud
-        DisableMenu();
-        levelHUD.SetActive(true);
-        GameState.GameIsPaused = false;
-        GameState.StartLevel();
+        GameObject[] UIarray = { changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI, levelSelectUI };
+        foreach (GameObject ui in UIarray)
+            ui.SetActive(false);
     }
 
     // Display the Login Screen
@@ -95,16 +103,42 @@ public class MenuManager : MonoBehaviour
     /***************************************
                 Button Actions
      **************************************/
+    // Display difficulty menu as an overlay
+    public void DifficultyBackButtonTapped()
+    {
+        difficultyUI.SetActive(false);
+    }
+
+    // Display difficulty menu as an overlay
+    public void DifficultyButtonTapped()
+    {
+        difficultyUI.SetActive(true);
+    }
+
+    // Set level selected and display difficulty menu
+    public void DifficultyLevelTapped(int difficultySelected)
+    {
+        /// Set play difficulty based on attribute passed from button
+        GameState.SetDifficulty((Difficulty)difficultySelected);
+
+        // Hide all menus except HUD, start gameplay
+        CloseAllMenus();
+
+        // Start Level
+        GameState.StartLevel();
+        levelHUD.SetActive(true); // this should be part of a function call to start the gameplay
+    }
+
     // Enable the leaderboard panel
     public void LeaderboardButtonTapped()
     {
-        GameObject.Find("CanvasMenus").GetComponent<Leaderboard>().DisplayLeaderboardPanel();
+        LB().DisplayLeaderboardPanel();
     }
 
     // Redirect to level select panel
     public void LevelSelectButtonTapped()
     {
-        DisplayLevelSelectPanel();
+        LS().DisplayLevelSelectPanel();
     }
 
     // Redirect to LogIn panel
@@ -135,7 +169,7 @@ public class MenuManager : MonoBehaviour
     {
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
-        HUDUI.SetActive(false);
+        levelHUD.SetActive(false);
 
         // todo - reset gameplay??
 
@@ -168,7 +202,7 @@ public class MenuManager : MonoBehaviour
     {
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
-        HUDUI.SetActive(false);
+        levelHUD.SetActive(false);
 
         // todo - reset gameplay??
 

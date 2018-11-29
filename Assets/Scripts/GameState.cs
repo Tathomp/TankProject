@@ -14,6 +14,12 @@ public static class GameState
 
     public static Difficulty CurrentDifficulty = Difficulty.Easy;
 
+    // Call from difficulty selection screen to set difficulty
+    public static void SetDifficulty(Difficulty d)
+    {
+        CurrentDifficulty = d;
+    }
+
     //Call when we need to fire the LevelStartedEvents
     public static void StartLevel()
     {

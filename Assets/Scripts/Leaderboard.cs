@@ -34,6 +34,12 @@ public class Leaderboard : MonoBehaviour {
     public Text[] userName = new Text[10];
     public Text[] score = new Text[10];
 
+    // PlayerState accessor
+    public PlayerState PS()
+    {
+        return GameObject.Find("Manager").GetComponent<PlayerState>();
+    }
+
     // Activate and set the proper leaderboard objects
     public void BuildLeaderboard(Leaders l)
     {
@@ -91,9 +97,8 @@ public class Leaderboard : MonoBehaviour {
      **************************************/
     private IEnumerator GetLeaders()
     {
-        PlayerState ps = GameObject.Find("Manager").GetComponent<PlayerState>();
         // Build the form for submission
-        WWW leaders = new WWW(ps.URL(URLLEADERBOARD));
+        WWW leaders = new WWW(PS().URL(URLLEADERBOARD));
         yield return leaders;
 
         // Check for successful web request

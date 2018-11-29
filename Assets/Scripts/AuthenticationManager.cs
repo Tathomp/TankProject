@@ -39,6 +39,7 @@ public class AuthenticationManager : MonoBehaviour
     private readonly string URLREGISTER = "action_register.php";
     private readonly string URLREQUESTRESET = "action_requestreset.php";
 
+ 
 
     /***************************************
                 Game Objects

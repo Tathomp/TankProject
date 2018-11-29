@@ -81,7 +81,7 @@ public class PlayerState : MonoBehaviour
         maxLevel = 1;
         userName = "Player";
         userEmail = "";
-        userImage = "";
+        userImage = "default.png";
         purchasedUpgrades = 111;
         activeUpgrades = 111;
         userCredits = 0;
@@ -180,9 +180,19 @@ public class PlayerState : MonoBehaviour
     /***************************************
                 Getters
      **************************************/
+    public string GetAvatar()
+    {
+        return URL("avatars/" + userImage);
+    }
+
     public string GetUserName()
     {
         return userName;
+    }
+
+    public int GetMaxLevel()
+    {
+        return maxLevel;
     }
 
     public static PlayerState GetCurrentPlayerState()
