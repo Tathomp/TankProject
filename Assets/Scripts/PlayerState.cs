@@ -121,6 +121,9 @@ public class PlayerState : MonoBehaviour
     // Should be called at key points (victory, defeat, upgrade selection, purchase, etc)
     public void SaveState()
     {
+        Debug.Log("Active Upgrades: " + activeUpgrades);
+        Debug.Log("Purchesed Upgrades: " + purchasedUpgrades);
+
         // Build the form for submission
         WWWForm form = new WWWForm();
 
@@ -236,6 +239,31 @@ public class PlayerState : MonoBehaviour
     {
         return ArmorUpgrade;
     }
+
+    public int GetEquipped()
+    {
+        return activeUpgrades;
+    }
+
+    public void SetActiveUpgrades(int active)
+    {
+        activeUpgrades = active;
+    }
+
+    public void SetCredits(int credits)
+    {
+        userCredits = credits;
+    }
+
+    //This is mostly for testing, it'll probably be stripped out later
+    public void ResetUpgrades()
+    {
+        purchasedUpgrades = 111;
+        activeUpgrades = 111;
+        userCredits = 999;
+        SaveState();
+    }
+
     public void AddPurchesedUpgraded(int mask)
     {
         purchasedUpgrades += mask;

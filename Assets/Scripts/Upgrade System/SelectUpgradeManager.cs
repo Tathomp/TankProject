@@ -15,11 +15,15 @@ public class SelectUpgradeManager : MonoBehaviour
 
     private void OnEnable()
     {
-        playerCredits = PlayerState.GetCurrentPlayerState().GetCredits();
-
-        UpdateCreditDisplay();
+        InitializeUI();
     }
 
+    public void InitializeUI()
+    {
+        playerCredits = PlayerState.GetCurrentPlayerState().GetCredits();
+        Debug.Log("Upgrade active");
+        UpdateCreditDisplay();
+    }
 
     public void UpgradeButtonClicked(Upgrade upgradeClicked)
     {
@@ -51,36 +55,52 @@ public class SelectUpgradeManager : MonoBehaviour
         GrantPlayerUpgrade();
         playerCredits -= currUpgrade.Cost;
 
+        PlayerState.GetCurrentPlayerState().SetCredits(playerCredits);
+
         PlayerState.GetCurrentPlayerState().SaveState();
+
+        InitializeUI();
     }
 
     private void GrantPlayerUpgrade()
     {
         PlayerState ps = PlayerState.GetCurrentPlayerState();
+ 
+        ps.AddPurchesedUpgraded(currUpgrade.masking);
+    }
 
-        if(currUpgrade.name.Equals("ArmorUpgradeLevel1"))
+    //This is pretty gross but it works so
+    public void EquipUpgrade()
+    {
+        string original = PlayerState.GetCurrentPlayerState().GetEquipped().ToString();
+        string replace = currUpgrade.masking.ToString();
+
+        int indexToreplace = replace.Length;
+        string n = "";
+
+        if (indexToreplace == 3)
         {
-            ps.AddPurchesedUpgraded(100);
+            n = replace.Substring(0,1) + original.Substring(1);
         }
-        else if(currUpgrade.name.Contains("ArmorUpgradeLeve2"))
+        else if(indexToreplace == 2)
         {
-            ps.AddPurchesedUpgraded(200);
+            n =  original.Substring(0,1) + replace.Substring(0, 1) + original.Substring(2);
+
         }
-        else if(currUpgrade.name.Contains("ArmorUpgradeLevel3"))
+        else if(indexToreplace == 1)
         {
-            ps.AddPurchesedUpgraded(400);
+            n = original.Substring(0, 2) + replace;
         }
-        else if (currUpgrade.name.Contains("SpeedUpgradeLevel1"))
-        {
-            ps.AddPurchesedUpgraded(10);
-        }
-        else if (currUpgrade.name.Contains("SpeedUpgradeLevel2"))
-        {
-            ps.AddPurchesedUpgraded(20);
-        }
-        else if (currUpgrade.name.Contains("SpeedUpgradeLevel3"))
-        {
-            ps.AddPurchesedUpgraded(40);
-        }
+
+        Debug.Log(n);
+
+        PlayerState.GetCurrentPlayerState().SetActiveUpgrades(int.Parse(n));
+        PlayerState.GetCurrentPlayerState().SaveState();
+    }
+
+    //This is mostly for testing, it'll probably be stripped out later
+    public void ResetUpgrades()
+    {
+        PlayerState.GetCurrentPlayerState().ResetUpgrades();
     }
 }
