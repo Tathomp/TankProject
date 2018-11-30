@@ -5,48 +5,26 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour {
 
-    public Upgrade upgrade;
-
-    public Text uiTextDescript;
+    public Image selected, locked;
 
     // Will pass the upgrade that is associated with this button
     // through this method
-    public void InitButton(Upgrade upgrade)
-    {
-        this.upgrade = upgrade;
+  
 
-        this.transform.GetChild(0).GetComponent<Text>().text = upgrade.Upgradename;
+    //Upgrade Selected
+    public void SelectUpgrade()
+    {
+        selected.gameObject.SetActive(true);
     }
 
-    private void Start()
+    public void DeSelectUpgrade()
     {
-        transform.GetChild(0).GetComponent<Text>().text = upgrade.name;
+        selected.gameObject.SetActive(false);
+
     }
 
-    // This method should be hooked up to the OnClick method through the editor
-    public void ButtonClicked()
+    public void UnlockUpgrade()
     {
-        PlayerState ps = PlayerState.GetCurrentPlayerState();
-        Debug.Log(upgrade.name + " butotn clicked");
-
-        uiTextDescript.text = "";
-        uiTextDescript.text += "Cost: " + upgrade.Cost +"\n";
-        uiTextDescript.text += upgrade.Description;
-
-        if(upgrade.upgradeType == UpgradeType.Armor)
-        {
-            //PlayerState.CurrentPlayerInstance.ArmorUpgrade = upgrade;
-            ps.SetArmorUpgrade(upgrade);
-        }
-        else if(upgrade.upgradeType == UpgradeType.Gun)
-        {
-            //PlayerState.CurrentPlayerInstance.GunUpgrade = upgrade;
-            ps.SetGunUpgrade(upgrade);
-        }
-        else if (upgrade.upgradeType == UpgradeType.Track)
-        {
-            //PlayerState.CurrentPlayerInstance.TrackUpgrade = upgrade;
-            ps.SetTrackUpgrade(upgrade);
-        }
+        locked.gameObject.SetActive(false);
     }
 }

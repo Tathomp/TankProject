@@ -10,6 +10,10 @@ public class SelectUpgradeManager : MonoBehaviour
     public Text upgradeTextDescription;
     public Text playerCreditsText;
 
+    public UpgradeButton[] ArmorButtons;
+    public UpgradeButton[] TreadButtons;
+    public UpgradeButton[] GunButtons;
+
     private Upgrade currUpgrade;
     private int playerCredits;
 
@@ -17,9 +21,11 @@ public class SelectUpgradeManager : MonoBehaviour
 
     private void OnEnable()
     {
-        InitializeUI();
 
         ps = PlayerState.GetCurrentPlayerState();
+
+        InitializeUI();
+
     }
 
     public void InitializeUI()
@@ -27,6 +33,8 @@ public class SelectUpgradeManager : MonoBehaviour
         playerCredits = ps.GetCredits();
         Debug.Log("Upgrade active");
         UpdateCreditDisplay();
+        DisplaySelectedUpgrades();
+        DisplayUnlockedUpgrades();
     }
 
     public void UpgradeButtonClicked(Upgrade upgradeClicked)
@@ -74,8 +82,10 @@ public class SelectUpgradeManager : MonoBehaviour
     //This is pretty gross but it works so
     public void EquipUpgrade()
     {
-        string original = ps.ToString();
+        string original = ps.GetActiveUpgrades().ToString();
         string replace = currUpgrade.masking.ToString();
+
+        Debug.Log(original + " " + replace);
 
         int indexToreplace = replace.Length;
         string n = "";
@@ -98,11 +108,48 @@ public class SelectUpgradeManager : MonoBehaviour
 
         ps.SetActiveUpgrades(int.Parse(n));
         ps.SaveState();
+
+        InitializeUI();
     }
 
     //This is mostly for testing, it'll probably be stripped out later
     public void ResetUpgrades()
     {
         ps.ResetUpgrades();
+    }
+
+    public void DisplaySelectedUpgrades()
+    {
+        DeselectAll();
+
+        char[] selected = ps.GetActiveUpgrades().ToString().ToCharArray();
+
+        if(selected[0]==2)
+        {
+            ArmorButtons[0].SelectUpgrade();
+        }
+        else if(selected[0]==3)
+        {
+            ArmorButtons[1].SelectUpgrade();
+        }
+        else if (selected[0] == 4)
+        {
+            ArmorButtons[2].SelectUpgrade();
+        }
+    }
+
+    void DeselectAll()
+    {
+        for (int i = 0; i < ArmorButtons.Length -1; i++)
+        {
+            ArmorButtons[i].DeSelectUpgrade();
+            TreadButtons[i].DeSelectUpgrade();
+            GunButtons[i].DeSelectUpgrade();
+        }
+    }
+
+    public void DisplayUnlockedUpgrades()
+    {
+
     }
 }

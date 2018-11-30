@@ -244,7 +244,10 @@ public class PlayerState : MonoBehaviour
     {
         return activeUpgrades;
     }
-
+    public int GetActiveUpgrades()
+    {
+        return activeUpgrades;
+    }
     public void SetActiveUpgrades(int active)
     {
         activeUpgrades = active;
