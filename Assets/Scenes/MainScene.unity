@@ -5435,7 +5435,6 @@ GameObject:
   - component: {fileID: 578729864}
   - component: {fileID: 578729863}
   - component: {fileID: 578729862}
-  - component: {fileID: 578729861}
   m_Layer: 5
   m_Name: Tread1
   m_TagString: Untagged
@@ -5462,19 +5461,6 @@ RectTransform:
   m_AnchoredPosition: {x: 112.5, y: -112.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &578729861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 578729859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: e475c855ee5dd254bbd881dc42b0544e, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &578729862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5514,12 +5500,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 578729861}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: e475c855ee5dd254bbd881dc42b0544e,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9166,7 +9153,6 @@ GameObject:
   - component: {fileID: 847158565}
   - component: {fileID: 847158564}
   - component: {fileID: 847158563}
-  - component: {fileID: 847158562}
   m_Layer: 5
   m_Name: Armor2
   m_TagString: Untagged
@@ -9193,19 +9179,6 @@ RectTransform:
   m_AnchoredPosition: {x: 187.5, y: -37.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &847158562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 847158560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: 38f35e4054c4c5144829010d9d79cab3, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &847158563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9245,12 +9218,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 847158562}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: 38f35e4054c4c5144829010d9d79cab3,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9302,6 +9276,7 @@ GameObject:
   - component: {fileID: 853745341}
   - component: {fileID: 853745343}
   - component: {fileID: 853745342}
+  - component: {fileID: 853745344}
   m_Layer: 5
   m_Name: PanelUpgrades
   m_TagString: Untagged
@@ -9325,6 +9300,7 @@ RectTransform:
   - {fileID: 1273945220}
   - {fileID: 2075326386}
   - {fileID: 1719574516}
+  - {fileID: 1707190087}
   m_Father: {fileID: 642954676}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9367,6 +9343,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 853745340}
   m_CullTransparentMesh: 0
+--- !u!114 &853745344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853745340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c7e251d44b235d49a160bff2338718a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeTextDescription: {fileID: 1719574517}
+  playerCreditsText: {fileID: 1707190085}
 --- !u!1 &857513688
 GameObject:
   m_ObjectHideFlags: 0
@@ -9453,7 +9442,6 @@ GameObject:
   - component: {fileID: 863904602}
   - component: {fileID: 863904601}
   - component: {fileID: 863904600}
-  - component: {fileID: 863904599}
   m_Layer: 5
   m_Name: Armor3
   m_TagString: Untagged
@@ -9480,19 +9468,6 @@ RectTransform:
   m_AnchoredPosition: {x: 262.5, y: -37.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &863904599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 863904597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: e4fd381224245fc419a2275a7defd0d7, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &863904600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9532,12 +9507,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 863904599}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: e4fd381224245fc419a2275a7defd0d7,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10710,7 +10686,6 @@ GameObject:
   - component: {fileID: 981543080}
   - component: {fileID: 981543079}
   - component: {fileID: 981543078}
-  - component: {fileID: 981543077}
   m_Layer: 5
   m_Name: Gun3
   m_TagString: Untagged
@@ -10737,19 +10712,6 @@ RectTransform:
   m_AnchoredPosition: {x: 262.5, y: -187.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &981543077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 981543075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: e4fd381224245fc419a2275a7defd0d7, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &981543078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10789,12 +10751,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 981543077}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12016,7 +11978,6 @@ GameObject:
   - component: {fileID: 1100688427}
   - component: {fileID: 1100688426}
   - component: {fileID: 1100688425}
-  - component: {fileID: 1100688424}
   m_Layer: 5
   m_Name: Gun1
   m_TagString: Untagged
@@ -12043,19 +12004,6 @@ RectTransform:
   m_AnchoredPosition: {x: 112.5, y: -187.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1100688424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1100688422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: e4fd381224245fc419a2275a7defd0d7, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &1100688425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12095,12 +12043,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1100688424}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13311,7 +13259,6 @@ GameObject:
   - component: {fileID: 1213418901}
   - component: {fileID: 1213418900}
   - component: {fileID: 1213418899}
-  - component: {fileID: 1213418898}
   m_Layer: 5
   m_Name: Tread2
   m_TagString: Untagged
@@ -13338,19 +13285,6 @@ RectTransform:
   m_AnchoredPosition: {x: 187.5, y: -112.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1213418898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1213418896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: e5742c28c36501a46b0274a0a0d64cd1, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &1213418899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13390,12 +13324,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1213418898}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: e5742c28c36501a46b0274a0a0d64cd1,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15198,7 +15133,6 @@ GameObject:
   - component: {fileID: 1447041554}
   - component: {fileID: 1447041553}
   - component: {fileID: 1447041552}
-  - component: {fileID: 1447041551}
   m_Layer: 5
   m_Name: Armor1
   m_TagString: Untagged
@@ -15225,19 +15159,6 @@ RectTransform:
   m_AnchoredPosition: {x: 112.5, y: -37.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1447041551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1447041549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: fae3f679daa16ab419e1ceee56764b5d, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &1447041552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15277,12 +15198,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1447041551}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: fae3f679daa16ab419e1ceee56764b5d,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16872,7 +16794,6 @@ GameObject:
   - component: {fileID: 1616159015}
   - component: {fileID: 1616159014}
   - component: {fileID: 1616159013}
-  - component: {fileID: 1616159012}
   m_Layer: 5
   m_Name: Gun2
   m_TagString: Untagged
@@ -16899,19 +16820,6 @@ RectTransform:
   m_AnchoredPosition: {x: 187.5, y: -187.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1616159012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1616159010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: e4fd381224245fc419a2275a7defd0d7, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &1616159013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16951,12 +16859,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1616159012}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18362,6 +18270,81 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1703234881}
   m_CullTransparentMesh: 0
+--- !u!1 &1707190084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707190087}
+  - component: {fileID: 1707190086}
+  - component: {fileID: 1707190085}
+  m_Layer: 5
+  m_Name: PlayerCreditsText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1707190085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707190084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1707190086
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707190084}
+  m_CullTransparentMesh: 0
+--- !u!224 &1707190087
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707190084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 853745341}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 168.20007, y: -85.7}
+  m_SizeDelta: {x: 162.6, y: 45}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1713208576
 GameObject:
   m_ObjectHideFlags: 0
@@ -20903,7 +20886,6 @@ GameObject:
   - component: {fileID: 2009534827}
   - component: {fileID: 2009534826}
   - component: {fileID: 2009534825}
-  - component: {fileID: 2009534824}
   m_Layer: 5
   m_Name: Tread3
   m_TagString: Untagged
@@ -20930,19 +20912,6 @@ RectTransform:
   m_AnchoredPosition: {x: 262.5, y: -112.5}
   m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2009534824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2009534822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: edb22cd6346e12542b4c98ab0cccf9da, type: 2}
-  uiTextDescript: {fileID: 1719574517}
 --- !u!114 &2009534825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20982,12 +20951,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2009534824}
-        m_MethodName: ButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 853745344}
+        m_MethodName: UpgradeButtonClicked
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11400000, guid: edb22cd6346e12542b4c98ab0cccf9da,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

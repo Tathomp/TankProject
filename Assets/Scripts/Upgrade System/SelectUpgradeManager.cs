@@ -6,73 +6,81 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectUpgradeManager : MonoBehaviour
-{ 
+{
+    public Text upgradeTextDescription;
+    public Text playerCreditsText;
 
-    // assigned through the editor
-    public UpgradeButton buttonPrefab;
-    public Transform buttoncontainer;
+    private Upgrade currUpgrade;
+    private int playerCredits;
 
-    // properties we use 
-    List<UpgradeButton> buttons;
-
-
-	// Use this for initialization
-	void Start () {
-        InitUpgradeDisplay();
-	}
-	
-
-
-
-    public void InitUpgradeDisplay()
+    private void OnEnable()
     {
-        List<Upgrade> upgrades = Resources.Load<UpgradeDatabase>("UpgradeDatabase").UpgradeList;
+        playerCredits = PlayerState.GetCurrentPlayerState().GetCredits();
 
-        buttons = new List<UpgradeButton>();
+        UpdateCreditDisplay();
+    }
 
-        foreach (Upgrade upgrade in upgrades)
+
+    public void UpgradeButtonClicked(Upgrade upgradeClicked)
+    {
+        currUpgrade = upgradeClicked;
+
+        UpdateDescription();
+    }
+
+    void UpdateDescription()
+    {
+        string dscript = "Cost: " + currUpgrade.Cost + "\n";
+        dscript += currUpgrade.Description;
+        upgradeTextDescription.text = dscript;
+    }
+
+    public void UpdateCreditDisplay()
+    {
+        playerCreditsText.text = playerCredits.ToString();
+    }
+
+    public void BuyButtonClicked()
+    {
+        if(playerCredits < currUpgrade.Cost)
         {
-            SpawnButton(upgrade);
-        }
-    }
-
-    private void SpawnButton(Upgrade upgrade)
-    {
-        UpgradeButton btn = Instantiate<UpgradeButton>(buttonPrefab, buttoncontainer);
-        btn.InitButton(upgrade);
-        buttons.Add(btn);
-    }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-
-    /// <summary>
-    /// We do this because listeners can presist between seens causing a memory leak if this 
-    /// scene is load and unload a lot of times in one session
-    /// 
-    /// Also we need to destory the buttons and repopulate them anytime the scene is load
-    /// 
-    /// We could just set it up manully in the editor but dynamically creating buttons is more scallable
-    /// as new upgrades are added/removed/changed
-    /// </summary>
-    /// 
-
-    private void CleanUpButtons()
-    {
-        for (int i = buttons.Count - 1; i >= 0; i--)
-        {
-            GameObject.Destroy(buttons[i]);
-            GameObject.Destroy(buttons[i].gameObject);
+            Debug.Log("Player doesn't have enough credits to buy this thing. Maybe do a ui pop up or something idk");
+            return;
         }
 
-        buttons = new List<UpgradeButton>();
+        GrantPlayerUpgrade();
+        playerCredits -= currUpgrade.Cost;
+
+        PlayerState.GetCurrentPlayerState().SaveState();
     }
 
-    private void OnDisable()
+    private void GrantPlayerUpgrade()
     {
-        CleanUpButtons();
+        PlayerState ps = PlayerState.GetCurrentPlayerState();
+
+        if(currUpgrade.name.Equals("ArmorUpgradeLevel1"))
+        {
+            ps.AddPurchesedUpgraded(100);
+        }
+        else if(currUpgrade.name.Contains("ArmorUpgradeLeve2"))
+        {
+            ps.AddPurchesedUpgraded(200);
+        }
+        else if(currUpgrade.name.Contains("ArmorUpgradeLevel3"))
+        {
+            ps.AddPurchesedUpgraded(400);
+        }
+        else if (currUpgrade.name.Contains("SpeedUpgradeLevel1"))
+        {
+            ps.AddPurchesedUpgraded(10);
+        }
+        else if (currUpgrade.name.Contains("SpeedUpgradeLevel2"))
+        {
+            ps.AddPurchesedUpgraded(20);
+        }
+        else if (currUpgrade.name.Contains("SpeedUpgradeLevel3"))
+        {
+            ps.AddPurchesedUpgraded(40);
+        }
     }
 }

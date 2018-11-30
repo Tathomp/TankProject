@@ -236,7 +236,11 @@ public class PlayerState : MonoBehaviour
     {
         return ArmorUpgrade;
     }
-
+    public void AddPurchesedUpgraded(int mask)
+    {
+        purchasedUpgrades += mask;
+        Debug.Log(purchasedUpgrades);
+    }
 
     /***************************************
                 Coroutines
