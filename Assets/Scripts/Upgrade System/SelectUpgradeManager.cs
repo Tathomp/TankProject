@@ -13,14 +13,18 @@ public class SelectUpgradeManager : MonoBehaviour
     private Upgrade currUpgrade;
     private int playerCredits;
 
+    private PlayerState ps;
+
     private void OnEnable()
     {
         InitializeUI();
+
+        ps = PlayerState.GetCurrentPlayerState();
     }
 
     public void InitializeUI()
     {
-        playerCredits = PlayerState.GetCurrentPlayerState().GetCredits();
+        playerCredits = ps.GetCredits();
         Debug.Log("Upgrade active");
         UpdateCreditDisplay();
     }
@@ -55,24 +59,22 @@ public class SelectUpgradeManager : MonoBehaviour
         GrantPlayerUpgrade();
         playerCredits -= currUpgrade.Cost;
 
-        PlayerState.GetCurrentPlayerState().SetCredits(playerCredits);
+        ps.SetCredits(playerCredits);
 
-        PlayerState.GetCurrentPlayerState().SaveState();
+        ps.SaveState();
 
         InitializeUI();
     }
 
     private void GrantPlayerUpgrade()
-    {
-        PlayerState ps = PlayerState.GetCurrentPlayerState();
- 
+    {        
         ps.AddPurchesedUpgraded(currUpgrade.masking);
     }
 
     //This is pretty gross but it works so
     public void EquipUpgrade()
     {
-        string original = PlayerState.GetCurrentPlayerState().GetEquipped().ToString();
+        string original = ps.ToString();
         string replace = currUpgrade.masking.ToString();
 
         int indexToreplace = replace.Length;
@@ -94,13 +96,13 @@ public class SelectUpgradeManager : MonoBehaviour
 
         Debug.Log(n);
 
-        PlayerState.GetCurrentPlayerState().SetActiveUpgrades(int.Parse(n));
-        PlayerState.GetCurrentPlayerState().SaveState();
+        ps.SetActiveUpgrades(int.Parse(n));
+        ps.SaveState();
     }
 
     //This is mostly for testing, it'll probably be stripped out later
     public void ResetUpgrades()
     {
-        PlayerState.GetCurrentPlayerState().ResetUpgrades();
+        ps.ResetUpgrades();
     }
 }
