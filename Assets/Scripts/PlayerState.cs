@@ -118,7 +118,7 @@ public class PlayerState : MonoBehaviour
     }
 
     // Save persistant game state data to DB 
-    // Should be called at key points (victory, defeat, upgrade selection, purchase, etc)
+    // Should be called at key points (upgrade selection, purchase, etc)
     public void SaveState()
     {
         Debug.Log("Active Upgrades: " + activeUpgrades);
@@ -280,71 +280,5 @@ public class PlayerState : MonoBehaviour
     {
         purchasedUpgrades = mask;
         Debug.Log(purchasedUpgrades);
-    }
-
-    /***************************************
-                Coroutines
-     **************************************/
-    // SaveState Coroutine, updates player state db records
-    private IEnumerator PushSaveState()
-    {
-        // Build the form for submission
-        WWWForm form = new WWWForm();
-
-        form.AddField("id", userID);        // For authentication
-        form.AddField("email", userEmail);      // For authentication
-        form.AddField("level", maxLevel);
-        form.AddField("profile", userImage);
-        form.AddField("purchased", purchasedUpgrades);
-        form.AddField("active", activeUpgrades);
-        form.AddField("credit", userCredits);
-
-        WWW push = new WWW(URL(URLUPDATESTATE), form);
-        yield return push;
-
-        // Check for successful connection
-        if (string.IsNullOrEmpty(push.error))
-        {
-            // Convert response to JSON
-            User response = JsonUtility.FromJson<User>(push.text);
-
-            // Check for failed update
-            if (response.query == false || response.success == false)
-            {
-                // Log the error
-                Debug.Log(response.msg);
-            }
-        }
-        else
-        {
-            // Log the connection error
-            Debug.Log(push.error);
-        }
-    }
-
-    // SaveState Coroutine, updates player state db records
-    private IEnumerator PushVictoryDefeat(WWWForm form)
-    {
-        WWW push = new WWW(URL(URLUPDATESTATE), form);
-        yield return push;
-
-        // Check for successful connection
-        if (string.IsNullOrEmpty(push.error))
-        {
-            // Convert response to JSON
-            User response = JsonUtility.FromJson<User>(push.text);
-
-            // Check for failed update
-            if (response.query == false || response.success == false)
-            {
-                // Log the error
-                Debug.Log(response.msg);
-            }
-        }
-        else
-        {
-            // Log the connection error
-            Debug.Log(push.error);
-        }
     }
 }

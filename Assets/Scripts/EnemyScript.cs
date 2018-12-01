@@ -13,9 +13,9 @@ public class EnemyScript : Tank {
     private Transform player;
     private Vector3 playerTarget;
 
-
-	// Use this for initialization
-	void Start () {
+    
+    // Use this for initialization
+    void Start () {
         player =  GameObject.FindGameObjectsWithTag("Player")[0].transform;
         playerTarget = player.position;
         CurrentHealth = MaxHealth;
@@ -54,16 +54,17 @@ public class EnemyScript : Tank {
 
     void OnCollisionEnter(Collision col)
     {
+        ScoreManager SM = GameObject.Find("TextScore").GetComponent<ScoreManager>();
         //if (col.gameObject.tag.Equals("EnemyProjectile"))
         //{
             Logger hitLogger;
             hitLogger = new Logger(Debug.unityLogger.logHandler);
-            hitLogger.Log(" enemy hit, score : " + ScoreManager.score);
+            hitLogger.Log(" enemy hit, score : " + SM.GetScore());
             CurrentHealth -= 1;
-            ScoreManager.score += 1;
+            SM.IncreaseScore(1);
             if (CurrentHealth <= 0)
             {
-                ScoreManager.score += 10;
+                SM.IncreaseScore(10);
                 Destroy(gameObject);
                 Destroy(this.gameObject);
                 Destroy(this.transform);
@@ -77,14 +78,24 @@ public class EnemyScript : Tank {
     {
         UpgradeDatabase db = Resources.Load<UpgradeDatabase>("UpgradeDatabase");
 
-        switch (GameState.CurrentDifficulty)
+        switch (GameState.GetCurrentDifficultyStr())
         {
-            case Difficulty.Easy:
-                {
-                    ArmorUpgrade = db.UpgradeList[0];
-                    TrackUpgrade = db.UpgradeList[3];
-                    break;
-                }
+            case "Easy":
+                ArmorUpgrade = db.UpgradeList[0];
+                TrackUpgrade = db.UpgradeList[3];
+                break;
+            case "Medium":
+                ArmorUpgrade = db.UpgradeList[0];
+                TrackUpgrade = db.UpgradeList[3];
+                break;
+            case "Hard":
+                ArmorUpgrade = db.UpgradeList[0];
+                TrackUpgrade = db.UpgradeList[3];
+                break;
+            case "Impossible":
+                ArmorUpgrade = db.UpgradeList[0];
+                TrackUpgrade = db.UpgradeList[3];
+                break;
         }
 
         ApplyUpgrades();

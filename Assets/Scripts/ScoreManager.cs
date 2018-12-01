@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
-    public static int score;
+    private static int score;
 
     Text text;
 
@@ -19,4 +19,24 @@ public class ScoreManager : MonoBehaviour {
 	void Update () {
         text.text = "" + score;
 	}
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void SetScore(int points)
+    {
+        score = points;
+    }
+
+    public void IncreaseScore(int points)
+    {
+        score += points;
+    }
+
+    public void DecreaseScore(int points)
+    {
+        score -= points;
+    }
 }

@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour {
 
+    private static int currentLevelSelected;
+
     /***************************************
                    Game Objects
     **************************************/
@@ -44,6 +46,11 @@ public class LevelSelect : MonoBehaviour {
         }
     }
 
+    // Get the current level selected by player
+    public int GetCurrentLevel()
+    {
+        return currentLevelSelected;
+    }
 
     /***************************************
                 Display Functions
@@ -71,8 +78,8 @@ public class LevelSelect : MonoBehaviour {
     // Set level selected and display difficulty menu
     public void LevelButtonTapped(int levelSelected)
     {
-        /// Set the level scene to load using this levelSelevted attribute
-        /// Ex: levelID = levelSelected;
+        // Set the level scene to load using this levelSelevted attribute
+        currentLevelSelected = levelSelected;
 
         // Display the difficulty selection panel as an overlay
         MM().difficultyUI.SetActive(true);
