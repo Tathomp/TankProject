@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     **************************************/
     // Panels
     public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI;
-    public GameObject levelHUD, levelSelectUI;
+    public GameObject levelHUD, levelSelectUI, victoryDefeatUI;
     // Buttons
     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
     // Text
@@ -38,7 +38,7 @@ public class MenuManager : MonoBehaviour
     // Disable all UI menus 
     public void CloseAllMenus()
     {
-        GameObject[] UIarray = { changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI, levelSelectUI };
+        GameObject[] UIarray = { changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI, levelSelectUI, victoryDefeatUI };
         foreach (GameObject ui in UIarray)
             ui.SetActive(false);
     }
@@ -101,14 +101,14 @@ public class MenuManager : MonoBehaviour
     // Set level selected and display difficulty menu
     public void DifficultyLevelTapped(int difficultySelected)
     {
-        /// Set play difficulty based on attribute passed from button
+        // Set play difficulty based on attribute passed from button
         GameState.SetDifficulty((Difficulty)difficultySelected);
 
         // Hide all menus except HUD, start gameplay
         CloseAllMenus();
 
         // Start Level
-        GameState.GameIsPaused = false;
+        GameState.UnPauseLevel();
         levelHUD.SetActive(true); // this should be part of a function call to start the gameplay
     }
 
@@ -136,7 +136,7 @@ public class MenuManager : MonoBehaviour
     public void PauseButtonTapped()
     {
         // Pause gameplay
-        GameState.GameIsPaused = true;
+        GameState.PauseLevel();
 
         // Diplay the pause menu panel
         pauseUI.SetActive(true);
@@ -155,8 +155,6 @@ public class MenuManager : MonoBehaviour
         pauseUI.SetActive(false);
         levelHUD.SetActive(false);
 
-        /// todo - reset gameplay??
-
         // Display main menu
         DisplayMainMenuPanel();
     }
@@ -166,8 +164,9 @@ public class MenuManager : MonoBehaviour
     {
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
-        
-        /// todo - reset gameplay??
+
+        // Restart gameplay
+        GameState.RestartLevel();
     }
 
     // Redirect to LogIn panel
@@ -176,8 +175,8 @@ public class MenuManager : MonoBehaviour
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
 
-          // Unpause the game
-          GameState.GameIsPaused = false;
+        // Unpause the game
+        GameState.UnPauseLevel();
 
      }
 
@@ -187,8 +186,6 @@ public class MenuManager : MonoBehaviour
         // Hide the pause menu and HUD
         pauseUI.SetActive(false);
         levelHUD.SetActive(false);
-
-        /// todo - reset gameplay??
 
         // Display main menu & level select over top
         DisplayMainMenuPanel();
