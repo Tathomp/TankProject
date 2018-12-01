@@ -63,6 +63,7 @@ public class EnemyScript : Tank {
             ScoreManager.score += 1;
             if (CurrentHealth <= 0)
             {
+                ScoreManager.score += 10;
                 Destroy(gameObject);
                 Destroy(this.gameObject);
                 Destroy(this.transform);
