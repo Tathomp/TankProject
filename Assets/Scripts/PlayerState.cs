@@ -24,8 +24,8 @@ public class PlayerState : MonoBehaviour
     private static string userName;
     private static string userEmail;
     private static string userImage;        // filename of user image
-    private static int purchasedUpgrades;   // 3 digit addative code: 111 = no selections (can't save 000)
-    private static int activeUpgrades;      // 3 digit code: 111 = no selections (can't save 000)
+    private static string purchasedUpgrades;   // 3 digit addative code: 111 = no selections (can't save 000)
+    private static string activeUpgrades;      // 3 digit code: 111 = no selections (can't save 000)
     private static int userCredits;         // total user credits
 
     [SerializeField] private Upgrade GunUpgrade;
@@ -82,8 +82,8 @@ public class PlayerState : MonoBehaviour
         userName = "Player";
         userEmail = "";
         userImage = "default.png";
-        purchasedUpgrades = 111;
-        activeUpgrades = 111;
+        purchasedUpgrades = "000000000";
+        activeUpgrades = "000";
         userCredits = 0;
         GunUpgrade = null;
         ArmorUpgrade = null;
@@ -240,16 +240,25 @@ public class PlayerState : MonoBehaviour
         return ArmorUpgrade;
     }
 
-    public int GetEquipped()
+    public string GetEquipped()
     {
         return activeUpgrades;
     }
-    public int GetActiveUpgrades()
+
+    public string GetPurchasedUpgrades()
+    {
+        return purchasedUpgrades;
+    }
+
+    public string GetActiveUpgrades()
     {
         return activeUpgrades;
     }
-    public void SetActiveUpgrades(int active)
+
+    public void SetActiveUpgrades(string active)
     {
+        Debug.Log(active);
+
         activeUpgrades = active;
     }
 
@@ -261,15 +270,15 @@ public class PlayerState : MonoBehaviour
     //This is mostly for testing, it'll probably be stripped out later
     public void ResetUpgrades()
     {
-        purchasedUpgrades = 111;
-        activeUpgrades = 111;
+        purchasedUpgrades = "000000000";
+        activeUpgrades = "000";
         userCredits = 999;
         SaveState();
     }
 
-    public void AddPurchesedUpgraded(int mask)
+    public void SetPurchasedUpgrades(string mask)
     {
-        purchasedUpgrades += mask;
+        purchasedUpgrades = mask;
         Debug.Log(purchasedUpgrades);
     }
 

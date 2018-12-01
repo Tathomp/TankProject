@@ -8,7 +8,8 @@ public class Upgrade : ScriptableObject
     public string Upgradename;
     public string Description;
     public int Cost;
-    public int masking;
+
+    public int upgradeLevel;
 
     public List<UpgradeEffect> UpgradeEffects;
     public UpgradeType upgradeType;

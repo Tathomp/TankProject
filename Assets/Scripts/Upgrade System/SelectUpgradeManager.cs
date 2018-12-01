@@ -19,6 +19,7 @@ public class SelectUpgradeManager : MonoBehaviour
 
     private PlayerState ps;
 
+
     private void OnEnable()
     {
 
@@ -28,14 +29,17 @@ public class SelectUpgradeManager : MonoBehaviour
 
     }
 
+
     public void InitializeUI()
     {
         playerCredits = ps.GetCredits();
         Debug.Log("Upgrade active");
+
         UpdateCreditDisplay();
         DisplaySelectedUpgrades();
         DisplayUnlockedUpgrades();
     }
+
 
     public void UpgradeButtonClicked(Upgrade upgradeClicked)
     {
@@ -44,6 +48,7 @@ public class SelectUpgradeManager : MonoBehaviour
         UpdateDescription();
     }
 
+
     void UpdateDescription()
     {
         string dscript = "Cost: " + currUpgrade.Cost + "\n";
@@ -51,10 +56,12 @@ public class SelectUpgradeManager : MonoBehaviour
         upgradeTextDescription.text = dscript;
     }
 
+
     public void UpdateCreditDisplay()
     {
         playerCreditsText.text = playerCredits.ToString();
     }
+
 
     public void BuyButtonClicked()
     {
@@ -65,48 +72,64 @@ public class SelectUpgradeManager : MonoBehaviour
         }
 
         GrantPlayerUpgrade();
+
         playerCredits -= currUpgrade.Cost;
-
         ps.SetCredits(playerCredits);
-
         ps.SaveState();
 
         InitializeUI();
     }
 
     private void GrantPlayerUpgrade()
-    {        
-        ps.AddPurchesedUpgraded(currUpgrade.masking);
+    {       
+
+        if(currUpgrade.upgradeType == UpgradeType.Armor)
+        {
+            Apply(currUpgrade.upgradeLevel);
+        }
+        else if (currUpgrade.upgradeType == UpgradeType.Track)
+        {
+            Apply(currUpgrade.upgradeLevel + 3);
+        }
+        else if (currUpgrade.upgradeType == UpgradeType.Gun)
+        {
+            Apply(currUpgrade.upgradeLevel + 6);
+        }
+
+
+    }
+
+    private void Apply(int index)
+    {
+        char[] purchasedUpgrade = ps.GetPurchasedUpgrades().ToCharArray();
+
+
+        purchasedUpgrade[index] = '1';
+
+        ps.SetPurchasedUpgrades(purchasedUpgrade.ToString());
+
     }
 
     //This is pretty gross but it works so
     public void EquipUpgrade()
     {
-        string original = ps.GetActiveUpgrades().ToString();
-        string replace = currUpgrade.masking.ToString();
+        char[] active = ps.GetActiveUpgrades().ToCharArray();
 
-        Debug.Log(original + " " + replace);
-
-        int indexToreplace = replace.Length;
-        string n = "";
-
-        if (indexToreplace == 3)
+        if (currUpgrade.upgradeType == UpgradeType.Armor)
         {
-            n = replace.Substring(0,1) + original.Substring(1);
+            active[0] = (Char)currUpgrade.upgradeLevel;
         }
-        else if(indexToreplace == 2)
+        else if (currUpgrade.upgradeType == UpgradeType.Track)
         {
-            n =  original.Substring(0,1) + replace.Substring(0, 1) + original.Substring(2);
-
+            active[1] = (Char)currUpgrade.upgradeLevel;
         }
-        else if(indexToreplace == 1)
+        else if (currUpgrade.upgradeType == UpgradeType.Gun)
         {
-            n = original.Substring(0, 2) + replace;
+            active[2] = (Char)currUpgrade.upgradeLevel;
         }
 
-        Debug.Log(n);
 
-        ps.SetActiveUpgrades(int.Parse(n));
+        ps.SetActiveUpgrades(active.ToString());
         ps.SaveState();
 
         InitializeUI();
@@ -150,6 +173,32 @@ public class SelectUpgradeManager : MonoBehaviour
 
     public void DisplayUnlockedUpgrades()
     {
+        char[] purchased = ps.GetPurchasedUpgrades().ToString().ToCharArray();
 
+         //Check Armor Upgrades
+        for (int i = 0; i < purchased.Length; i++)
+        {
+            if(purchased[i] == '1')
+            {
+                if(i < 3)
+                {
+                    ArmorButtons[i].UnlockUpgrade();
+                }
+                else if(i<6)
+                {
+                    TreadButtons[i - 3].UnlockUpgrade();
+
+                }
+                else
+                {
+                    GunButtons[i - 3].UnlockUpgrade();
+                }
+            }
+        }
+    }
+
+    void ToogleOffUnlockImage(int indexTounlock, UpgradeButton[] upgradeClass)
+    {
+        upgradeClass[0].UnlockUpgrade();
     }
 }

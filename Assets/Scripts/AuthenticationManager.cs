@@ -20,8 +20,8 @@ public class User
     public int userID;
     public string userImage;
     public int maxLevel;
-    public int activeUpgrades;
-    public int purchasedUpgrades;
+    public string activeUpgrades;
+    public string purchasedUpgrades;
     public int userCredits;
 }
 
