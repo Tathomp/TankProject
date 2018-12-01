@@ -2479,7 +2479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Armor: \nLevel 1"
+  m_Text: "Armor: \nLevel 3"
 --- !u!222 &264817174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3294,8 +3294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 1478869952}
-  locked: {fileID: 1960901111}
+  selected: {fileID: 1478869950}
+  locked: {fileID: 1960901109}
 --- !u!1 &295134550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5787,8 +5787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 1418753531}
-  locked: {fileID: 724190463}
+  selected: {fileID: 1418753529}
+  locked: {fileID: 724190461}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -10974,8 +10974,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 548241046}
-  locked: {fileID: 1030106098}
+  selected: {fileID: 548241043}
+  locked: {fileID: 1030106097}
 --- !u!224 &882940278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13194,8 +13194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 529519577}
-  locked: {fileID: 1477701556}
+  selected: {fileID: 529519575}
+  locked: {fileID: 1477701554}
 --- !u!1 &1061987008
 GameObject:
   m_ObjectHideFlags: 0
@@ -14105,8 +14105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 769139073}
-  locked: {fileID: 1761977503}
+  selected: {fileID: 769139071}
+  locked: {fileID: 1761977501}
 --- !u!1 &1147581174
 GameObject:
   m_ObjectHideFlags: 0
@@ -14663,8 +14663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 2070292838}
-  locked: {fileID: 1531048463}
+  selected: {fileID: 2070292836}
+  locked: {fileID: 1531048461}
 --- !u!1 &1177595376
 GameObject:
   m_ObjectHideFlags: 0
@@ -16321,8 +16321,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 1629638729}
-  locked: {fileID: 1282175863}
+  selected: {fileID: 1629638727}
+  locked: {fileID: 1282175861}
 --- !u!1 &1352742777
 GameObject:
   m_ObjectHideFlags: 0
@@ -17161,8 +17161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 1506392586}
-  locked: {fileID: 2044521380}
+  selected: {fileID: 1506392584}
+  locked: {fileID: 2044521378}
 --- !u!114 &1447041552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20085,7 +20085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Armor: \nLevel 1"
+  m_Text: "Armor: \nLevel 2"
 --- !u!222 &1655205492
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21908,8 +21908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60af058e56420d44be1d95c659402a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: {fileID: 1156842155}
-  locked: {fileID: 1815125678}
+  selected: {fileID: 1156842153}
+  locked: {fileID: 1815125676}
 --- !u!1 &1747367868
 GameObject:
   m_ObjectHideFlags: 0

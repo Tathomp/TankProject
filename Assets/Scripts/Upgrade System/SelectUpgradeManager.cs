@@ -59,7 +59,7 @@ public class SelectUpgradeManager : MonoBehaviour
 
     public void UpdateCreditDisplay()
     {
-        playerCreditsText.text = playerCredits.ToString();
+        playerCreditsText.text = "Credits: " + playerCredits.ToString();
     }
 
 
@@ -80,6 +80,7 @@ public class SelectUpgradeManager : MonoBehaviour
         InitializeUI();
     }
 
+
     private void GrantPlayerUpgrade()
     {       
 
@@ -99,41 +100,43 @@ public class SelectUpgradeManager : MonoBehaviour
 
     }
 
+
     private void Apply(int index)
     {
         char[] purchasedUpgrade = ps.GetPurchasedUpgrades().ToCharArray();
 
 
         purchasedUpgrade[index] = '1';
-
-        ps.SetPurchasedUpgrades(purchasedUpgrade.ToString());
+        String test = new String( purchasedUpgrade);
+        ps.SetPurchasedUpgrades(test.ToString());
 
     }
+
 
     //This is pretty gross but it works so
     public void EquipUpgrade()
     {
-        char[] active = ps.GetActiveUpgrades().ToCharArray();
+        string active = ps.GetActiveUpgrades();
 
         if (currUpgrade.upgradeType == UpgradeType.Armor)
         {
-            active[0] = (Char)currUpgrade.upgradeLevel;
+            active = currUpgrade.upgradeLevel + active.Substring(1);
         }
         else if (currUpgrade.upgradeType == UpgradeType.Track)
         {
-            active[1] = (Char)currUpgrade.upgradeLevel;
+            active = active.Substring(0,1) + currUpgrade.upgradeLevel + active.Substring(2);
         }
         else if (currUpgrade.upgradeType == UpgradeType.Gun)
         {
-            active[2] = (Char)currUpgrade.upgradeLevel;
+            active = active.Substring(0,1) + currUpgrade.upgradeLevel;
         }
 
-
-        ps.SetActiveUpgrades(active.ToString());
+        ps.SetActiveUpgrades(active);
         ps.SaveState();
 
         InitializeUI();
     }
+
 
     //This is mostly for testing, it'll probably be stripped out later
     public void ResetUpgrades()
@@ -141,25 +144,29 @@ public class SelectUpgradeManager : MonoBehaviour
         ps.ResetUpgrades();
     }
 
+
     public void DisplaySelectedUpgrades()
     {
         DeselectAll();
 
         char[] selected = ps.GetActiveUpgrades().ToString().ToCharArray();
 
-        if(selected[0]==2)
+        if(selected[0]==1)
         {
             ArmorButtons[0].SelectUpgrade();
         }
-        else if(selected[0]==3)
+        else if(selected[0]==2)
         {
             ArmorButtons[1].SelectUpgrade();
         }
-        else if (selected[0] == 4)
+        else if (selected[0] == 3)
         {
             ArmorButtons[2].SelectUpgrade();
         }
+
+
     }
+
 
     void DeselectAll()
     {
@@ -170,6 +177,7 @@ public class SelectUpgradeManager : MonoBehaviour
             GunButtons[i].DeSelectUpgrade();
         }
     }
+
 
     public void DisplayUnlockedUpgrades()
     {
@@ -184,7 +192,7 @@ public class SelectUpgradeManager : MonoBehaviour
                 {
                     ArmorButtons[i].UnlockUpgrade();
                 }
-                else if(i<6)
+                else if(i < 6)
                 {
                     TreadButtons[i - 3].UnlockUpgrade();
 
@@ -197,8 +205,5 @@ public class SelectUpgradeManager : MonoBehaviour
         }
     }
 
-    void ToogleOffUnlockImage(int indexTounlock, UpgradeButton[] upgradeClass)
-    {
-        upgradeClass[0].UnlockUpgrade();
-    }
+
 }
