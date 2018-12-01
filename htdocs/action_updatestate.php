@@ -9,8 +9,8 @@
 	$email = trim($_POST['email']);
 	$level = $_POST['level'];
 	$profile = trim($_POST['profile']);
-	$purchased = $_POST['purchased'];
-	$active = $_POST['active'];
+	$purchased = trim($_POST['purchased']);
+	$active = trim($_POST['active']);
 	$credit = $_POST['credit'];
 	
 	// Default Error: set msg for debugging
@@ -18,7 +18,7 @@
 	
 	// Build Query: update player state
 	$stmt = $db->prepare("UPDATE users SET userImage = ?, maxLevel = ?, activeUpgrades = ?, purchasedUpgrades = ?, userCredits = ? WHERE userID = ? AND userEmail = ?");
-	$stmt->bind_param('siiiiis', $profile, $level, $active, $purchased, $credit, $id, $email);
+	$stmt->bind_param('sissiis', $profile, $level, $active, $purchased, $credit, $id, $email);
 	$stmt->execute();
 					
 	if($stmt->affected_rows > 0) {			
