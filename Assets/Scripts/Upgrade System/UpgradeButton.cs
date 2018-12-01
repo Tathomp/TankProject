@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour {
 
-    public GameObject selected, locked;
+    public Image selected, locked;
 
     // Will pass the upgrade that is associated with this button
     // through this method
@@ -14,17 +14,17 @@ public class UpgradeButton : MonoBehaviour {
     //Upgrade Selected
     public void SelectUpgrade()
     {
-        selected.SetActive(true);
+        selected.gameObject.SetActive(true);
     }
 
     public void DeSelectUpgrade()
     {
-        selected.SetActive(false);
+        selected.gameObject.SetActive(false);
 
     }
 
     public void UnlockUpgrade()
     {
-        locked.SetActive(false);
+        locked.gameObject.SetActive(false);
     }
 }
