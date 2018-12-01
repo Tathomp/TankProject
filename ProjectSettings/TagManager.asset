@@ -8,6 +8,7 @@ TagManager:
   - EnemyProjectile
   - Enemy
   - Manager
+  - GiantEnemyProjectile
   layers:
   - Default
   - TransparentFX
