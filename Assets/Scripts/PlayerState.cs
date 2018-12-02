@@ -54,7 +54,6 @@ public class PlayerState : MonoBehaviour
     // Deactivate the login panel and activate the main menu
     public void DisplayMenuCanvas()
     {
-        /// todo - deactivate canvases too
         // Switching between manager scripts
         GameObject.Find("CanvasAuthentication").GetComponent<AuthenticationManager>().logInUI.SetActive(false);
         GameObject.Find("CanvasMenus").GetComponent<MenuManager>().DisplayMainMenuPanel();
@@ -64,7 +63,6 @@ public class PlayerState : MonoBehaviour
     // Logs Out current player, resets state 
     public void DisplayLoginCanvas()
     {
-        /// todo - deactivate canvases too
         // Switching between manager scripts
         GameObject.Find("CanvasMenus").GetComponent<MenuManager>().mainUI.SetActive(false);
         GameObject.Find("CanvasAuthentication").GetComponent<AuthenticationManager>().DisplayLoginPanel();

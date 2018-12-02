@@ -8,6 +8,11 @@ public class VictoryDefeat : MonoBehaviour {
     // Serverside script names referenced by WWWForms
     private readonly string URLGETLEADERSCORE = "action_requestlevelscore.php";
 
+    // State references, initialized in Start()
+    MenuManager mm;
+    PlayerState ps;
+    LevelSelect ls;
+
     // Colors for menu text
     private Color win = new Color32(24, 120, 5, 255);
     private Color loss = new Color32(219, 0, 0, 255);
@@ -28,23 +33,12 @@ public class VictoryDefeat : MonoBehaviour {
     // Text
     public Text txtTitle, txtLevel, txtDifficulty, txtScore, txtCredits, txtHighScore;
 
-    
-    // LevelSelect accessor
-    private LevelSelect LS()
-    {
-        return GameObject.Find("CanvasMenus").GetComponent<LevelSelect>();
-    }
 
-    // MenuManager accessor
-    private MenuManager MM()
+    void Start()
     {
-        return GameObject.Find("CanvasMenus").GetComponent<MenuManager>();
-    }
-
-    // PlayerState accessor
-    private PlayerState PS()
-    {
-        return GameObject.Find("Manager").GetComponent<PlayerState>();
+        ps = PlayerState.GetCurrentPlayerState();
+        mm = MenuManager.GetMenuManagerState();
+        ls = LevelSelect.GetLevelSelectState();
     }
 
     // Modify menu display attributes dased on victory or defeat outcome
@@ -68,10 +62,10 @@ public class VictoryDefeat : MonoBehaviour {
     {
         // Get match settings
         difficultyPlayed = GameState.GetCurrentDifficultyStr();
-        levelPlayed = LS().GetCurrentLevel();
+        levelPlayed = ls.GetCurrentLevel();
 
         // Call function to update player state and push to db
-        PS().UpdateScore(levelPlayed, scoreEarned, creditsEarned, victory);
+        ps.UpdateScore(levelPlayed, scoreEarned, creditsEarned, victory);
 
         // Call funtion to fetch high score for this level
         StartCoroutine("GetHighScore");
@@ -102,14 +96,14 @@ public class VictoryDefeat : MonoBehaviour {
     public void LevelSelectButtonTapped()
     {
         // Display level selection as an overlay
-        LS().DisplayLevelSelectPanel();
+        ls.DisplayLevelSelectPanel();
     }
 
     public void MainMenuButtonTapped()
     {
         // Close this panel and display main menu
         victoryDefeatUI.SetActive(false);
-        MM().DisplayMainMenuPanel();
+        mm.DisplayMainMenuPanel();
     }
 
     public void RestartLevelButtonTapped()
@@ -124,7 +118,7 @@ public class VictoryDefeat : MonoBehaviour {
     public void UpgradesButtonTapped()
     {
         // Display upgrades as an overlay
-        MM().DisplayUpgradesPanel();
+        mm.DisplayUpgradesPanel();
     }
 
 
@@ -135,9 +129,9 @@ public class VictoryDefeat : MonoBehaviour {
     {
         // Build the form for submission
         WWWForm form = new WWWForm();
-        form.AddField("levelID", LS().GetCurrentLevel());
+        form.AddField("levelID", ls.GetCurrentLevel());
 
-        WWW scoreReq = new WWW(PS().URL(URLGETLEADERSCORE), form);
+        WWW scoreReq = new WWW(ps.URL(URLGETLEADERSCORE), form);
         yield return scoreReq;
 
         // Check for successful web request

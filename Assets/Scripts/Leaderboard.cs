@@ -17,7 +17,11 @@ public class Leaders
     public string scores;
 }
 
-public class Leaderboard : MonoBehaviour {
+public class Leaderboard : MonoBehaviour
+{
+
+    // Player state reference, initialized in Start()
+    PlayerState ps;
 
     // Serverside script names referenced by WWWForms
     private readonly string URLLEADERBOARD = "action_getleaders.php";
@@ -34,10 +38,15 @@ public class Leaderboard : MonoBehaviour {
     public Text[] userName = new Text[10];
     public Text[] score = new Text[10];
 
-    // PlayerState accessor
-    public PlayerState PS()
+    void Start()
     {
-        return GameObject.Find("Manager").GetComponent<PlayerState>();
+        ps = PlayerState.GetCurrentPlayerState();
+    }
+
+    // Leaderboard accessor
+    public static Leaderboard GetLeaderboardState()
+    {
+        return GameObject.Find("CanvasMenus").GetComponent<Leaderboard>();
     }
 
     // Activate and set the proper leaderboard objects
@@ -98,7 +107,7 @@ public class Leaderboard : MonoBehaviour {
     private IEnumerator GetLeaders()
     {
         // Build the form for submission
-        WWW leaders = new WWW(PS().URL(URLLEADERBOARD));
+        WWW leaders = new WWW(ps.URL(URLLEADERBOARD));
         yield return leaders;
 
         // Check for successful web request

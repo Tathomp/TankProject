@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelect : MonoBehaviour {
+public class LevelSelect : MonoBehaviour
+{
+
+    // State references, initialized in Start()
+    MenuManager mm;
+    PlayerState ps;
 
     private static int currentLevelSelected;
 
@@ -13,18 +18,18 @@ public class LevelSelect : MonoBehaviour {
     // Panels
     public GameObject levelSelectUI;
 
-
-    // MenuManager accessor
-    public MenuManager MM()
+    // LevelSelect accessor
+    public static LevelSelect GetLevelSelectState()
     {
-        return GameObject.Find("CanvasMenus").GetComponent<MenuManager>();
+        return GameObject.Find("CanvasMenus").GetComponent<LevelSelect>();
     }
 
-    // PlayerState accessor
-    public PlayerState PS()
+    void Start()
     {
-        return GameObject.Find("Manager").GetComponent<PlayerState>();
+        ps = PlayerState.GetCurrentPlayerState();
+        mm = MenuManager.GetMenuManagerState();
     }
+
 
     // Use player state to configure buttons
     public void SetupButtons()
@@ -33,7 +38,7 @@ public class LevelSelect : MonoBehaviour {
         SetButtonInteraction(4, false);
         
         // Unlock appropriate level buttons
-        SetButtonInteraction(PS().GetMaxLevel(), true);
+        SetButtonInteraction(ps.GetMaxLevel(), true);
     }
 
     // Sets button interatable value
@@ -82,7 +87,7 @@ public class LevelSelect : MonoBehaviour {
         currentLevelSelected = levelSelected;
 
         // Display the difficulty selection panel as an overlay
-        MM().difficultyUI.SetActive(true);
+        mm.difficultyUI.SetActive(true);
     }
 
 }

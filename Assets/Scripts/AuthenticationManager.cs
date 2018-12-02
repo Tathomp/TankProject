@@ -38,8 +38,7 @@ public class AuthenticationManager : MonoBehaviour
     private readonly string URLLOGIN = "action_login.php";
     private readonly string URLREGISTER = "action_register.php";
     private readonly string URLREQUESTRESET = "action_requestreset.php";
-
- 
+    
 
     /***************************************
                 Game Objects
@@ -246,6 +245,12 @@ public class AuthenticationManager : MonoBehaviour
         }
     }
 
+    // 
+    public void SubmitResetPasswordButtonTapped()
+    {
+        StartCoroutine("ResetUserPassword");
+    }
+
 
     /***************************************
                 Coroutines
@@ -366,4 +371,6 @@ public class AuthenticationManager : MonoBehaviour
             txtFeedback.text = "An error occured talking to the server";
         }
     }
+
+    
 }

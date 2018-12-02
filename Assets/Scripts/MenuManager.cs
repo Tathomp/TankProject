@@ -1,35 +1,49 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    // Serverside script names referenced by WWWForms
+    private readonly string URLRESETPASS = "action_resetpassword.php";
+
+    // State references, initialized in Start()
+    PlayerState ps;
+    Leaderboard lb;
+    LevelSelect ls;
+
     /***************************************
                    Game Objects
     **************************************/
     // Panels
     public GameObject changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI;
-    public GameObject levelHUD, levelSelectUI, victoryDefeatUI;
+    public GameObject levelHUD, levelSelectUI, resetPasswordUI, resetConfUI, victoryDefeatUI;
     // Buttons
     public GameObject btnLvlSelect, btnLdrboard, btnProfile, btnUpgrades, btnLogOut;
+    // Input Text
+    public InputField txtConfirmResetPass, txtCurrentPass, txtResetPass;
     // Text
-    public Text msgSubtitle;
+    public Text txtResetFeedback, msgSubtitle;
 
     // Use this for initialization
-    void Awake()
+    void Start()
+    {
+        // Initialize player state reference
+        ps = PlayerState.GetCurrentPlayerState();
+        lb = Leaderboard.GetLeaderboardState();
+        ls = LevelSelect.GetLevelSelectState();
+    }
+
+        // Use this for initialization
+        void Awake()
     {
         GameState.GameIsPaused = true;
     }
 
-    // Leaderboard accessor
-    public Leaderboard LB()
+    // MenuManager accessor
+    public static MenuManager GetMenuManagerState()
     {
-        return GameObject.Find("CanvasMenus").GetComponent<Leaderboard>();
-    }
-
-    // LevelSelect accessor
-    public LevelSelect LS()
-    {
-        return GameObject.Find("CanvasMenus").GetComponent<LevelSelect>();
+        return GameObject.Find("CanvasMenus").GetComponent<MenuManager>();
     }
 
     /***************************************
@@ -41,6 +55,12 @@ public class MenuManager : MonoBehaviour
         GameObject[] UIarray = { changePassUI, difficultyUI, mainUI, pauseUI, profileUI, upgradeUI, levelSelectUI, victoryDefeatUI };
         foreach (GameObject ui in UIarray)
             ui.SetActive(false);
+    }
+
+    // Disable the reset password panel
+    public void CloseResetPanel()
+    {
+        resetPasswordUI.SetActive(false);
     }
 
     // Display the Login Screen
@@ -68,6 +88,12 @@ public class MenuManager : MonoBehaviour
         // Set the subtitle message with player's name
         PlayerState ps = PlayerState.GetCurrentPlayerState();
         msgSubtitle.text = "Greetings, " + ps.GetUserName() + "!";
+    }
+
+    // Display reset password pannel
+    public void DisplayResetPasswordPanel()
+    {
+        resetPasswordUI.SetActive(true);
     }
 
     // Display the upgrades screen
@@ -115,13 +141,13 @@ public class MenuManager : MonoBehaviour
     // Enable the leaderboard panel
     public void LeaderboardButtonTapped()
     {
-        LB().DisplayLeaderboardPanel();
+        lb.DisplayLeaderboardPanel();
     }
 
     // Redirect to level select panel
     public void LevelSelectButtonTapped()
     {
-        LS().DisplayLevelSelectPanel();
+        ls.DisplayLevelSelectPanel();
     }
 
     // Redirect to LogIn panel
@@ -159,6 +185,12 @@ public class MenuManager : MonoBehaviour
         DisplayMainMenuPanel();
     }
 
+    // Reset password button
+    public void ResetPasswordButtontapped()
+    {
+        DisplayResetPasswordPanel();
+    }
+
     // Redirect to LogIn panel
     public void RestartLevelButtonTapped()
     {
@@ -189,7 +221,7 @@ public class MenuManager : MonoBehaviour
 
         // Display main menu & level select over top
         DisplayMainMenuPanel();
-        LS().DisplayLevelSelectPanel();
+        ls.DisplayLevelSelectPanel();
     }
 
     // Redirect to upgrades panel
@@ -198,6 +230,59 @@ public class MenuManager : MonoBehaviour
         DisplayUpgradesPanel();
     }
 
-    
+    /***************************************
+                Coroutines
+     **************************************/
+    private IEnumerator ResetUserPassword()
+    {
+        // Verify password length and matching
+        if (txtCurrentPass.text.Length < 8 || txtResetPass.text.Length < 8)
+        {
+            txtResetFeedback.text = "Password neeeds to be at least 8 characters long";
+            yield break;
+        }
+        if (txtResetPass.text != txtConfirmResetPass.text)
+        {
+            txtResetFeedback.text = "New passwords do not match";
+            yield break;
+        }
+
+        // Build the form for submission
+        WWWForm form = new WWWForm();
+        form.AddField("id", ps.GetID());
+        form.AddField("currentPass", txtCurrentPass.text);
+        form.AddField("newPass", txtResetPass.text);
+
+        WWW reset = new WWW(ps.URL(URLRESETPASS), form);
+        yield return reset;
+
+        // Check for successful web request
+        if (string.IsNullOrEmpty(reset.error))
+        {
+            // Convert response to JSON
+            User user = JsonUtility.FromJson<User>(reset.text);
+
+            // Print the response message (error or success)
+            txtResetFeedback.text = user.msg;
+
+            // Only proceed if credentials are valid and account is active
+            if (user.query == true && user.success == true)
+            {
+                // Clear registration input values
+                txtCurrentPass.text = "";
+                txtResetPass.text = "";
+                txtConfirmResetPass.text = "";
+                // Close reset panel
+                CloseResetPanel();
+                // Display reset confirmation panel
+
+            }
+        }
+        else
+        {
+            // Connection failed
+            txtResetFeedback.text = "An error occured talking to the server";
+        }
+    }
 
 }
