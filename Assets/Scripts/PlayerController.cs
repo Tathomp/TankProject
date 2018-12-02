@@ -105,6 +105,7 @@ public class PlayerController : Tank
 
         CurrentHealth = MaxHealth;
 
+        InitializePlayer();
         GameState.LevelStarted += InitializePlayer;
 
     }
@@ -366,7 +367,7 @@ public class PlayerController : Tank
     {
         PlayerState ps = PlayerState.GetCurrentPlayerState();
 
-        //GunUpgrade = ps.GetGunUpgrade();
+        GunUpgrade = ps.GetGunUpgrade();
         TrackUpgrade = ps.GetTreadUpgrade();
         ArmorUpgrade = ps.GetArmorUpgrade();
 

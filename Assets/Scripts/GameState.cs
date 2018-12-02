@@ -43,7 +43,7 @@ public static class GameState
     public static void StartLevel()
     {
         Debug.Log(LevelStarted.Method);
-
+        UnPauseLevel();
         LevelStarted();
     }
 

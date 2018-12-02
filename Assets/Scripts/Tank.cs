@@ -20,9 +20,18 @@ abstract public class Tank : MonoBehaviour {
 
     public void ApplyUpgrades()
     {
-        //GunUpgrade.AddEffect(this);
-        ArmorUpgrade.AddEffect(this);
-        TrackUpgrade.AddEffect(this);
+        ApplyUpgrade(GunUpgrade);
+        ApplyUpgrade(ArmorUpgrade);
+        ApplyUpgrade(TrackUpgrade);
+
+    }
+
+    void ApplyUpgrade(Upgrade upgrade)
+    {
+        if(upgrade != null)
+        {
+            upgrade.AddEffect(this);
+        }
     }
 
     public void RemoveUpgrades()
