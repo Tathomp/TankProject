@@ -43,7 +43,7 @@ public static class GameState
     public static void StartLevel()
     {
         Debug.Log(LevelStarted.Method);
-
+        UnPauseLevel();
         LevelStarted();
     }
 
@@ -79,7 +79,7 @@ public static class GameState
 
         // Capture relevant information (score, credits)
         // bool victory = false; /// todo: set vitory boolean from gamplay outcome
-        int scoreEarned = GameObject.Find("TextScore").GetComponent<ScoreManager>().GetScore();
+        int scoreEarned = GameObject.FindWithTag("Score").GetComponent<ScoreManager>().GetScore();
 
         // Calculate credits
         int multiplier = SetCreditMultiplier();

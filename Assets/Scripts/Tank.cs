@@ -20,9 +20,18 @@ abstract public class Tank : MonoBehaviour {
 
     public void ApplyUpgrades()
     {
-        //GunUpgrade.AddEffect(this);
-        ArmorUpgrade.AddEffect(this);
-        TrackUpgrade.AddEffect(this);
+        ApplyUpgrade(GunUpgrade);
+        ApplyUpgrade(ArmorUpgrade);
+        ApplyUpgrade(TrackUpgrade);
+
+    }
+
+    void ApplyUpgrade(Upgrade upgrade)
+    {
+        if(upgrade != null)
+        {
+            upgrade.AddEffect(this);
+        }
     }
 
     public void RemoveUpgrades()
@@ -30,5 +39,11 @@ abstract public class Tank : MonoBehaviour {
         GunUpgrade.RemoveEffect(this);
         ArmorUpgrade.RemoveEffect(this);
         TrackUpgrade.RemoveEffect(this);
+    }
+
+    public void ResetTank()
+    {
+        CurrentHealth = MaxHealth;
+        gameObject.SetActive(true);
     }
 }

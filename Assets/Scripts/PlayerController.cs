@@ -105,6 +105,7 @@ public class PlayerController : Tank
 
         CurrentHealth = MaxHealth;
 
+        InitializePlayer();
         GameState.LevelStarted += InitializePlayer;
 
     }
@@ -325,7 +326,7 @@ public class PlayerController : Tank
 
         if(CurrentHealth <= 0)
         {
-            GameState.PauseLevel();
+            GameState.EndLevel(false);
         }
     }
 
@@ -366,7 +367,9 @@ public class PlayerController : Tank
     {
         PlayerState ps = PlayerState.GetCurrentPlayerState();
 
-        //GunUpgrade = ps.GetGunUpgrade();
+        transform.position = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
+
+        GunUpgrade = ps.GetGunUpgrade();
         TrackUpgrade = ps.GetTreadUpgrade();
         ArmorUpgrade = ps.GetArmorUpgrade();
 

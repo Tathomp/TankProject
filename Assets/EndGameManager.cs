@@ -10,13 +10,17 @@ public static class EndGameManager {
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if(enemies.Length == 1)
+        for (int i = 0; i < enemies.Length; i++)
         {
-            Debug.Log("Victory Condition Reached");
-
-            GameState.EndLevel(true);
+            if(enemies[i].activeInHierarchy)
+            {
+                return;
+            }
         }
-    }
 
-    
+        Debug.Log("Victory Condition Reached");
+
+        GameState.EndLevel(true);
+        
+    }    
 }

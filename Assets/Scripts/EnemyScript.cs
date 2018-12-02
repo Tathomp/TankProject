@@ -56,7 +56,7 @@ public class EnemyScript : Tank {
 
     void OnCollisionEnter(Collision col)
     {
-        ScoreManager SM = GameObject.Find("TextScore").GetComponent<ScoreManager>();
+        ScoreManager SM = GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreManager>();
         if (col.gameObject.tag.Equals("PlayerProjectile"))
         {
             //Logger hitLogger;
@@ -67,10 +67,14 @@ public class EnemyScript : Tank {
             if (CurrentHealth <= 0)
             {
                 SM.IncreaseScore(1000);
+                /*
                 Destroy(gameObject);
                 Destroy(this.gameObject);
                 Destroy(this.transform);
                 Destroy(this);
+                */
+
+                gameObject.SetActive(false);
 
                 EndGameManager.HasPlayerWon();
             }
@@ -80,6 +84,7 @@ public class EnemyScript : Tank {
     public void InitializeEnemy()
     {
         UpgradeDatabase db = Resources.Load<UpgradeDatabase>("UpgradeDatabase");
+        ResetTank();
 
         switch (GameState.GetCurrentDifficultyStr())
         {

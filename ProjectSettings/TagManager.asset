@@ -11,6 +11,7 @@ TagManager:
   - GiantEnemyProjectile
   - Undefined
   - PlayerProjectile
+  - Score
   layers:
   - Default
   - TransparentFX
