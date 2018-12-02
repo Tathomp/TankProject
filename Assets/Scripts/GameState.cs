@@ -82,7 +82,7 @@ public static class GameState
         int scoreEarned = GameObject.Find("TextScore").GetComponent<ScoreManager>().GetScore();
 
         // Calculate credits
-        int multiplier = SetScoreMultiplier();
+        int multiplier = SetCreditMultiplier();
         int creditsEarned = scoreEarned / multiplier;
 
         // Display the victory/defeat panel
@@ -90,7 +90,7 @@ public static class GameState
     }
 
     // Set the credit earning rate based on level difficulty
-    private static int SetScoreMultiplier()
+    private static int SetCreditMultiplier()
     {
         int multiplier = 400;
 

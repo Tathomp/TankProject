@@ -61,10 +61,10 @@ public class EnemyScript : Tank {
             hitLogger = new Logger(Debug.unityLogger.logHandler);
             hitLogger.Log(" enemy hit, score : " + SM.GetScore());
             CurrentHealth -= 1;
-            SM.IncreaseScore(1);
+            SM.IncreaseScore(100);
             if (CurrentHealth <= 0)
             {
-                SM.IncreaseScore(10);
+                SM.IncreaseScore(1000);
                 Destroy(gameObject);
                 Destroy(this.gameObject);
                 Destroy(this.transform);
@@ -80,6 +80,9 @@ public class EnemyScript : Tank {
 
         switch (GameState.GetCurrentDifficultyStr())
         {
+            /// I added the other difficulty levels here - Clayin
+            /// todo: These values should be different for each difficulty
+            /// todo: There should be changes to things like starting heath pool and score multiplier too
             case "Easy":
                 ArmorUpgrade = db.UpgradeList[0];
                 TrackUpgrade = db.UpgradeList[3];
