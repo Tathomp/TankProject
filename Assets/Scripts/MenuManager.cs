@@ -140,7 +140,7 @@ public class MenuManager : MonoBehaviour
         CloseAllMenus();
 
         // Start Level
-        GameState.UnPauseLevel();
+        GameState.StartLevel();
         levelHUD.SetActive(true); // this should be part of a function call to start the gameplay
     }
 
