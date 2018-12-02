@@ -72,13 +72,13 @@ public static class GameState
     }
 
     // Call on a gameplay end event
-    public static void EndLevel()
+    public static void EndLevel(bool victory)
     {
         // freeze gameplay items/actions
         PauseLevel();
 
         // Capture relevant information (score, credits)
-        bool victory = false; /// todo: set vitory boolean from gamplay outcome
+        // bool victory = false; /// todo: set vitory boolean from gamplay outcome
         int scoreEarned = GameObject.Find("TextScore").GetComponent<ScoreManager>().GetScore();
 
         // Calculate credits

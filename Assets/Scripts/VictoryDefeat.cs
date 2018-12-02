@@ -28,7 +28,11 @@ public class VictoryDefeat : MonoBehaviour {
     // Text
     public Text txtTitle, txtLevel, txtDifficulty, txtScore, txtCredits, txtHighScore;
 
-    
+    private void Awake()
+    {
+        StartCoroutine(GetHighScore());
+    }
+
     // LevelSelect accessor
     private LevelSelect LS()
     {
@@ -85,7 +89,9 @@ public class VictoryDefeat : MonoBehaviour {
         txtScore.text = "Your Score: " + scoreEarned.ToString();
         if (victory) txtCredits.text = "Credits Earned: " + creditsEarned.ToString();
         else txtCredits.text = "Credits Earned: 0";
-        txtHighScore.text = "Map High Score: " + thisLevelLeader.scores + " (" + thisLevelLeader.users + ")";
+        
+        // Commenting this out because the thisLevelLeader object was null
+        //txtHighScore.text = "Map High Score: " + thisLevelLeader.scores + " (" + thisLevelLeader.users + ")";
 
         // Display the panel
         victoryDefeatUI.SetActive(true);
@@ -144,7 +150,7 @@ public class VictoryDefeat : MonoBehaviour {
         if (string.IsNullOrEmpty(scoreReq.error))
         {
             // Convert response to JSON
-            Leaders thisLevelLeader = JsonUtility.FromJson<Leaders>(scoreReq.text);
+            thisLevelLeader = JsonUtility.FromJson<Leaders>(scoreReq.text);
 
             // Check for failed update
             if (thisLevelLeader.query == false || thisLevelLeader.success == false)
