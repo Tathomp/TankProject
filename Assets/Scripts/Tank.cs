@@ -31,4 +31,10 @@ abstract public class Tank : MonoBehaviour {
         ArmorUpgrade.RemoveEffect(this);
         TrackUpgrade.RemoveEffect(this);
     }
+
+    public void ResetTank()
+    {
+        CurrentHealth = MaxHealth;
+        gameObject.SetActive(true);
+    }
 }

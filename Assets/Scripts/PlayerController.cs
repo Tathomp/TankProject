@@ -325,7 +325,7 @@ public class PlayerController : Tank
 
         if(CurrentHealth <= 0)
         {
-            GameState.PauseLevel();
+            GameState.EndLevel(false);
         }
     }
 
