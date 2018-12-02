@@ -35,13 +35,9 @@ public class BulletController : MonoBehaviour {
            
             hitLogger.Log(" hit object type : " + col.gameObject.tag);
 
-            if((col.gameObject.tag.Equals("Player") == false))
-            {
-                Destroy(gameObject);
-            }
-            //Destroy(this);
-            //Destroy(this.gameObject);
-            //Destroy(this.transform);
+            Destroy(this);
+            Destroy(this.gameObject);
+            Destroy(this.transform);
 
         }
     }

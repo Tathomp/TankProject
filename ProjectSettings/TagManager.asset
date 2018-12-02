@@ -12,6 +12,7 @@ TagManager:
   - Undefined
   - PlayerProjectile
   - Score
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

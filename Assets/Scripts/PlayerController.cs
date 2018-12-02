@@ -279,7 +279,7 @@ public class PlayerController : Tank
         {
             playerRigidbody.AddExplosionForce(10000.0f, playerRigidbody.position, 10.0f);
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         
 
@@ -369,6 +369,8 @@ public class PlayerController : Tank
 
         transform.position = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
 
+        ResetTank();
+
         GunUpgrade = ps.GetGunUpgrade();
         TrackUpgrade = ps.GetTreadUpgrade();
         ArmorUpgrade = ps.GetArmorUpgrade();
@@ -376,6 +378,9 @@ public class PlayerController : Tank
         ApplyUpgrades();
     }
 
-    
+    private void OnDestroy()
+    {
+        Debug.Log(gameObject.name + "Destoryed");
+    }
 
 }
