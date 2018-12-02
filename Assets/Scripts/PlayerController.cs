@@ -322,6 +322,11 @@ public class PlayerController : Tank
                 //      - have options for user to restart or try another level
             }
         }
+
+        if(CurrentHealth <= 0)
+        {
+            GameState.PauseLevel();
+        }
     }
 
     //void FixedUpdate()

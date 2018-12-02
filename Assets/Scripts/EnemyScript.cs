@@ -25,28 +25,32 @@ public class EnemyScript : Tank {
 
     // Update is called once per frame
     void Update () {
-		
-        if(Vector3.Distance(transform.position, player.position) > stoppingDistance)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        } else if (Vector3.Distance(transform.position, player.position) < stoppingDistance && Vector3.Distance(transform.position, player.position) > retreatDistance)
-        {
-            transform.position = this.transform.position;
-        } else if (Vector3.Distance(transform.position, player.position) < retreatDistance)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-        }
+
+        if (player != null)
+        {                       
+            if (Vector3.Distance(transform.position, player.position) > stoppingDistance)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            }
+            else if (Vector3.Distance(transform.position, player.position) < stoppingDistance && Vector3.Distance(transform.position, player.position) > retreatDistance)
+            {
+                transform.position = this.transform.position;
+            }
+            else if (Vector3.Distance(transform.position, player.position) < retreatDistance)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+            }
 
 
-        if (Vector3.Distance(transform.position, player.position) < maxFiringRange)
-        {
-            enemyGun.isFiring = true;
+            if (Vector3.Distance(transform.position, player.position) < maxFiringRange)
+            {
+                enemyGun.isFiring = true;
+            }
+            else
+            {
+                enemyGun.isFiring = false;
+            }
         }
-        else
-        {
-            enemyGun.isFiring = false;
-        }
-
 
     }
 

@@ -26,10 +26,13 @@ public class EnemyTurretController : MonoBehaviour
     // Fixed Update is used to code that uses the physics engine
     void FixedUpdate()
     {
+        if(playerTarget != null && GameState.GameIsPaused == false)
+        {
+            playerTarget = player.position;
 
-        playerTarget = player.position;
+            RotateTowardsPlayer();
+        }
 
-        RotateTowardsPlayer();
 
     }
 
