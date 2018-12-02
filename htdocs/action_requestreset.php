@@ -23,7 +23,7 @@
 		$code = md5(rand(0, 1000));
 		
 		// Build Query: check if email already exists
-		$stmt = $db->prepare("SELECT userStatus FROM users WHERE userEmail=?");
+		$stmt = $db->prepare("SELECT userName, userStatus FROM users WHERE userEmail=?");
 		$stmt->bind_param('s', $mail);
 		$stmt->execute();
 		$result = $stmt->get_result();
@@ -34,7 +34,7 @@
 			
 			// Check for active status, user cannot reset password until account is active
 			if($row->userStatus == "Active") {
-				
+				$userName = $row->userName;
 				// Build Query: update userStatus with code to authorize password change
 				$stmt2 = $db->prepare("UPDATE users SET userCode = ? WHERE userEmail = ?");
 				$stmt2->bind_param('ss', $code, $mail);
@@ -44,7 +44,7 @@
 					
 					// Success: set msg for unity and send reset email
 					$dataArray = array('query' => true, 'success' => true, 'msg' => '', 'email' => "$mail");
-					send_email($mail, $code);
+					send_email($mail, $code, $userName);
 				}
 			}				
 			else {
@@ -64,20 +64,22 @@
 	
 	
 	// Sends an email for account verification
-	function send_email($mail, $code) {
+	function send_email($mail, $code, $userName) {
 		// Set email subject line
 		$subject = 'Tankware | Forgotten Password';
 		
 		// Set email message body
 		$message = '
 		 
+		Hello '.$userName.',
+		
 		You\'re receiving this message because someone requested to reset the password on this account.
 		If that was not you, please disregard.
 		 
-		Click this link to reset your password:
-		https://www.ninjalive.com/tanks/reset_pass.php?mail='.$mail.'&code='.$code.'
-		 
-		';
+		Otherwise, please follow this link to reset your password:
+		http://www.ninjalive.com/tanks/reset_pass.php
+		Authorization Code: '.$code;
+		
 		// Set message headers
 		$headers = 'From: noreply@ninjalive.com' . "\r\n";
 		// Send the email

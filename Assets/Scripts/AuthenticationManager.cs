@@ -96,6 +96,8 @@ public class AuthenticationManager : MonoBehaviour
         // Disable LogIn panel and enable ForgotPass panel
         logInUI.SetActive(false);
         forgotPassUI.SetActive(true);
+        txtFPFeedback.text = "";
+        txtFPEmail.text = "";
     }
 
     // Activate the LogIn panel, restrict Game Access
@@ -156,6 +158,8 @@ public class AuthenticationManager : MonoBehaviour
     // Cancel current panel and return to LogIn panel
     public void CancelButtonTapped()
     {
+        txtFPFeedback.text = "";
+        txtFPEmail.text = "";
         DisplayLoginPanel();
     }
 
@@ -274,7 +278,9 @@ public class AuthenticationManager : MonoBehaviour
             // Only proceed if email exists and account is active
             if (user.query == true && user.success == true)
             {
-                // Successful reset request, display the confirmation panel
+                // Successful reset request, clear text and display the confirmation panel
+                txtFPFeedback.text = "";
+                txtFPEmail.text = "";
                 DisplayPassConfPanel();
             }
         }

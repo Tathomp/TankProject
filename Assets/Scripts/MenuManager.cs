@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     // Serverside script names referenced by WWWForms
-    private readonly string URLRESETPASS = "action_resetpassword.php";
+    private readonly string URLUPDATEPASS = "action_updatepassword.php";
 
     // State references, initialized in Start()
     PlayerState ps;
@@ -88,6 +88,12 @@ public class MenuManager : MonoBehaviour
         // Set the subtitle message with player's name
         PlayerState ps = PlayerState.GetCurrentPlayerState();
         msgSubtitle.text = "Greetings, " + ps.GetUserName() + "!";
+    }
+
+    // Display reset password pannel
+    public void DisplayResetConfPanel()
+    {
+        resetConfUI.SetActive(true);
     }
 
     // Display reset password pannel
@@ -185,10 +191,31 @@ public class MenuManager : MonoBehaviour
         DisplayMainMenuPanel();
     }
 
-    // Reset password button
+    // Display the password reset panel
     public void ResetPasswordButtontapped()
     {
         DisplayResetPasswordPanel();
+    }
+
+    // Submit password reset request
+    public void ResetPasswordSubmitButtontapped()
+    {
+        StartCoroutine("UpdatePassword");
+    }
+
+    // Close the Reset password panel
+    public void ResetPasswordCancelButtontapped()
+    {
+        CloseResetPanel();
+    }
+
+    // Reset password button
+    public void ResetOKButtontapped()
+    {
+        // Close confirmation panel
+        resetConfUI.SetActive(false);
+        // Save config and log out user
+        DisplayLoginPanel();
     }
 
     // Redirect to LogIn panel
@@ -233,7 +260,7 @@ public class MenuManager : MonoBehaviour
     /***************************************
                 Coroutines
      **************************************/
-    private IEnumerator ResetUserPassword()
+    private IEnumerator UpdatePassword()
     {
         // Verify password length and matching
         if (txtCurrentPass.text.Length < 8 || txtResetPass.text.Length < 8)
@@ -253,7 +280,7 @@ public class MenuManager : MonoBehaviour
         form.AddField("currentPass", txtCurrentPass.text);
         form.AddField("newPass", txtResetPass.text);
 
-        WWW reset = new WWW(ps.URL(URLRESETPASS), form);
+        WWW reset = new WWW(ps.URL(URLUPDATEPASS), form);
         yield return reset;
 
         // Check for successful web request
@@ -275,7 +302,7 @@ public class MenuManager : MonoBehaviour
                 // Close reset panel
                 CloseResetPanel();
                 // Display reset confirmation panel
-
+                DisplayResetConfPanel();
             }
         }
         else
