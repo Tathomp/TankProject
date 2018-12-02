@@ -1,12 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VictoryDefeat : MonoBehaviour {
 
     // Serverside script names referenced by WWWForms
-    private readonly string URLGETLEADERSCORE = "action_requestlevelscore.php";
+    private readonly string URLGETLEADERSCORE = "action_getleaderscore.php";
+
+    WWWForm form;
 
     // State references, initialized in Start()
     MenuManager mm;
@@ -17,11 +18,11 @@ public class VictoryDefeat : MonoBehaviour {
     private Color win = new Color32(24, 120, 5, 255);
     private Color loss = new Color32(219, 0, 0, 255);
 
-    // To hold level high score info
-    private Leaders thisLevelLeader;
+    //// To hold level high score info
+    //private Leaders levelLeader;
+    private string score = "0";
+    private string user = "None";
 
-    private int levelPlayed;
-    private string difficultyPlayed;
 
     /***************************************
                 Game Objects
@@ -32,6 +33,7 @@ public class VictoryDefeat : MonoBehaviour {
     public GameObject btnLevelSelect, btnMainMenu, btnRestart, btnUpgrades;
     // Text
     public Text txtTitle, txtLevel, txtDifficulty, txtScore, txtCredits, txtHighScore;
+    public Text[] allTextArray = new Text[6];
 
 
     void Start()
@@ -39,12 +41,13 @@ public class VictoryDefeat : MonoBehaviour {
         ps = PlayerState.GetCurrentPlayerState();
         mm = MenuManager.GetMenuManagerState();
         ls = LevelSelect.GetLevelSelectState();
+        //levelLeader = new Leaders();
     }
 
     // Modify menu display attributes dased on victory or defeat outcome
     private void PanelLook(bool victory)
     {
-        Text[] allTextArray = { txtTitle, txtLevel, txtDifficulty, txtScore, txtCredits, txtHighScore };
+        //Text[] allTextArray = { txtTitle, txtLevel, txtDifficulty, txtScore, txtCredits, txtHighScore };
         if (victory)
         {
             txtTitle.text = "VICTORY!";
@@ -61,14 +64,11 @@ public class VictoryDefeat : MonoBehaviour {
     public void DisplayOutcomePanel(bool victory, int creditsEarned, int scoreEarned)
     {
         // Get match settings
-        difficultyPlayed = GameState.GetCurrentDifficultyStr();
-        levelPlayed = ls.GetCurrentLevel();
+        string difficultyPlayed = GameState.GetCurrentDifficultyStr();
+        int levelPlayed = ls.GetCurrentLevel();
 
         // Call function to update player state and push to db
         ps.UpdateScore(levelPlayed, scoreEarned, creditsEarned, victory);
-
-        // Call funtion to fetch high score for this level
-        StartCoroutine("GetHighScore");
 
         // Call funtion to set panel look
         PanelLook(victory);
@@ -80,11 +80,22 @@ public class VictoryDefeat : MonoBehaviour {
         if (victory) txtCredits.text = "Credits Earned: " + creditsEarned.ToString();
         else txtCredits.text = "Credits Earned: 0";
 
-        // Commenting this out because the thisLevelLeader object was null
-        //txtHighScore.text = "Map High Score: " + thisLevelLeader.scores + " (" + thisLevelLeader.users + ")";
-
         // Display the panel
         victoryDefeatUI.SetActive(true);
+
+        SetHighScore();
+    }
+
+    public void SetHighScore()
+    {
+        // Call funtion to fetch high score for this level
+        StartCoroutine("GetHighScore");
+    }
+
+    private void SetHighScore(Leaders l)
+    {
+        // Display the record holder for this level
+        txtHighScore.text = "Map High Score: " + l.scores + " (" + l.users + ")";
     }
 
     public void CloseOutcomePanel()
@@ -130,30 +141,33 @@ public class VictoryDefeat : MonoBehaviour {
     private IEnumerator GetHighScore()
     {
         // Build the form for submission
-        WWWForm form = new WWWForm();
+        form = new WWWForm();
         form.AddField("levelID", ls.GetCurrentLevel());
 
-        WWW scoreReq = new WWW(ps.URL(URLGETLEADERSCORE), form);
-        yield return scoreReq;
+        WWW webscore = new WWW(ps.URL(URLGETLEADERSCORE), form);
+        yield return webscore;
 
         // Check for successful web request
-        if (string.IsNullOrEmpty(scoreReq.error))
+        if (string.IsNullOrEmpty(webscore.error))
         {
             // Convert response to JSON
-            thisLevelLeader = JsonUtility.FromJson<Leaders>(scoreReq.text);
+            Leaders levelLeader = JsonUtility.FromJson<Leaders>(webscore.text);
 
             // Check for failed update
-            if (thisLevelLeader.query == false || thisLevelLeader.success == false)
+            if (levelLeader.query == false || levelLeader.success == false)
             {
                 // Log the error
-                Debug.Log(thisLevelLeader.msg);
+                Debug.Log(levelLeader.msg);
+            }
+            else
+            {
+                SetHighScore(levelLeader);
             }
         }
         else
         {
             // Log the connection error
-            Debug.Log(scoreReq.error);
+            Debug.Log(webscore.error);
         }
-
     }
 }

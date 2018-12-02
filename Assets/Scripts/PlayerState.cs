@@ -13,8 +13,7 @@ public class PlayerState : MonoBehaviour
     // Host server public IP or url, change here to update all instances
     private readonly string SERVERADDRESS = "http://www.ninjalive.com/tanks/";
     private readonly string URLUPDATESTATE = "action_updatestate.php";
-    private readonly string URLUPDATESCORE = "action_updatescore.php";
-    private readonly string URLGETSTATE = "action_getstate.php";
+    private readonly string URLUPDATESCORE = "action_victorydefeat.php";
     
 
     // Central repository of active gameplay and user data
@@ -37,9 +36,6 @@ public class PlayerState : MonoBehaviour
     private static int maxArmor;        // team members woring on various game mechanics
     private static int hp;              // will need to add variables which make sense to their
     private static int armor;           // development logic.
-    private static int speed;
-    private static int damage;
-
 
 
     /***************************************
@@ -88,14 +84,12 @@ public class PlayerState : MonoBehaviour
         TrackUpgrade = null;
 
         // Set the profile picture
-        GameObject.Find("Manager").GetComponent<Profile>().SetAvatar();
+        //GameObject.Find("Manager").GetComponent<Profile>().SetAvatar();
 
         maxHP = 100;
         maxArmor = 100;
         hp = maxHP;
         armor = maxArmor;
-        speed = 10;
-        damage = 10;
     }
 
     // Restore player state upon login

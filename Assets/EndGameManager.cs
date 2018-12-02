@@ -4,9 +4,11 @@ using UnityEngine;
 
 public static class EndGameManager {
 
+    public static GameObject[] enemies;
+
     public static void HasPlayerWon()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         if(enemies.Length == 1)
         {

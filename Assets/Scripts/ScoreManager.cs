@@ -7,17 +7,19 @@ public class ScoreManager : MonoBehaviour {
 
     private static int score;
 
-    Text text;
+    // UI Text Object
+    public Text text;
 
 	// Use this for initialization
 	void Start () {
-        text = GetComponent<Text>();
-        score = 0;
+        text.text = "0";
+        SetScore(0);
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        text.text = "" + score;
+	void Update ()
+    {
+        text.text = score.ToString();
 	}
 
     public int GetScore()

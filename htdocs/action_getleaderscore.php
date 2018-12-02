@@ -20,11 +20,11 @@
 		
 		// Move results into string objects 
 		$row = $result->fetch_object();
-		$userNames = $row->userName;
-		$scores = (string)$row->score;
+		$userName = $row->userName;
+		$score = (string)$row->score;
 	
 		// Success: set array for JSON encoding
-		$dataArray = array('query' => true, 'success' => true, 'msg' => '', 'users' => "$userNames", 'scores' => "$scores");
+		$dataArray = array('query' => true, 'success' => true, 'msg' => '', 'users' => "$userName", 'scores' => "$score");
 		
 	} else {
 		// Failure: set error msg for unity
