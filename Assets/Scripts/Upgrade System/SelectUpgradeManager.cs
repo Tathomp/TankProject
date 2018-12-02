@@ -20,13 +20,13 @@ public class SelectUpgradeManager : MonoBehaviour
     private PlayerState ps;
 
 
-    private void OnEnable()
+    public void StartUI()
     {
-
+        Debug.Log("does this fire");
         ps = PlayerState.GetCurrentPlayerState();
 
         InitializeUI();
-
+        gameObject.SetActive(true);
     }
 
 
@@ -149,17 +149,43 @@ public class SelectUpgradeManager : MonoBehaviour
 
         string selected = ps.GetActiveUpgrades();
 
-        if(selected[0]==2)
+        if(selected[0]=='1')
         {
             ArmorButtons[0].SelectUpgrade();
         }
-        else if(selected[0]==3)
+        else if(selected[0]== '2')
         {
             ArmorButtons[1].SelectUpgrade();
         }
-        else if (selected[0] == 4)
+        else if (selected[0] == '3')
         {
             ArmorButtons[2].SelectUpgrade();
+        }
+
+        if (selected[1] == '1')
+        {
+            TreadButtons[0].SelectUpgrade();
+        }
+        else if (selected[1] == '2')
+        {
+            TreadButtons[1].SelectUpgrade();
+        }
+        else if (selected[1] == '3')
+        {
+            TreadButtons[2].SelectUpgrade();
+        }
+
+        if (selected[2] == '1')
+        {
+            GunButtons[0].SelectUpgrade();
+        }
+        else if (selected[2] == '2')
+        {
+            GunButtons[1].SelectUpgrade();
+        }
+        else if (selected[2] == '3')
+        {
+            GunButtons[2].SelectUpgrade();
         }
     }
 

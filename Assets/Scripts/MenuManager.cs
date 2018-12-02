@@ -73,7 +73,7 @@ public class MenuManager : MonoBehaviour
     // Display the upgrades screen
     public void DisplayUpgradesPanel()
     {
-        upgradeUI.SetActive(true);
+        upgradeUI.GetComponent<SelectUpgradeManager>().StartUI();
     }
 
 
