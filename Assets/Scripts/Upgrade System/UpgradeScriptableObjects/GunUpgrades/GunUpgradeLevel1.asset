@@ -14,7 +14,7 @@ MonoBehaviour:
   Upgradename: Gun
   Description: Guns
   Cost: 10
-  upgradeLevel: 0
+  upgradeLevel: 1
   UpgradeEffects:
   - {fileID: 11400000, guid: a91822a27a5a53140af12f7b060f4cf1, type: 2}
   upgradeType: 0

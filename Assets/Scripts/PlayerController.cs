@@ -38,7 +38,7 @@ public class PlayerController : Tank
 
     public float wheelsSpeed = 2f;
     public float tracksSpeed = 2f;
-    public float forwardSpeed = 1f;
+    public float forwardSpeed = 10f;
     public float rotateSpeed = 1f;
 
 

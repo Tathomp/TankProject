@@ -10,10 +10,13 @@ public class BonusHealthUpgradeEffect : UpgradeEffect
     public override void AddEffect(Tank tank)
     {
         Debug.Log("Health Added: " + HealthIncrease);
+        tank.MaxHealth += HealthIncrease;
     }
 
     public override void RemoveEffect(Tank tank)
     {
         Debug.Log("Health Removed: " + HealthIncrease);
+        tank.MaxHealth -= HealthIncrease;
+
     }
 }

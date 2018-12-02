@@ -71,6 +71,12 @@ public class SelectUpgradeManager : MonoBehaviour
             return;
         }
 
+        if(UpgradeHasBeenPurchased() == true)
+        {
+            Debug.Log("Upgrade has already be bought");
+            return;
+        }
+
         GrantPlayerUpgrade();
 
         playerCredits -= currUpgrade.Cost;
@@ -115,6 +121,13 @@ public class SelectUpgradeManager : MonoBehaviour
     //This is pretty gross but it works so
     public void EquipUpgrade()
     {
+        if(UpgradeHasBeenPurchased() == false)
+        {
+            Debug.Log("Upgrade needs to be purchased before it can be equipped");
+            return;
+        }
+
+
         string active = ps.GetActiveUpgrades();
 
         if (currUpgrade.upgradeType == UpgradeType.Armor)
@@ -219,9 +232,37 @@ public class SelectUpgradeManager : MonoBehaviour
                 }
                 else
                 {
-                    GunButtons[i - 3].UnlockUpgrade();
+                    GunButtons[i - 6].UnlockUpgrade();
                 }
             }
         }
     }
+
+    private bool UpgradeHasBeenPurchased()
+    {
+        char[] active = ps.GetPurchasedUpgrades().ToCharArray();
+        int offset = 0;
+
+
+        if(currUpgrade.upgradeType == UpgradeType.Armor)
+        {
+            offset = 0;
+        }
+        else if(currUpgrade.upgradeType == UpgradeType.Track)
+        {
+            offset = 3;
+        }
+        else
+        {
+            offset = 6;
+        }
+
+        if (active[currUpgrade.upgradeLevel - 1 + offset] == '1')
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 }
