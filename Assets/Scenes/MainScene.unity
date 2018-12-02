@@ -2827,7 +2827,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Armor: \nLevel 1"
+  m_Text: "Armor: \nLevel 3"
 --- !u!222 &264817174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4875,13 +4875,14 @@ GameObject:
   - component: {fileID: 407685454}
   - component: {fileID: 407685456}
   - component: {fileID: 407685455}
+  - component: {fileID: 407685457}
   m_Layer: 5
   m_Name: PanelVictoryDefeat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &407685454
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4945,6 +4946,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 407685453}
   m_CullTransparentMesh: 0
+--- !u!114 &407685457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 407685453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4fff20e611c4240a75b04bd5dd96ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryDefeatUI: {fileID: 407685453}
+  btnLevelSelect: {fileID: 232334722}
+  btnMainMenu: {fileID: 1543511806}
+  btnRestart: {fileID: 1294830103}
+  btnUpgrades: {fileID: 1913829713}
+  txtTitle: {fileID: 1390923907}
+  txtLevel: {fileID: 1390923907}
+  txtDifficulty: {fileID: 296311220}
+  txtScore: {fileID: 1436058552}
+  txtCredits: {fileID: 154126350}
+  txtHighScore: {fileID: 687051321}
 --- !u!1 &407983148
 GameObject:
   m_ObjectHideFlags: 0
@@ -21306,7 +21329,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Armor: \nLevel 1"
+  m_Text: "Armor: \nLevel 2"
 --- !u!222 &1655205492
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30814,6 +30837,46 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 4
+--- !u!1 &2076289933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076289935}
+  - component: {fileID: 2076289934}
+  m_Layer: 0
+  m_Name: EndGameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2076289934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2076289933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19bc9955f1cab3478930d51689af9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2076289935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2076289933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2090866902
 GameObject:
   m_ObjectHideFlags: 0

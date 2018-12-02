@@ -69,7 +69,8 @@ public class EnemyScript : Tank {
                 Destroy(this.gameObject);
                 Destroy(this.transform);
                 Destroy(this);
-                
+
+                EndGameManager.HasPlayerWon();
             }
         //}
     }
