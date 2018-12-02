@@ -77,7 +77,7 @@
 		If that was not you, please disregard.
 		 
 		Otherwise, please follow this link to reset your password:
-		http://www.ninjalive.com/tanks/reset_pass.php
+		https://www.ninjalive.com/tanks/reset_pass.php
 		Authorization Code: '.$code;
 		
 		// Set message headers

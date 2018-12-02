@@ -47,7 +47,7 @@
 			$msg = "
 				<h3>Success! Your password has been changed.</h3>
 				Your new password has been emailed to you.
-				Click <a href=\"http://www.ninjalive.com/tanks/index.html\">here</a> to login.";
+				Click <a href=\"https://www.ninjalive.com/tanks/index.html\">here</a> to login.";
 			send_email($mail, $newPass);
 		}
 		else {
@@ -79,7 +79,7 @@
 		
 		After you login you can choose your own password from the profile screen.
 		
-		Click <a href=\"http://www.ninjalive.com/tanks/index.html\">here</a> to login.
+		Login here: https://www.ninjalive.com/tanks/index.html
 		
 		Have fun playing Tankware Engineering!';
 		
@@ -93,7 +93,7 @@
 	function random_password($length) {
 		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-=+;:,.?";
 		for ($i = 0; $i < $length; $i++) {
-			$password .= $chars{mt_rand(0, strlen($chars) – 1)};
+			$password .= $chars{mt_rand(0, strlen($chars) - 1)};
 		}
 		return $password;
 	}

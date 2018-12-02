@@ -80,6 +80,9 @@ public class VictoryDefeat : MonoBehaviour {
         if (victory) txtCredits.text = "Credits Earned: " + creditsEarned.ToString();
         else txtCredits.text = "Credits Earned: 0";
 
+        // Hide HUD
+        mm.levelHUD.SetActive(false);
+
         // Display the panel
         victoryDefeatUI.SetActive(true);
 

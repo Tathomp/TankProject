@@ -9,6 +9,8 @@ public class PlayerState : MonoBehaviour
     /******************************************************************************************
      Central Reference Manager for components and attributes used in gameplay and user settings 
      *****************************************************************************************/
+    // Reflects number of level items, controls indexes and maxLevel value
+    public readonly int NUMBEROFLEVELS = 4;
 
     // Host server public IP or url, change here to update all instances
     private readonly string SERVERADDRESS = "http://www.ninjalive.com/tanks/";
@@ -140,7 +142,7 @@ public class PlayerState : MonoBehaviour
             // Add credits earned
             userCredits += creditsEarned;
             // Unlock next level
-            if (levelPlayed == maxLevel)
+            if (levelPlayed == maxLevel && maxLevel < NUMBEROFLEVELS)
                 maxLevel++;
         }
 
