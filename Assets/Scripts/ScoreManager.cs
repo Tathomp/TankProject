@@ -14,6 +14,8 @@ public class ScoreManager : MonoBehaviour {
 	void Start () {
         text.text = "0";
         SetScore(0);
+
+        GameState.LevelStarted += ResetScore;
 	}
 	
 	// Update is called once per frame
@@ -40,5 +42,10 @@ public class ScoreManager : MonoBehaviour {
     public void DecreaseScore(int points)
     {
         score -= points;
+    }
+
+    public void ResetScore()
+    {
+        SetScore(0);
     }
 }
