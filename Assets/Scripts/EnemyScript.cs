@@ -38,16 +38,14 @@ public class EnemyScript : Tank {
         }
 
 
-        enemyGun.isFiring = true;
-
-        //if (Vector3.Distance(transform.position, player.position) < maxFiringRange)
-        //{
-        //    enemyGun.isFiring = true; 
-        //}
-        //else
-        //{
-        //    enemyGun.isFiring = false;
-        //}
+        if (Vector3.Distance(transform.position, player.position) < maxFiringRange)
+        {
+            enemyGun.isFiring = true;
+        }
+        else
+        {
+            enemyGun.isFiring = false;
+        }
 
 
     }

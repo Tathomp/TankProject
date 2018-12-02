@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277025181908240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.104073, y: -7.677195e-19, z: 0.61197776}
+  m_LocalPosition: {x: 37.692314, y: 23.011314, z: 18.98417}
   m_LocalScale: {x: 0.9081152, y: 0.3272851, z: 1.5145297}
   m_Children:
   - {fileID: 4503584516237102}
@@ -306,8 +306,8 @@ MonoBehaviour:
   isFiring: 1
   projectile: {fileID: 114211877870572022, guid: 60aeda1f30eeb4d438b6be8c21e4cd11,
     type: 2}
-  muzzleVelocity: 10
-  timeBetweenShots: 3
+  muzzleVelocity: 30
+  timeBetweenShots: 1
   firePoint: {fileID: 4153765638108578}
   enemyGunController: {fileID: 114361397531026496}
 --- !u!114 &114396879634581134
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df93a000a3a28984bafd16255897492d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 10
 --- !u!114 &114954897402036464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,7 +341,7 @@ MonoBehaviour:
   speed: 0
   stoppingDistance: 0
   retreatDistance: 0
-  maxFiringRange: 0
+  maxFiringRange: 20
   enemyGun: {fileID: 114361397531026496}
 --- !u!135 &135313050544991072
 SphereCollider:
