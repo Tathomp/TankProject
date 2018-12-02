@@ -14,7 +14,7 @@ MonoBehaviour:
   Upgradename: Armor Upgrade Level 2
   Description: Increase tank health by 10.
   Cost: 20
-  masking: 300
+  upgradeLevel: 2
   UpgradeEffects:
   - {fileID: 11400000, guid: 49a139554480d2b4b9e17c7bc298950f, type: 2}
   upgradeType: 1
