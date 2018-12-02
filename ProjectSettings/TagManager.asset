@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Manager
   - GiantEnemyProjectile
+  - Undefined
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX

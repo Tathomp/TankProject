@@ -53,11 +53,11 @@ public class EnemyScript : Tank {
     void OnCollisionEnter(Collision col)
     {
         ScoreManager SM = GameObject.Find("TextScore").GetComponent<ScoreManager>();
-        //if (col.gameObject.tag.Equals("EnemyProjectile"))
-        //{
-            Logger hitLogger;
-            hitLogger = new Logger(Debug.unityLogger.logHandler);
-            hitLogger.Log(" enemy hit, score : " + SM.GetScore());
+        if (col.gameObject.tag.Equals("PlayerProjectile"))
+        {
+            //Logger hitLogger;
+            //hitLogger = new Logger(Debug.unityLogger.logHandler);
+            //hitLogger.Log(" enemy hit, score : " + SM.GetScore());
             CurrentHealth -= 1;
             SM.IncreaseScore(100);
             if (CurrentHealth <= 0)
@@ -70,7 +70,7 @@ public class EnemyScript : Tank {
 
                 EndGameManager.HasPlayerWon();
             }
-        //}
+        }
     }
 
     public void InitializeEnemy()

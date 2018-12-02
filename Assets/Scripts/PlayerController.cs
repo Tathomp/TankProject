@@ -98,12 +98,7 @@ public class PlayerController : Tank
     // Use this for initialization
     void Start()
     {
-        hitLogger = new Logger(Debug.unityLogger.logHandler);
-
-
-        //m_MovementAxisName = "Vertical" + m_PlayerNumber;
-        //m_TurnAxisName = "Horizontal" + m_PlayerNumber;
-
+       
         playerRigidbody = GetComponent<Rigidbody>();
         playerCamera = FindObjectOfType<Camera>();
 
@@ -295,13 +290,13 @@ public class PlayerController : Tank
         if (col.gameObject.tag.Equals("EnemyProjectile"))
         {
             CurrentHealth -= 3;
-            hitLogger.Log("player hit normal proj");
+            //hitLogger.Log("player hit normal proj");
             if (CurrentHealth <= 0)
             {
                
-                Destroy(gameObject);
-                Destroy(playerRigidbody);
-                Destroy(this);
+                // Destroy(gameObject);
+                // Destroy(playerRigidbody);
+                // Destroy(this);
 
                 // trigger game over : 
                 //      - submit score to db
@@ -313,13 +308,13 @@ public class PlayerController : Tank
         if (col.gameObject.tag.Equals("GiantEnemyProjectile"))
         {
             CurrentHealth -= 15;
-            hitLogger.Log("player hit giant proj");
+            //hitLogger.Log("player hit giant proj");
             if (CurrentHealth <= 0)
             {
                
-                Destroy(gameObject);
-                Destroy(playerRigidbody);
-                Destroy(this);
+                //Destroy(gameObject);
+                //Destroy(playerRigidbody);
+                //Destroy(this);
 
                 // trigger game over : 
                 //      - submit score to db
