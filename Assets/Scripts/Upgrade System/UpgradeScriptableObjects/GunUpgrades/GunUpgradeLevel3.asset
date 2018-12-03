@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Upgradename: Gun
   Description: Fire seven shots at once.
-  Cost: 10
+  Cost: 1500
   upgradeLevel: 3
   UpgradeEffects:
   - {fileID: 11400000, guid: ecd0a86e33f10f24ca1c3e98584747bd, type: 2}

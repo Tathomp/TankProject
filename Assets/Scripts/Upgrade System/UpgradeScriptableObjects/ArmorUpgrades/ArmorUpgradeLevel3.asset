@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Upgradename: Armor Upgrade Level3
   Description: Increase tank health by 20.
-  Cost: 30
+  Cost: 1500
   upgradeLevel: 3
   UpgradeEffects:
   - {fileID: 11400000, guid: 1644d43684b00544087e817b606fb89e, type: 2}
