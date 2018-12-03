@@ -92,20 +92,21 @@ public class EnemyScript : Tank {
             /// todo: These values should be different for each difficulty
             /// todo: There should be changes to things like starting heath pool and score multiplier too
             case "Easy":
-                ArmorUpgrade = db.UpgradeList[0];
-                TrackUpgrade = db.UpgradeList[3];
                 break;
             case "Medium":
                 ArmorUpgrade = db.UpgradeList[0];
                 TrackUpgrade = db.UpgradeList[3];
+                GunUpgrade = db.UpgradeList[6];
                 break;
             case "Hard":
-                ArmorUpgrade = db.UpgradeList[0];
-                TrackUpgrade = db.UpgradeList[3];
+                ArmorUpgrade = db.UpgradeList[1];
+                TrackUpgrade = db.UpgradeList[4];
+                GunUpgrade = db.UpgradeList[7];
                 break;
             case "Impossible":
-                ArmorUpgrade = db.UpgradeList[0];
-                TrackUpgrade = db.UpgradeList[3];
+                ArmorUpgrade = db.UpgradeList[2];
+                TrackUpgrade = db.UpgradeList[5];
+                GunUpgrade = db.UpgradeList[8];
                 break;
         }
 
