@@ -15,6 +15,7 @@ TagManager:
   - PlayerSpawn
   - MegaProjectile
   - HealthBar
+  - LevelSpawn
   layers:
   - Default
   - TransparentFX
