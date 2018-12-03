@@ -63,6 +63,8 @@ public class VictoryDefeat : MonoBehaviour {
     // Call at match end to set and display the victory/defeat screen
     public void DisplayOutcomePanel(bool victory, int creditsEarned, int scoreEarned)
     {
+        DeactivateButtons();
+
         // Get match settings
         string difficultyPlayed = GameState.GetCurrentDifficultyStr();
         int levelPlayed = ls.GetCurrentLevel();
@@ -179,5 +181,34 @@ public class VictoryDefeat : MonoBehaviour {
             // Log the connection error
             Debug.Log(webscore.error);
         }
+    }
+
+    void DeactivateButtons()
+    {
+        Debug.Log("Buttons disabled");
+
+        btnLevelSelect.GetComponent<Button>().enabled = false;
+        btnMainMenu.GetComponent<Button>().enabled = false;
+        btnRestart.GetComponent<Button>().enabled = false;
+        btnUpgrades.GetComponent<Button>().enabled = false;
+
+        StartCoroutine(WaitBeforeEnableButtons());
+    }
+
+
+    void RenableButtons()
+    {
+        Debug.Log("Buttons enabled");
+
+        btnLevelSelect.GetComponent<Button>().enabled = true;
+        btnMainMenu.GetComponent<Button>().enabled = true;
+        btnRestart.GetComponent<Button>().enabled = true;
+        btnUpgrades.GetComponent<Button>().enabled = true;
+    }
+
+    IEnumerator WaitBeforeEnableButtons()
+    {
+        yield return new WaitForSeconds(1);
+        RenableButtons();
     }
 }
