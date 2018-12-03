@@ -4,15 +4,18 @@ using UnityEngine.UI;
 
 public class Link : MonoBehaviour 
 {
-    
-    public void OpenLinkJSPlugin()
-	{
-		#if !UNITY_EDITOR
-		openWindow("http://www.ninjalive.com/tanks/avatars/upload.html");
-		#endif
-	}
+    // Link accessor
+    public static Link GetLinkState()
+    {
+        return GameObject.Find("Manager").GetComponent<Link>();
+    }
 
-	[DllImport("__Internal")]
+    public void OpenLinkJSPlugin(string url)
+	{
+    	openWindow(url);
+    }
+
+    [DllImport("__Internal")]
 	private static extern void openWindow(string url);
 
 }

@@ -8,6 +8,7 @@ public class Profile : MonoBehaviour {
 
     // State references, initialized in Start()
     PlayerState ps;
+    Link l;
 
     /***************************************
                    Game Objects
@@ -22,6 +23,7 @@ public class Profile : MonoBehaviour {
     void Start()
     {
         ps = PlayerState.GetCurrentPlayerState();
+        l = Link.GetLinkState();
     }
 
     // Display the player's profile
@@ -48,6 +50,15 @@ public class Profile : MonoBehaviour {
     public void SetAvatar()
     {
         StartCoroutine("Avatar");
+    }
+
+    // Update picture
+    public void UpdatePictureButtonTapped()
+    {
+        int id = ps.GetID();
+        string img = ps.GetUserImage();
+        string url = "https://www.ninjalive.com/tanks/avatars/upload.html?id=" + id.ToString() + "&img=" + img;
+        l.OpenLinkJSPlugin(url);
     }
 
 

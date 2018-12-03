@@ -13,7 +13,7 @@ public class PlayerState : MonoBehaviour
     public readonly int NUMBEROFLEVELS = 4;
 
     // Host server public IP or url, change here to update all instances
-    private readonly string SERVERADDRESS = "http://www.ninjalive.com/tanks/";
+    private readonly string SERVERADDRESS = "https://www.ninjalive.com/tanks/";
     private readonly string URLUPDATESTATE = "action_updatestate.php";
     private readonly string URLUPDATESCORE = "action_victorydefeat.php";
     
@@ -207,6 +207,11 @@ public class PlayerState : MonoBehaviour
     public string GetUserName()
     {
         return userName;
+    }
+
+    public string GetUserImage()
+    {
+        return userImage;
     }
 
     public int GetMaxLevel()
