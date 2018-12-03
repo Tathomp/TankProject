@@ -143,6 +143,18 @@ public class SelectUpgradeManager : MonoBehaviour
             active = active.Substring(0, 2) + currUpgrade.upgradeLevel;
         }
 
+        if(currUpgrade.upgradeType == UpgradeType.Armor)
+        {
+            ps.SetArmorUpgrade(currUpgrade);
+        }
+        else if (currUpgrade.upgradeType == UpgradeType.Track)
+        {
+            ps.SetTrackUpgrade(currUpgrade);
+        }
+        else
+        {
+            ps.SetGunUpgrade(currUpgrade);
+        }
 
         ps.SetActiveUpgrades(active);
         ps.SaveState();
@@ -263,6 +275,43 @@ public class SelectUpgradeManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public static void DistributeUpGrades()
+    {
+        PlayerState ps = PlayerState.GetCurrentPlayerState();
+        string active = ps.GetActiveUpgrades();
+
+        // this is sloppy but it works
+        if(active == null)
+        {
+            return;
+        }
+
+        UpgradeDatabase udb = Resources.Load<UpgradeDatabase>("UpgradeDatabase");
+
+        int armorIndex = int.Parse(active.Substring(0, 1));
+        int treadIndex = int.Parse(active.Substring(0, 1));
+        int gunIndex = int.Parse(active.Substring(0, 1));
+
+        if(armorIndex > 0)
+        {
+            ps.SetArmorUpgrade(udb.UpgradeList[armorIndex-1]);
+
+        }
+
+        if (treadIndex > 0)
+        {
+            ps.SetTrackUpgrade(udb.UpgradeList[treadIndex + 2]);
+
+        }
+
+        if(gunIndex > 0)
+        {
+            ps.SetGunUpgrade(udb.UpgradeList[gunIndex + 5]);
+
+        }
+
     }
 
 }

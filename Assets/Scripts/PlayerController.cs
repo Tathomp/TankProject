@@ -365,6 +365,8 @@ public class PlayerController : Tank
 
     public void InitializePlayer()
     {
+        SelectUpgradeManager.DistributeUpGrades();
+
         PlayerState ps = PlayerState.GetCurrentPlayerState();
 
         transform.position = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
