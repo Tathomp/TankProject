@@ -86,6 +86,18 @@ public class LevelSelect : MonoBehaviour
         // Set the level scene to load using this levelSelevted attribute
         currentLevelSelected = levelSelected;
 
+        Transform levelSpawn = GameObject.FindGameObjectWithTag("LevelSpawn").transform;
+
+        if(levelSpawn.transform.childCount > 0)
+        GameObject.Destroy(levelSpawn.GetChild(0).gameObject);
+
+        GameObject go = Instantiate<GameObject>(
+            Resources.Load<GameObject>("Levels/Level" + levelSelected),
+            levelSpawn
+            );
+
+        go.transform.parent = levelSpawn;
+
         // Display the difficulty selection panel as an overlay
         mm.difficultyUI.SetActive(true);
     }

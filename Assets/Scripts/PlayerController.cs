@@ -350,7 +350,9 @@ public class PlayerController : Tank
 
         PlayerState ps = PlayerState.GetCurrentPlayerState();
 
-        transform.position = GameObject.FindGameObjectWithTag("PlayerSpawn").transform.position;
+        GameObject go = GameObject.FindGameObjectWithTag("PlayerSpawn");
+        if(go != null)
+        transform.position = go.transform.position;
 
         ResetTank();
 
