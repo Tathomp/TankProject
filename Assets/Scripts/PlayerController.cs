@@ -379,10 +379,11 @@ public class PlayerController : Tank
         TrackUpgrade = ps.GetTreadUpgrade();
         ArmorUpgrade = ps.GetArmorUpgrade();
 
-        CurrentHealth = MaxHealth;
 
 
         ApplyUpgrades();
+
+        CurrentHealth = MaxHealth;
 
 
     }
