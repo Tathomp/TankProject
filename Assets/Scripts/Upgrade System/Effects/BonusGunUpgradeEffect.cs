@@ -36,6 +36,6 @@ public class BonusGunUpgradeEffect : UpgradeEffect
 
     public override void RemoveEffect(Tank tank)
     {
-        throw new System.NotImplementedException();
+       // throw new System.NotImplementedException();
     }
 }

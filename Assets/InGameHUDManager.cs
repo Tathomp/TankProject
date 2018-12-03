@@ -5,7 +5,8 @@ using UnityEngine;
 public class InGameHUDManager : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         GameState.LevelStarted += InitHUD;
 	}
 	
