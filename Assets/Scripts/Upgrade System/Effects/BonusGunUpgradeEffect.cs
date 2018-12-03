@@ -6,8 +6,8 @@ using UnityEngine;
 public class BonusGunUpgradeEffect : UpgradeEffect
 {
     public int NumberOfShots;
-    public BulletController player, enemy, bigEnemy;
-    public BulletController playerDefaullt, enemyDefault, bigEnemyDefault;
+    public BulletController player, enemy, bigEnemy, megaEnemy;
+    public BulletController playerDefaullt, enemyDefault, bigEnemyDefault, megaEnemyDefault;
 
     public override void AddEffect(Tank tank)
     {
@@ -24,6 +24,11 @@ public class BonusGunUpgradeEffect : UpgradeEffect
             if(es.enemyGun.projectile.tag == "GiantEnemyProjectile" )
             {
                 es.enemyGun.projectile = bigEnemy;
+            }
+            else if(es.enemyGun.projectile.tag=="MegaProjectile")
+            {
+                es.enemyGun.projectile = megaEnemy;
+
             }
             else
             {
@@ -50,6 +55,11 @@ public class BonusGunUpgradeEffect : UpgradeEffect
             if (es.enemyGun.projectile.tag == "GiantEnemyProjectile")
             {
                 es.enemyGun.projectile = bigEnemyDefault;
+            }
+            else if (es.enemyGun.projectile.tag == "MegaProjectile")
+            {
+                es.enemyGun.projectile = megaEnemyDefault;
+
             }
             else
             {
