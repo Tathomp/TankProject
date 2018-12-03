@@ -36,6 +36,25 @@ public class BonusGunUpgradeEffect : UpgradeEffect
 
     public override void RemoveEffect(Tank tank)
     {
-       // throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+        if (tank is PlayerController)
+        {
+            PlayerController pc = (PlayerController)tank;
+
+            pc.playerGun.projectile = playerDefaullt;
+        }
+        else
+        {
+            EnemyScript es = (EnemyScript)tank;
+
+            if (es.enemyGun.projectile.tag == "GiantEnemyProjectile")
+            {
+                es.enemyGun.projectile = bigEnemyDefault;
+            }
+            else
+            {
+                es.enemyGun.projectile = enemyDefault;
+            }
+        }
     }
 }
