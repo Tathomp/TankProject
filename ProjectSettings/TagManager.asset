@@ -13,6 +13,7 @@ TagManager:
   - PlayerProjectile
   - Score
   - PlayerSpawn
+  - MegaProjectile
   layers:
   - Default
   - TransparentFX
