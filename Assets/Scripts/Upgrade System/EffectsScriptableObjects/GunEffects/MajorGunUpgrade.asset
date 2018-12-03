@@ -15,9 +15,13 @@ MonoBehaviour:
   player: {fileID: 114266441394120594, guid: c6f54f5a90d9ce44fb737d1eea55908a, type: 2}
   enemy: {fileID: 114672202287424536, guid: 72ff0dd978eedbe448513782b1084a25, type: 2}
   bigEnemy: {fileID: 114328858737030008, guid: 71ab18b29e197f04ea7ce8170bdf719f, type: 2}
+  megaEnemy: {fileID: 114266441394120594, guid: c6f54f5a90d9ce44fb737d1eea55908a,
+    type: 2}
   playerDefaullt: {fileID: 114116980095542778, guid: e52ed2d7ed7690042a471dec18e90c87,
     type: 2}
   enemyDefault: {fileID: 114211877870572022, guid: 60aeda1f30eeb4d438b6be8c21e4cd11,
     type: 2}
   bigEnemyDefault: {fileID: 114364428364953940, guid: 0703207e2898ae14c84aa4befa35ff18,
+    type: 2}
+  megaEnemyDefault: {fileID: 114554366744845952, guid: 9bd1b2ffbf7b0c047b7d7838a4580d56,
     type: 2}
