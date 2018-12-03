@@ -2991,7 +2991,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Armor: \nLevel 1"
+  m_Text: "Armor: \nLevel 3"
 --- !u!222 &264817174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23018,7 +23018,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Armor: \nLevel 1"
+  m_Text: "Armor: \nLevel 2"
 --- !u!222 &1655205492
 CanvasRenderer:
   m_ObjectHideFlags: 0
