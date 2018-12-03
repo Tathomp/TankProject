@@ -160,6 +160,7 @@ public class MenuManager : MonoBehaviour
     public void LogoutButtonTapped()
     {
         // Hide the pause menu and HUD
+        levelHUD.SetActive(false);
         pauseUI.SetActive(false);
         DisplayLoginPanel();
     }
