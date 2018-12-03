@@ -373,11 +373,18 @@ public class PlayerController : Tank
 
         ResetTank();
 
+
+
         GunUpgrade = ps.GetGunUpgrade();
         TrackUpgrade = ps.GetTreadUpgrade();
         ArmorUpgrade = ps.GetArmorUpgrade();
 
+        CurrentHealth = MaxHealth;
+
+
         ApplyUpgrades();
+
+
     }
 
     private void OnDestroy()

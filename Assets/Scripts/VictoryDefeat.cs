@@ -77,8 +77,15 @@ public class VictoryDefeat : MonoBehaviour {
         txtLevel.text = "Map: " + levelPlayed.ToString();
         txtDifficulty.text = "Difficulty: " + difficultyPlayed;
         txtScore.text = "Your Score: " + scoreEarned.ToString();
-        if (victory) txtCredits.text = "Credits Earned: " + creditsEarned.ToString();
-        else txtCredits.text = "Credits Earned: 0";
+        if (victory)
+        {
+            txtCredits.text = "Credits Earned: " + creditsEarned.ToString();
+            PlayerState.GetCurrentPlayerState().SetCredits(PlayerState.GetCurrentPlayerState().GetCredits() + creditsEarned);
+        }
+        else
+        {
+            txtCredits.text = "Credits Earned: 0";
+        }
 
         // Hide HUD
         mm.levelHUD.SetActive(false);
