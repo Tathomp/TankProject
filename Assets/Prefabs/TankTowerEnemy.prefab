@@ -460,7 +460,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1102364027284620}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.159027, y: 0.3191683, z: 71.278206}
+  m_LocalPosition: {x: -76.95725, y: 0.6049142, z: 40.85559}
   m_LocalScale: {x: 1, y: 1.9285, z: 1}
   m_Children:
   - {fileID: 4112067655901646}
@@ -906,5 +906,5 @@ MonoBehaviour:
   speed: 0
   stoppingDistance: 0
   retreatDistance: 0
-  maxFiringRange: 0
+  maxFiringRange: 100
   enemyGun: {fileID: 0}
