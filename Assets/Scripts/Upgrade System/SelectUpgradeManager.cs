@@ -291,8 +291,8 @@ public class SelectUpgradeManager : MonoBehaviour
         UpgradeDatabase udb = Resources.Load<UpgradeDatabase>("UpgradeDatabase");
 
         int armorIndex = int.Parse(active.Substring(0, 1));
-        int treadIndex = int.Parse(active.Substring(1, 1));
-        int gunIndex = int.Parse(active.Substring(2, 1));
+        int treadIndex = int.Parse(active.Substring(0, 1));
+        int gunIndex = int.Parse(active.Substring(0, 1));
 
         if(armorIndex > 0)
         {
