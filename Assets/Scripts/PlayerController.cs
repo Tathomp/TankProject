@@ -290,38 +290,19 @@ public class PlayerController : Tank
     {
         if (col.gameObject.tag.Equals("EnemyProjectile"))
         {
-            CurrentHealth -= 3;
-            //hitLogger.Log("player hit normal proj");
-            if (CurrentHealth <= 0)
-            {
-               
-                // Destroy(gameObject);
-                // Destroy(playerRigidbody);
-                // Destroy(this);
-
-                // trigger game over : 
-                //      - submit score to db
-                //      - bring up high score canvas
-                //      - have options for user to restart or try another level
-            }
+            CurrentHealth -= 1;
+            
         }
 
         if (col.gameObject.tag.Equals("GiantEnemyProjectile"))
         {
-            CurrentHealth -= 15;
-            //hitLogger.Log("player hit giant proj");
-            if (CurrentHealth <= 0)
-            {
-               
-                //Destroy(gameObject);
-                //Destroy(playerRigidbody);
-                //Destroy(this);
+            CurrentHealth -= 2;
+            
+        }
 
-                // trigger game over : 
-                //      - submit score to db
-                //      - bring up high score canvas
-                //      - have options for user to restart or try another level
-            }
+        if(col.gameObject.tag.Equals("MegaProjectile"))
+        {
+            CurrentHealth -= 3;
         }
 
         if(CurrentHealth <= 0)
