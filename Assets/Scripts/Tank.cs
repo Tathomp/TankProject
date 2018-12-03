@@ -55,7 +55,6 @@ abstract public class Tank : MonoBehaviour {
 
         RemoveUpgrades();
 
-        if(this != null)
         gameObject.SetActive(true);
     }
 }
