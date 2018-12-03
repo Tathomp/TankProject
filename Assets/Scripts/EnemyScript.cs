@@ -9,6 +9,7 @@ public class EnemyScript : Tank {
     public float retreatDistance;
     public float maxFiringRange;
     public EnemyGunController enemyGun;
+    public EnemyHealthDisplay healthDisplay;
 
     private Transform player;
     private Vector3 playerTarget;
@@ -50,6 +51,8 @@ public class EnemyScript : Tank {
             {
                 enemyGun.isFiring = false;
             }
+
+            healthDisplay.UpdateHealthVisual(MaxHealth, CurrentHealth);
         }
 
     }

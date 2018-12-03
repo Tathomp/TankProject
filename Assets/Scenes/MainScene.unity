@@ -1634,6 +1634,10 @@ Prefab:
       propertyPath: m_Name
       value: MegaTurret (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1223839993622266, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
   m_IsPrefabAsset: 0
@@ -5852,6 +5856,10 @@ Prefab:
       propertyPath: m_Name
       value: MegaTurret (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1223839993622266, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
   m_IsPrefabAsset: 0
@@ -6663,12 +6671,15 @@ Prefab:
       propertyPath: m_Name
       value: Tower Enemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 114396879634581134, guid: 78c2d73124f47bb458e939967878d3d2,
-        type: 2}
-      propertyPath: rotationSpeed
-      value: 5
+    - target: {fileID: 1404190499428292, guid: 78c2d73124f47bb458e939967878d3d2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1277025181908240, guid: 78c2d73124f47bb458e939967878d3d2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337994586997628, guid: 78c2d73124f47bb458e939967878d3d2, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -12520,6 +12531,18 @@ Prefab:
     - target: {fileID: 4316106846204788, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
       propertyPath: m_RootOrder
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416955141846794, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223839993622266, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539185920086212, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
@@ -29412,6 +29435,14 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1446800989961064, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664811375583332, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
   m_IsPrefabAsset: 0
@@ -30713,6 +30744,22 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1671023742879438, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119550213354564, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446800989961064, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664811375583332, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e80228d3cc71494aa999b7079467b3e, type: 2}
   m_IsPrefabAsset: 0
@@ -31473,6 +31520,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.51453
       objectReference: {fileID: 0}
+    - target: {fileID: 1277025181908240, guid: 78c2d73124f47bb458e939967878d3d2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78c2d73124f47bb458e939967878d3d2, type: 2}
   m_IsPrefabAsset: 0
@@ -31518,6 +31569,10 @@ Prefab:
     - target: {fileID: 1223839993622266, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
       propertyPath: m_Name
       value: MegaTurret (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223839993622266, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df452f0cc258d5649af8b6e5f676f8e9, type: 2}
