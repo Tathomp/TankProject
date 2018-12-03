@@ -14,7 +14,7 @@ public class LevelSelect : MonoBehaviour
                    Game Objects
     **************************************/
     // Buttons
-    public GameObject[] btnLvls;
+    public GameObject[] btnLvls = new GameObject[4];
     // Panels
     public GameObject levelSelectUI;
 
@@ -28,7 +28,6 @@ public class LevelSelect : MonoBehaviour
     {
         ps = PlayerState.GetCurrentPlayerState();
         mm = MenuManager.GetMenuManagerState();
-        btnLvls = new GameObject[ps.NUMBEROFLEVELS];
     }
 
 
