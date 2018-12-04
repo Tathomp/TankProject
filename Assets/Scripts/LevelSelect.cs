@@ -92,7 +92,7 @@ public class LevelSelect : MonoBehaviour
         GameObject.Destroy(levelSpawn.GetChild(0).gameObject);
 
         GameObject go = Instantiate<GameObject>(
-            Resources.Load<GameObject>("Levels/Level" + levelSelected),
+            GameObject.FindGameObjectWithTag("LevelDatabase").GetComponent<LevelDatabase>().Levels[levelSelected-1],
             levelSpawn
             );
 

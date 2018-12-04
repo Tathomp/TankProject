@@ -16,6 +16,7 @@ TagManager:
   - MegaProjectile
   - HealthBar
   - LevelSpawn
+  - LevelDatabase
   layers:
   - Default
   - TransparentFX
