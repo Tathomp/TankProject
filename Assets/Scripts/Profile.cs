@@ -57,7 +57,7 @@ public class Profile : MonoBehaviour {
     {
         int id = ps.GetID();
         string img = ps.GetUserImage();
-        string url = "https://www.ninjalive.com/tanks/avatars/upload.html?id=" + id.ToString() + "&img=" + img;
+        string url = "https://www.ninjalive.com/tanks/avatars/upload.php?id=" + id.ToString() + "&img=" + img;
         l.OpenLinkJSPlugin(url);
     }
 
