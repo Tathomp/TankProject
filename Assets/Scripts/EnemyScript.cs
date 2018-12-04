@@ -114,5 +114,8 @@ public class EnemyScript : Tank {
         }
 
         ApplyUpgrades();
+
+        CurrentHealth = MaxHealth;
+
     }
 }
